@@ -1,0 +1,7 @@
+.header__component_news-explorer {
+    font-family: 'roboto-slab';
+    font-weight: 700;
+    font-size: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

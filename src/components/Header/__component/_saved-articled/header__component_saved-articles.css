@@ -1,0 +1,8 @@
+.header__component_saved-articles {
+    font-family: 'roboto';
+    font-weight: 500;
+    font-size: 18px;
+    grid-column-start: 6;
+    grid-column-end: 7;
+    border-bottom: 3px solid;
+}

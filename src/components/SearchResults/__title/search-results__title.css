@@ -1,0 +1,11 @@
+.search-results__title {
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    margin-left: 104px;
+    font-family: 'roboto-slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.15;
+    color: #1A1B22;
+}

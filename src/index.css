@@ -1,13 +1,38 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import url(./styles/normalize.css);
+@import url(./styles/fonts.css);
+@import url(./styles/page.css);
+@import url(./styles/container.css);
+@import url(./components/Header/Header.css);
+@import url(./components/Header/_not-logged-in/header_not-logged-in.css);
+@import url(./components/Header/__component/header__component.css);
+@import url(./components/Header/__component/_news-explorer/header__component_news-explorer.css);
+@import url(./components/Header/__component/_home/header__compnent_home.css);
+@import url(./components/Header/__component/_home-not-logged-in/header__component_home-not-logged-in.css);
+@import url(./components/Header/__component/_saved-articled/header__component_saved-articles.css);
+@import url(./components/Header/__component/_user/header__component_user.css);
+@import url(./components/Header/__component/_user-not-logged-in/header__component_user-not-logged-in.css);
+@import url(./components/Header/__sign-out-icon/header__sign-out-icon.css);
+@import url(./components/Header/__user-name/header__user-name.css);
+@import url(./components/Header/__user-name/_not-logged-in/header__user-name_not-logged-in.css);
+@import url(./components/About/About.css);
+@import url(./components/About/__avatar-image/about__avatar-image.css);
+@import url(./components/About/__description/about__description.css);
+@import url(./components/About/__title/about__title.css);
+@import url(./components/About/__text/about__text.css);
+@import url(./components/SearchForm/SearchForm.css);
+@import url(./components/SearchForm/__title/search-form__title.css);
+@import url(./components/SearchForm/__description/search-form__description.css);
+@import url(./components/SearchForm/__search-field/search-form__search-field.css);
+@import url(./components/SearchForm/__button/search-form__button.css);
+@import url(./components/SearchForm/__input/search-form__input.css);
+@import url(./components/SearchResults/SearchResults.css);
+@import url(./components/SearchResults/__title/search-results__title.css);
+@import url(./components/SearchResults/__articles-list/search-results__articles-list.css);
+@import url(./components/SearchResults/__button/search-results__button.css);
+@import url(./components/Card/Card.css);
+@import url(./components/Card/__picture/card__picture.css);
+@import url(./components/Footer/Footer.css);
+@import url(./components/Footer/__title/footer__title.css);
+@import url(./components/Footer/__link/footer__link.css);
+@import url(./components/Footer/__list/footer__list.css);
+@import url(./components/Footer/__social-icon/footer__social-icons.css);

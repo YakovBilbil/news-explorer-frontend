@@ -1,0 +1,7 @@
+.header__component_user {
+    font-family: 'roboto';
+    font-weight: 500;
+    font-size: 18px;
+    grid-column-start: 7;
+    grid-column-end: 9;
+}

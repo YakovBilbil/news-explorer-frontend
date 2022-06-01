@@ -1,0 +1,27 @@
+.search-form__input {
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #D1D2D6;
+    border-radius: 100px;
+    font-family: 'roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.38;
+    z-index: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #1A1B22;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 24px;
+}

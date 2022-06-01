@@ -1,0 +1,12 @@
+.search-results__articles-list {
+    width: calc(100% - 104px*2);
+    display: grid;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-template-columns: repeat(3, minmax(224px, 1fr));
+    grid-gap: 16px;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
