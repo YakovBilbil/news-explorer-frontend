@@ -1,7 +1,5 @@
-.search-results {
-    border: 1px solid red;
-    width: 100%;
-    background-color: #F5F6F7;
+.card__written-content-block {
+    width: calc(100% - 2*24px);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -11,8 +9,5 @@
     flex-direction: column;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    align-items: flex-start;
 }

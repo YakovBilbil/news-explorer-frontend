@@ -1,0 +1,11 @@
+.card__origin {
+    font-family: 'roboto-slab';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #B6BCBF;
+    margin: 0px 0px 24px 0px;
+}

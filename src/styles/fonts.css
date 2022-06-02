@@ -61,3 +61,11 @@
     font-display: swap;
     src: url("../vendor/fonts/roboto-slab-700.woff2") format("woff2"), url("../vendor/fonts/roboto-700.woff") format("woff");
 }
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../vendor/fonts/source-sans-pro-v21-latin-regular.woff2") format("woff2"), url("../vendor/fonts/source-sans-pro-v21-latin-regular.woff") format("woff");
+}

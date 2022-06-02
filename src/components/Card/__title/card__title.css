@@ -1,0 +1,19 @@
+.card__title {
+    width: 100%;
+    font-family: 'roboto-slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.15;
+    color: #1A1B22;
+    padding: 0px;
+    height: 60px;
+    margin: 0px 0px 16px 0px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}

@@ -31,6 +31,12 @@
 @import url(./components/SearchResults/__button/search-results__button.css);
 @import url(./components/Card/Card.css);
 @import url(./components/Card/__picture/card__picture.css);
+@import url(./components/Card/__written-content-block/card__written-content-block.css);
+@import url(./components/Card/__date/card__date.css);
+@import url(./components/Card/__text/card__text.css);
+@import url(./components/Card/__title/card__title.css);
+@import url(./components/Card/__origin/card__origin.css);
+@import url(./components/Card/__like-flag/card__like-flag.css);
 @import url(./components/Footer/Footer.css);
 @import url(./components/Footer/__title/footer__title.css);
 @import url(./components/Footer/__link/footer__link.css);
