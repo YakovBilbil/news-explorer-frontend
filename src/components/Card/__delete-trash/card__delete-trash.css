@@ -1,21 +1,21 @@
-.card__like-flag {
+.card__delete-trash {
     background-color: #ffffff;
     border-radius: 8px;
     width: 40px;
     height: 40px;
-    background-size: 14px 19px;
+    background-size: 18px 19px;
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
     top: 24px;
     right: 24px;
-    background-image: url(../../../images/flag-normal.png);
+    background-image: url(../../../images/grey-trash.png);
     -webkit-transition: background-image 0.2s linear 0.2s;
     -o-transition: background-image 0.2s linear 0.2s;
     transition: background-image 0.2s linear 0.2s;
 }
 
-.card__like-flag:hover {
-    background-image: url(../../../images/flag-hover.png);
+.card__delete-trash:hover {
+    background-image: url(../../../images/black-trash.png);
     cursor: pointer;
 }

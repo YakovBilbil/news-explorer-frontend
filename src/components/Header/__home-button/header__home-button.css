@@ -1,0 +1,9 @@
+.header__home-button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: #FFFFFF;
+    font-family: 'roboto';
+    font-weight: 500;
+    font-size: 18px;
+}

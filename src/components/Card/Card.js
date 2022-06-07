@@ -1,6 +1,6 @@
 import image from "../../images/image_08.png";
 
-function Card() {
+function Card({ children }) {
   return (
     <li className="card">
       <img className="card__picture" src={image} alt={`A Card name`} />
@@ -16,7 +16,7 @@ function Card() {
           for both adults and children to find...
         </p>
         <p className="card__origin">treehugger</p>
-        <div className="card__like-flag"></div>
+        {children}
       </div>
     </li>
   );

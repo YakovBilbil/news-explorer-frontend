@@ -1,0 +1,11 @@
+.header__user-name-button {
+    border: 1px solid #D1D2D6;
+    border-radius: 100px;
+    padding: 12px 19px;
+    cursor: pointer;
+    background: none;
+    color: #ffffff;
+    font-family: 'roboto';
+    font-weight: 500;
+    font-size: 18px;
+}

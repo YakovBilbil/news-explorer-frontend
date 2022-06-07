@@ -1,0 +1,9 @@
+.header__saved-articles-button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #B6BCBF;
+    font-family: 'roboto';
+    font-weight: 500;
+    font-size: 18px;
+}

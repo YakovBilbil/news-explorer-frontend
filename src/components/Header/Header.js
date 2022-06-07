@@ -1,4 +1,4 @@
-import signOutIcon from "../../images/sign-out.png";
+import signOutIconDefault from "../../images/sign-out-default.png";
 
 function Header() {
   return (
@@ -6,19 +6,23 @@ function Header() {
       <div className="header__component header__component_news-explorer  ">
         <p>NewsExplorer</p>
       </div>
-      <div className="header__component header__component_home ">Home</div>
+      <div className="header__component header__component_home">
+        <button className="header__home-button">Home</button>
+      </div>
       <div className="header__component header__component_saved-articles ">
-        <p>Saved articles</p>
+        <button className="header__saved-articles-button">
+          Saved articles
+        </button>
       </div>
       <div className="header__component header__component_user ">
-        <p className="header__user-name">
+        <button className="header__user-name-button">
           Elise
           <img
             className="header__sign-out-icon"
-            src={signOutIcon}
+            src={signOutIconDefault}
             alt="Sign out Icon"
           />
-        </p>
+        </button>
       </div>
     </header>
   );

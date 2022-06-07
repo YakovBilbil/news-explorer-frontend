@@ -5,8 +5,9 @@
     -ms-flex-align: center;
     align-items: center;
     grid-template-columns: repeat(3, minmax(224px, 1fr));
+    grid-template-rows: 576px;
     grid-gap: 16px;
     list-style-type: none;
     padding: 0px;
-    margin: 0px 0px 64px 0px;
+    margin: 64px 0px;
 }

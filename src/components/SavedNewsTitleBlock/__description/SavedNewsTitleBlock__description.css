@@ -1,7 +1,6 @@
-.search-results__title {
-    -ms-flex-item-align: start;
-    align-self: flex-start;
-    margin: 80px 0px 0px 104px;
+.SavedNewsTitleBlock__description {
+    margin: 28px 0px 30px 104px;
+    width: 530px;
     font-family: 'roboto-slab';
     font-style: normal;
     font-weight: 400;

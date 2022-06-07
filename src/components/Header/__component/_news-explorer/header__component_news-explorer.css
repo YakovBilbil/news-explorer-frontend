@@ -1,4 +1,6 @@
 .header__component_news-explorer {
+    justify-self: flex-start;
+    margin-left: 104px;
     font-family: 'roboto-slab';
     font-weight: 700;
     font-size: 20px;

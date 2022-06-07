@@ -13,6 +13,7 @@
     -ms-flex-align: center;
     align-items: center;
     background-image: url(../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png);
+    position: relative;
 }
 
 @media screen and (max-width:900px) {

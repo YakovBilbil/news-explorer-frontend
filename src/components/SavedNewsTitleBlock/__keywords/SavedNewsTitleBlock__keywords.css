@@ -1,0 +1,13 @@
+.SavedNewsTitleBlock__keywords {
+    margin-left: 104px;
+    margin-bottom: 56px;
+    font-family: 'roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    color: #1A1B22;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}

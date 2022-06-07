@@ -1,12 +1,24 @@
 import Card from "../Card/Card.js";
 
-function SearchResults() {
+function SearchResults({ children }) {
   return (
     <div className="search-results">
-      <h2 className="search-results__title">Search results</h2>
+      {children[0]}
+
       <ul className="search-results__articles-list">
-        <Card />
-        <Card />
+        <Card>
+          <div className="card__like-flag"></div>
+          <div className="card__button-description">
+            Sign in to save articles
+          </div>
+        </Card>
+
+        <Card>
+          <div className="card__delete-trash"></div>
+          <div className="card__category">Parks</div>
+          <div className="card__button-description">Remove from saved</div>
+        </Card>
+
         <Card />
         <Card />
         <Card />
@@ -14,7 +26,7 @@ function SearchResults() {
         <Card />
         <Card />
       </ul>
-      <button className="search-results__button">Show more</button>
+      {children[1]}
     </div>
   );
 }
