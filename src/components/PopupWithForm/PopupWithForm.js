@@ -1,58 +1,66 @@
+import Popup from "../Popup/Popup.js";
+
 function PopupWithForm() {
   return (
-    <>
-      <div className="popup__container">
-        <div className="popup__form popup__form_login">
-          <form
-            className="popup__form-submit"
-            onSubmit={(e) => {
-              e.preventDefault();
-              onSubmit();
-            }}
-          >
-            <h2 className="popup__form-title popup__form-title_login">
-              Sign up
-            </h2>
+    <Popup>
+      <form className="PopupWithForm">
+        <h2 className="PopupWithForm__title">Sign in</h2>
 
-            <input
-              type="email"
-              name="email"
-              id="email-input"
-              placeholder="Email"
-              className="popup__form-input popup__form-input_login"
-              value={email || ""}
-              onChange={handleEmailChange}
-              required
-            />
-
-            <input
-              type="password"
-              name="password"
-              id="password-input"
-              placeholder="Password"
-              className="popup__form-input popup__form-input_login"
-              value={password || ""}
-              onChange={handlePasswordChange}
-              required
-            />
-
-            <button
-              type="submit"
-              className="popup__form-save-button popup__form-save-button_login"
-            >
-              Sign up
-            </button>
-
-            <div
-              className="popup__form-save-button popup__form-save-button_sign"
-              onClick={() => navigate("/react-around-auth/signin")}
-            >
-              Already a member? Log in here!
-            </div>
-          </form>
+        <label for="email-input" className="PopupWithForm__label">
+          Email
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email-input"
+          placeholder="Enter email"
+          className="PopupWithForm__input"
+          required
+        />
+        <div className="PopupWithForm__error-message">
+          Invalid email address
         </div>
-      </div>
-      ;
-    </>
+
+        <label for="password-input" className="PopupWithForm__label">
+          Password
+        </label>
+        <input
+          type="password"
+          name="password"
+          id="password-input"
+          placeholder="Enter password"
+          className="PopupWithForm__input"
+          required
+        />
+        <div className="PopupWithForm__error-message">Invalid password</div>
+
+        <label for="username-input" className="PopupWithForm__label">
+          Username
+        </label>
+        <input
+          type="text"
+          name="username"
+          id="username-input"
+          placeholder="Enter your username"
+          className="PopupWithForm__input"
+          required
+        />
+        <div className="PopupWithForm__error-message">Invalid username</div>
+
+        <div className="PopupWithForm__error-message PopupWithForm__error-message_bad-email">
+          This email is not available
+        </div>
+        <button type="submit" className="PopupWithForm__send-button">
+          Sign in
+        </button>
+
+        <div className="PopupWithForm__or-block">
+          <p className="PopupWithForm__or">or</p>
+          <button className="PopupWithForm__or-button">Sign up</button>
+        </div>
+      </form>
+    </Popup>
   );
 }
+
+export default PopupWithForm;

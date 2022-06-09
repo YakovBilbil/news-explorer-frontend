@@ -1,0 +1,14 @@
+.PopupWithForm__or-button {
+    background: none;
+    border: none;
+    color: #2F71E5;
+    -webkit-transition: color 0.2s linear 0.2s, opacity 0.2s linear 0.2s;
+    -o-transition: color 0.2s linear 0.2s, opacity 0.2s linear 0.2s;
+    transition: color 0.2s linear 0.2s, opacity 0.2s linear 0.2s;
+}
+
+.PopupWithForm__or-button:hover {
+    color: #347EFF;
+    opacity: 0.9;
+    cursor: pointer;
+}

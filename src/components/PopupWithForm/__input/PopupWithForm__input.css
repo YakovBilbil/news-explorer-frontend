@@ -1,0 +1,62 @@
+.PopupWithForm__input {
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+    color: #000000;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    padding-bottom: 5px;
+}
+
+.PopupWithForm__input::-webkit-input-placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    opacity: 0.2;
+}
+
+.PopupWithForm__input::-moz-placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    opacity: 0.2;
+}
+
+.PopupWithForm__input:-ms-input-placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    opacity: 0.2;
+}
+
+.PopupWithForm__input::-ms-input-placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    opacity: 0.2;
+}
+
+.PopupWithForm__input::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    opacity: 0.2;
+}

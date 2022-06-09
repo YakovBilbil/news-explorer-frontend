@@ -1,0 +1,10 @@
+.PopupWithForm__error-message {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    margin-top: 3px;
+    margin-bottom: 13px;
+}

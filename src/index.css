@@ -61,3 +61,15 @@
 @import url(./components/Popup/__container/popup__container.css);
 @import url(./components/Popup/__close-button/popup__close-button.css);
 @import url(./components/Popup/__close-icon/popup__close-icon.css);
+@import url(./components/Popup/__title/popup__title.css);
+@import url(./components/Popup/__registration-successfully-signin/popup__registration-successfully-signin.css);
+@import url(./components/PopupWithForm/PopupWithForm.css);
+@import url(./components/PopupWithForm/__title/PopupWithForm__title.css);
+@import url(./components/PopupWithForm/__label/PopupWithForm__label.css);
+@import url(./components/PopupWithForm/__input/PopupWithForm__input.css);
+@import url(./components/PopupWithForm/__error-message/PopupWithForm__error-message.css);
+@import url(./components/PopupWithForm/__error-message/_bad-email/PopupWithForm__error-message_bad-email.css);
+@import url(./components/PopupWithForm/__send-button/PopupWithForm__send-button.css);
+@import url(./components/PopupWithForm/__or-block/PopupWithForm__or-block.css);
+@import url(./components/PopupWithForm/__or/PopupWithForm__or.css);
+@import url(./components/PopupWithForm/__or-button/PopupWithForm__or-button.css);
