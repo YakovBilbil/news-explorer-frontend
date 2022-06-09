@@ -73,3 +73,5 @@
 @import url(./components/PopupWithForm/__or-block/PopupWithForm__or-block.css);
 @import url(./components/PopupWithForm/__or/PopupWithForm__or.css);
 @import url(./components/PopupWithForm/__or-button/PopupWithForm__or-button.css);
+@import url(./components/Preloader/Preloader.css);
+@import url(./components/Preloader/__content/Preloader__content.css);

@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer.js";
 import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
 import Popup from "../Popup/Popup.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
+import Preloader from "../Preloader/Preloader.js";
 
 function App() {
   return (
@@ -23,17 +24,25 @@ function App() {
               path="/"
               element={
                 <>
-                  <HeaderSavedArticles />
+                  <HeaderNotLoggedIn />
+                  <SearchForm />
+                  <Preloader />
+                  {/*}
                   <SavedNewsTitleBlock />
+                  */}
+                  {/*}
                   <SearchResults>
                     <h2 className="search-results__title">Search results</h2>
                     <button className="search-results__button">
                       Show more
                     </button>
                   </SearchResults>
+                  */}
+                  <About />
                   <Footer />
-
+                  {/*}
                   <PopupWithForm />
+                  */}
                   {/*
                   <Popup>
                     <h2 className="popup__title">
