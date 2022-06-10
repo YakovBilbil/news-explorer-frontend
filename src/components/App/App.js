@@ -26,7 +26,8 @@ function App() {
                 <>
                   <HeaderNotLoggedIn />
                   <SearchForm />
-                  <Preloader />
+
+                  <SearchResults></SearchResults>
                   {/*}
                   <SavedNewsTitleBlock />
                   */}

@@ -1,11 +1,15 @@
 import Card from "../Card/Card.js";
+import Preloader from "../Preloader/Preloader.js";
+import NothingFound from "../NothingFound/NothingFound.js";
 
-function SearchResults({ children }) {
+function SearchResults({ children = [] }) {
   return (
     <div className="search-results">
+      <NothingFound />
+
       {children[0]}
 
-      <ul className="search-results__articles-list">
+      <ul className="search-results__articles-list" style={{ display: "none" }}>
         <Card>
           <div className="card__like-flag"></div>
           <div className="card__button-description">

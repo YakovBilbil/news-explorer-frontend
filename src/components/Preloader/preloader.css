@@ -1,18 +1,12 @@
 .Preloader {
-    display: block;
+    margin-top: 80px;
+    margin-bottom: 24px;
     width: 74px;
     height: 74px;
     background: -o-linear-gradient(left, rgb(26, 27, 34, 100%), rgb(209, 210, 214, 0%)) border-box;
     background: -webkit-gradient(linear, left top, right top, from(rgb(26, 27, 34, 100%)), to(rgb(209, 210, 214, 0%))) border-box;
     background: linear-gradient(to right, rgb(26, 27, 34, 100%), rgb(209, 210, 214, 0%)) border-box;
     border-radius: 50%;
-    border: 1px solid transparent;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
     -webkit-animation: spin .75s infinite linear;
     animation: spin .75s infinite linear;
     display: -webkit-box;
