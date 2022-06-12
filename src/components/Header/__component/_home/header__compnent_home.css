@@ -6,3 +6,9 @@
     grid-column-end: 6;
     border-bottom: 3px solid;
 }
+
+@media screen and (max-width: 550px) {
+    .header__component_home {
+        display: none;
+    }
+}

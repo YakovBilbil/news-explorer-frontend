@@ -9,3 +9,11 @@
     line-height: 1.15;
     color: #1A1B22;
 }
+
+@media screen and (max-width: 1050px) {
+    .search-results__title {
+        font-size: 30px;
+        margin-top: 40px;
+        margin: 40px 0px 0px 40px;
+    }
+}

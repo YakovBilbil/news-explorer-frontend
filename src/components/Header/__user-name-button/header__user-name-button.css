@@ -17,3 +17,9 @@
     cursor: pointer;
     opacity: 0.7;
 }
+
+@media screen and (max-width: 1050px) {
+    .header__user-name-button {
+        font-size: 16px;
+    }
+}

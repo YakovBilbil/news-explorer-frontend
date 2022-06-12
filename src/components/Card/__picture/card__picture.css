@@ -3,3 +3,9 @@
     border-radius: 16px 16px 0px 0px;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 1050px) {
+    .card__picture {
+        margin-bottom: 16px;
+    }
+}

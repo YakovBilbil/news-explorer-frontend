@@ -2,6 +2,7 @@
 @import url(./styles/fonts.css);
 @import url(./styles/page.css);
 @import url(./styles/container.css);
+@import url(./styles/header-seach-form-block.css);
 @import url(./components/Header/Header.css);
 @import url(./components/Header/_not-logged-in/header_not-logged-in.css);
 @import url(./components/Header/_saved-articles/header_saved-articles.css);
@@ -22,6 +23,7 @@
 @import url(./components/Header/__home-button/_saved-articles/header__home-button_saved-aricles.css);
 @import url(./components/Header/__saved-articles-button/header__saved-articles-button.css);
 @import url(./components/Header/__saved-articles-button/_saved-articles/header__saved-articles-button_saved-articles.css);
+@import url(./components/Header/__menu/header__menu.css);
 @import url(./components/About/About.css);
 @import url(./components/About/__avatar-image/about__avatar-image.css);
 @import url(./components/About/__description/about__description.css);

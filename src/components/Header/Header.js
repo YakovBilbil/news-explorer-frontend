@@ -1,4 +1,5 @@
 import signOutIconDefault from "../../images/sign-out-default.png";
+import menuIconWhite from "../../images/menu-icon-white.png";
 
 function Header() {
   return (
@@ -24,6 +25,13 @@ function Header() {
           />
         </button>
       </div>
+      <button className="header__menu">
+        <img
+          className="header__menu-icon-white"
+          src={menuIconWhite}
+          alt="Menu Icon"
+        />
+      </button>
     </header>
   );
 }

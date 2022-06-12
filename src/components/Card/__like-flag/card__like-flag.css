@@ -19,3 +19,10 @@
     background-image: url(../../../images/flag-hover.png);
     cursor: pointer;
 }
+
+@media screen and (max-width: 1050px) {
+    .card__like-flag {
+        top: 8px;
+        right: 8px;
+    }
+}

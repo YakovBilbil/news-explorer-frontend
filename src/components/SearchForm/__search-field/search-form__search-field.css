@@ -7,3 +7,9 @@
     display: flex;
     position: relative;
 }
+
+@media screen and (max-width: 1050px) {
+    .search-form__search-field {
+        margin-bottom: 48px;
+    }
+}

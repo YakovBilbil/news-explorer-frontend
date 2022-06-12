@@ -9,3 +9,9 @@
     color: #B6BCBF;
     margin: 0px 0px 24px 0px;
 }
+
+@media screen and (max-width: 1050px) {
+    .card__origin {
+        margin-bottom: 16px;
+    }
+}

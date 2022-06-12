@@ -3,7 +3,7 @@ import NothingFoundIcon from "../../images/nothing-found-icon.png";
 function NothingFound() {
   return (
     <>
-      <div className="NothingFound">
+      <div className="NothingFound" style={{ display: "none" }}>
         <img
           className="NothingFound__picture"
           src={NothingFoundIcon}

@@ -18,3 +18,10 @@
     align-items: center;
     padding: 8px 22px;
 }
+
+@media screen and (max-width: 1050px) {
+    .card__category {
+        top: 8px;
+        left: 8px;
+    }
+}

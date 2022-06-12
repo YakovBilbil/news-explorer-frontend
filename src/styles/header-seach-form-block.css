@@ -1,7 +1,4 @@
-.container {
-    width: 100%;
-    max-width: 1440px;
-    min-width: 320px;
+.header-search-form-block {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -12,5 +9,9 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    position: relative;
+    width: 100%;
+    background-image: url(../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }

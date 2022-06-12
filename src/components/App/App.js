@@ -24,21 +24,26 @@ function App() {
               path="/"
               element={
                 <>
-                  <HeaderNotLoggedIn />
-                  <SearchForm />
+                  <div className="header-search-form-block">
+                    <Header />
+                    <SearchForm />
+                  </div>
+                  {/*<HeaderNotLoggedIn />*/}
 
-                  <SearchResults></SearchResults>
+                  {/*<HeaderSavedArticles />*/}
+
+                  {/*<SearchResults /> */}
                   {/*}
                   <SavedNewsTitleBlock />
                   */}
-                  {/*}
+
                   <SearchResults>
                     <h2 className="search-results__title">Search results</h2>
                     <button className="search-results__button">
                       Show more
                     </button>
                   </SearchResults>
-                  */}
+
                   <About />
                   <Footer />
                   {/*}

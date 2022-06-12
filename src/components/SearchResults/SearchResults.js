@@ -9,10 +9,13 @@ function SearchResults({ children = [] }) {
 
       {children[0]}
 
-      <ul className="search-results__articles-list" style={{ display: "none" }}>
+      <ul
+        className="search-results__articles-list"
+        style={{ display: "visible" }}
+      >
         <Card>
           <div className="card__like-flag"></div>
-          <div className="card__button-description">
+          <div className="card__button-description" style={{ display: "none" }}>
             Sign in to save articles
           </div>
         </Card>
@@ -20,7 +23,9 @@ function SearchResults({ children = [] }) {
         <Card>
           <div className="card__delete-trash"></div>
           <div className="card__category">Parks</div>
-          <div className="card__button-description">Remove from saved</div>
+          <div className="card__button-description" style={{ display: "none" }}>
+            Remove from saved
+          </div>
         </Card>
 
         <Card />
