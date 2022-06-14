@@ -17,3 +17,11 @@
         margin: 40px 0px 0px 40px;
     }
 }
+
+@media screen and (max-width: 550px) {
+    .search-results__title {
+        font-size: 30px;
+        margin-top: 40px;
+        margin: 32px 16px 58px;
+    }
+}

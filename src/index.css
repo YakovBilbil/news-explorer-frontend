@@ -57,6 +57,7 @@
 @import url(./components/Footer/Footer.css);
 @import url(./components/Footer/__title/footer__title.css);
 @import url(./components/Footer/__link/footer__link.css);
+@import url(./components/Footer/__link/_practicum/footer__link_practicum.css);
 @import url(./components/Footer/__list/footer__list.css);
 @import url(./components/Footer/__social-icon/footer__social-icons.css);
 @import url(./components/Popup/Popup.css);

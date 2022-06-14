@@ -1,0 +1,8 @@
+@media screen and (max-width: 550px) {
+    .footer__link_practicum {
+        position: absolute;
+        top: 50px;
+        width: 280px;
+        text-align: left;
+    }
+}

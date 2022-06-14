@@ -25,3 +25,10 @@
     background-color: #347EFF;
     cursor: pointer;
 }
+
+@media screen and (max-width: 550px) {
+    .search-form__button {
+        top: 80px;
+        width: 285px;
+    }
+}

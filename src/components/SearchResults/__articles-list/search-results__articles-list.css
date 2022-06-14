@@ -29,5 +29,9 @@
 @media screen and (max-width: 550px) {
     .search-results__articles-list {
         grid-template-columns: repeat(1, minmax(224px, 1fr));
+        width: calc(100% - 16px*2);
+        margin-top: 0px;
+        margin-bottom: 16px;
+        grid-gap: 10px;
     }
 }

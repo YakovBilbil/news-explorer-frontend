@@ -15,3 +15,10 @@
     background-size: cover;
     background-position: center;
 }
+
+@media screen and (max-width: 550px) {
+    .header-search-form-block {
+        height: 536px;
+        background-image: url(../images/georgia-de-lotz--UsJoNxLaNo-unsplash-small.png);
+    }
+}

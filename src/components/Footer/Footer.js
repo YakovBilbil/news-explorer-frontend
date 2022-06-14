@@ -21,7 +21,7 @@ function Footer() {
         </div>
 
         <a
-          className="footer__link"
+          className="footer__link footer__link_practicum"
           href="https://www.practicum.com"
           target="_blank"
           rel="noreferrer"

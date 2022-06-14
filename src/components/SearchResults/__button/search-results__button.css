@@ -29,3 +29,11 @@
         margin-bottom: 40px;
     }
 }
+
+@media screen and (max-width: 550px) {
+    .search-results__button {
+        width: 288px;
+        height: 56px;
+        margin-bottom: 24px;
+    }
+}

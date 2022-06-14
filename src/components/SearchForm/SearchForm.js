@@ -6,12 +6,18 @@ function SearchForm() {
         Find the latest news on any topic and save them in your personal
         account.
       </p>
-      <div className="search-form__search-field">
-        <div className="search-form__input">
-          <div>Nature</div>
-        </div>
+
+      <form className="search-form__search-field">
+        <input
+          type="search"
+          name="search-article"
+          id="search-input"
+          placeholder="Search Articles"
+          required
+          className="search-form__input"
+        />
         <button className="search-form__button">Search</button>
-      </div>
+      </form>
     </div>
   );
 }

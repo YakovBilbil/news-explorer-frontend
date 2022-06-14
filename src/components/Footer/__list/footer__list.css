@@ -18,10 +18,22 @@
     text-align: center;
     color: #1A1B22;
     gap: 42px;
+    position: relative;
 }
 
 @media screen and (max-width: 1050px) {
     .footer__list {
         margin-right: 40px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .footer__list {
+        position: relative;
+        width: 288px;
+        margin: 0px 16px;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
     }
 }
