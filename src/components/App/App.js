@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer.js";
 import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
 import Popup from "../Popup/Popup.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
+import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 import Preloader from "../Preloader/Preloader.js";
 
 function App() {
@@ -28,14 +29,16 @@ function App() {
                     <Header />
                     <SearchForm />
                   </div>
+
                   {/*<HeaderNotLoggedIn />*/}
 
                   {/*<HeaderSavedArticles />*/}
 
-                  {/*<SearchResults /> */}
-                  {/*}
-                  <SavedNewsTitleBlock />
-                  */}
+                  {/*<SavedNewsTitleBlock />*/}
+
+                  {/*<SearchResults />*/}
+
+                  <PopupWithForm />
 
                   <SearchResults>
                     <h2 className="search-results__title">Search results</h2>
@@ -46,9 +49,9 @@ function App() {
 
                   <About />
                   <Footer />
-                  {/*}
-                  <PopupWithForm />
-                  */}
+
+                  {/*<PopupMenuForPhone />*/}
+
                   {/*
                   <Popup>
                     <h2 className="popup__title">

@@ -1,0 +1,5 @@
+.popup__close-button_PopupMenuForPhone {
+    position: unset;
+    grid-column-start: 8;
+    grid-column-end: 9;
+}

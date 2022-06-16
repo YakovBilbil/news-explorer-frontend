@@ -61,8 +61,11 @@
 @import url(./components/Footer/__list/footer__list.css);
 @import url(./components/Footer/__social-icon/footer__social-icons.css);
 @import url(./components/Popup/Popup.css);
+@import url(./components/Popup/_PopupMenuForPhone/popup_PopupMenuForPhone.css);
 @import url(./components/Popup/__container/popup__container.css);
+@import url(./components/Popup/__container/_PopupMenuForPhone/popup__container_PopupMenuForPhone.css);
 @import url(./components/Popup/__close-button/popup__close-button.css);
+@import url(./components/Popup/__close-button/_PopupMenuForPhone/popup__close-button_PopupMenuForPhone.css);
 @import url(./components/Popup/__close-icon/popup__close-icon.css);
 @import url(./components/Popup/__title/popup__title.css);
 @import url(./components/Popup/__registration-successfully-signin/popup__registration-successfully-signin.css);
@@ -76,6 +79,8 @@
 @import url(./components/PopupWithForm/__or-block/PopupWithForm__or-block.css);
 @import url(./components/PopupWithForm/__or/PopupWithForm__or.css);
 @import url(./components/PopupWithForm/__or-button/PopupWithForm__or-button.css);
+@import url(./components/PopupMenuForPhone/__home/PopupMenuForPhone__home.css);
+@import url(./components/PopupMenuForPhone/__signin/PopupMenuForPhone__signin.css);
 @import url(./components/Preloader/Preloader.css);
 @import url(./components/Preloader/__content/Preloader__content.css);
 @import url(./components/Preloader/__text/Preloader__text.css);

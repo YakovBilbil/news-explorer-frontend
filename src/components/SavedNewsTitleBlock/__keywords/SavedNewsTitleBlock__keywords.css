@@ -1,6 +1,5 @@
 .SavedNewsTitleBlock__keywords {
-    margin-left: 104px;
-    margin-bottom: 56px;
+    margin: 0px 16px 56px 104px;
     font-family: 'roboto';
     font-style: normal;
     font-weight: 400;
@@ -10,4 +9,18 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    display: inline;
+}
+
+@media screen and (max-width: 1050px) {
+    .SavedNewsTitleBlock__keywords {
+        margin-left: 40px;
+        margin-bottom: 32px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .SavedNewsTitleBlock__keywords {
+        margin-left: 16px;
+    }
 }

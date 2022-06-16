@@ -25,3 +25,15 @@
     -o-transition: opacity 0.3s, linear, 0.3s;
     transition: opacity 0.3s, linear, 0.3s;
 }
+
+@media screen and (max-width: 550px) {
+    .popup {
+        background-image: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash-small.png);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .popup {
+        width: 320px;
+    }
+}
