@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+import Main from "../Main/Main.js";
 import HeaderNotLoggedIn from "../Header/HeaderNotLoggedIn";
 import Header from "../Header/Header.js";
 import HeaderSavedArticles from "../Header/HeaderSavedArticles";
@@ -14,6 +15,7 @@ import Popup from "../Popup/Popup.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 import Preloader from "../Preloader/Preloader.js";
+import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
 
 function App() {
   return (
@@ -25,50 +27,32 @@ function App() {
               path="/"
               element={
                 <>
-                  <div className="header-search-form-block">
-                    <Header />
-                    <SearchForm />
-                  </div>
-
-                  {/*<HeaderNotLoggedIn />*/}
-
-                  {/*<HeaderSavedArticles />*/}
-
-                  {/*<SavedNewsTitleBlock />*/}
-
-                  {/*<SearchResults />*/}
-
-                  <PopupWithForm />
-
-                  <SearchResults>
-                    <h2 className="search-results__title">Search results</h2>
-                    <button className="search-results__button">
-                      Show more
-                    </button>
-                  </SearchResults>
-
-                  <About />
+                  <Main />
                   <Footer />
-
-                  {/*<PopupMenuForPhone />*/}
-
-                  {/*
-                  <Popup>
-                    <h2 className="popup__title">
-                      Registration successfully completed!
-                    </h2>
-                    <button className="popup__registration-successfully-signin">
-                      Sign in
-                    </button>
-                  </Popup>
-                  */}
                 </>
               }
-            />{" "}
-            <Route path="/saved-news" />{" "}
-          </Routes>{" "}
-        </div>{" "}
-      </div>{" "}
+            />
+
+            <Route
+              path="/saved-news"
+              element={
+                <>
+                  <HeaderSavedArticles />
+                  <SavedNewsTitleBlock />
+                  <SearchResults />
+                  <Footer />
+                </>
+              }
+            />
+          </Routes>
+
+          {/*<PopupWithForm />*/}
+
+          {/*<PopupMenuForPhone />*/}
+
+          {/*<PopupRegisterSuccess />*/}
+        </div>
+      </div>
     </>
   );
 }
