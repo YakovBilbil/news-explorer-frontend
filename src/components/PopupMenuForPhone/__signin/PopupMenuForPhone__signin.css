@@ -31,4 +31,5 @@
 
 .PopupMenuForPhone__signin:hover {
     cursor: pointer;
+    opacity: 0.7;
 }

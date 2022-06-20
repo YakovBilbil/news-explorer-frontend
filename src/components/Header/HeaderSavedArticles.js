@@ -1,14 +1,20 @@
 import signOutSavedArticlesIcon from "../../images/sign-out-saved-articles.png";
 import menuIconBlack from "../../images/menu-icon-black.png";
 
+import { useNavigate } from "react-router-dom";
+
 function Header() {
+  const navigate = useNavigate();
   return (
     <header className="header header_saved-articles">
       <div className="header__component header__component_news-explorer  ">
         <p>NewsExplorer</p>
       </div>
       <div className="header__component header__component_home header__component_home-saved-articles">
-        <button className="header__home-button header__home-button_saved-articles">
+        <button
+          className="header__home-button header__home-button_saved-articles"
+          onClick={() => navigate("/")}
+        >
           Home
         </button>
       </div>

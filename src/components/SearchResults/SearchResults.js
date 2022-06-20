@@ -5,6 +5,7 @@ import NothingFound from "../NothingFound/NothingFound.js";
 function SearchResults({ children = [] }) {
   return (
     <div className="search-results">
+      <Preloader />
       <NothingFound />
 
       {children[0]}
@@ -14,14 +15,17 @@ function SearchResults({ children = [] }) {
         style={{ display: "visible" }}
       >
         <Card>
-          <div className="card__like-flag"></div>
+          <button
+            className="card__like-flag"
+            onClick={(e) => e.target.classList.toggle("card__like-flag_active")}
+          ></button>{" "}
           <div className="card__button-description" style={{ display: "none" }}>
             Sign in to save articles
           </div>
         </Card>
 
         <Card>
-          <div className="card__delete-trash"></div>
+          <button className="card__delete-trash"></button>
           <div className="card__category">Parks</div>
           <div className="card__button-description" style={{ display: "none" }}>
             Remove from saved

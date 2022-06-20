@@ -13,12 +13,9 @@ function Footer() {
         News API
       </p>
       <nav className="footer__list">
-        <div
-          className="footer__link"
-          onClick={() => navigate("/react-around-auth/signup")}
-        >
+        <button className="footer__link" onClick={() => navigate("/")}>
           Home
-        </div>
+        </button>
 
         <a
           className="footer__link footer__link_practicum"

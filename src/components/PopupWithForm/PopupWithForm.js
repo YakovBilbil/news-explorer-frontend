@@ -1,8 +1,8 @@
 import Popup from "../Popup/Popup.js";
 
-function PopupWithForm() {
+function PopupWithForm({ isOpen, onClose }) {
   return (
-    <Popup>
+    <Popup isOpen={isOpen} onClose={onClose}>
       <form className="PopupWithForm">
         <h2 className="PopupWithForm__title">Sign in</h2>
 

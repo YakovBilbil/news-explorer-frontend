@@ -1,10 +1,12 @@
 function Preloader() {
   return (
     <>
-      <div className="Preloader">
+      <div className="Preloader" style={{ display: "none" }}>
         <div className="Preloader__content"></div>
       </div>
-      <p className="Preloader__text">Searching for news...</p>
+      <p className="Preloader__text" style={{ display: "none" }}>
+        Searching for news...
+      </p>
     </>
   );
 }

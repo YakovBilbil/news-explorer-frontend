@@ -47,6 +47,7 @@
 @import url(./components/Card/__title/card__title.css);
 @import url(./components/Card/__origin/card__origin.css);
 @import url(./components/Card/__like-flag/card__like-flag.css);
+@import url(./components/Card/__like-flag/_active/card__like-flag_active.css);
 @import url(./components/Card/__delete-trash/card__delete-trash.css);
 @import url(./components/Card/__category/card__category.css);
 @import url(./components/Card/__button-description/card__button-description.css);
@@ -69,6 +70,7 @@
 @import url(./components/Popup/__close-icon/popup__close-icon.css);
 @import url(./components/Popup/__title/popup__title.css);
 @import url(./components/Popup/__registration-successfully-signin/popup__registration-successfully-signin.css);
+@import url(./components/Popup/_opened/popup_opened.css);
 @import url(./components/PopupWithForm/PopupWithForm.css);
 @import url(./components/PopupWithForm/__title/PopupWithForm__title.css);
 @import url(./components/PopupWithForm/__label/PopupWithForm__label.css);

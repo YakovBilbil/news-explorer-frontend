@@ -1,3 +1,4 @@
 .popup_PopupMenuForPhone {
     background-image: none;
+    z-index: 0;
 }
