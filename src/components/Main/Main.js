@@ -1,20 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
-import { useNavigate } from "react-router-dom";
 
 import HeaderNotLoggedIn from "../Header/HeaderNotLoggedIn";
 import Header from "../Header/Header.js";
-import HeaderSavedArticles from "../Header/HeaderSavedArticles";
 import SearchForm from "../SearchForm/SearchForm.js";
 import SearchResults from "../SearchResults/SearchResults.js";
 import About from "../About/About.js";
-import Footer from "../Footer/Footer.js";
-import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
-import Popup from "../Popup/Popup.js";
-import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
-import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
-import Preloader from "../Preloader/Preloader.js";
 
 function Main({ onPopupWithFormClick, onPopupMenuForPhoneClick }) {
   const currentUser = useContext(CurrentUserContext);

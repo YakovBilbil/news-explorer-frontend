@@ -1,6 +1,6 @@
 import Popup from "../Popup/Popup.js";
 
-function PopupWithForm({ isOpen, onClose }) {
+function PopupWithForm({ isOpen, onClose, onRegister }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
       <form className="PopupWithForm">
@@ -50,7 +50,14 @@ function PopupWithForm({ isOpen, onClose }) {
         <div className="PopupWithForm__error-message PopupWithForm__error-message_bad-email">
           This email is not available
         </div>
-        <button type="submit" className="PopupWithForm__send-button">
+        <button
+          type="submit"
+          className="PopupWithForm__send-button"
+          onClick={(event) => {
+            event.preventDefault();
+            onRegister();
+          }}
+        >
           Sign in
         </button>
 

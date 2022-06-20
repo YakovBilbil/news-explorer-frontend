@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import Main from "../Main/Main.js";
-import HeaderNotLoggedIn from "../Header/HeaderNotLoggedIn";
-import Header from "../Header/Header.js";
 import HeaderSavedArticles from "../Header/HeaderSavedArticles";
-import SearchForm from "../SearchForm/SearchForm.js";
 import SearchResults from "../SearchResults/SearchResults.js";
-import About from "../About/About.js";
 import Footer from "../Footer/Footer.js";
 import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
-import Popup from "../Popup/Popup.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
-import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
-import Preloader from "../Preloader/Preloader.js";
 import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
+import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -31,9 +24,16 @@ function App() {
     setIsPopupMenuForPhoneOpen(true);
   }
 
+  const [isPopupRegisterSuccessOpen, setIsPopupRegisterSuccessOpen] =
+    useState(false);
+  function handleRegisterSuccess() {
+    setIsPopupRegisterSuccessOpen(true);
+  }
+
   function closeAllPopups() {
     setIsPopupWithFormOpen(false);
     setIsPopupMenuForPhoneOpen(false);
+    setIsPopupRegisterSuccessOpen(false);
   }
 
   return (
@@ -71,6 +71,7 @@ function App() {
             <PopupWithForm
               isOpen={isPopupWithFormOpen}
               onClose={closeAllPopups}
+              onRegister={handleRegisterSuccess}
             />
 
             <PopupMenuForPhone
@@ -79,7 +80,11 @@ function App() {
               onPopupWithFormClick={handlePopupWithFormClick}
             />
 
-            {/*<PopupRegisterSuccess />*/}
+            <PopupRegisterSuccess
+              isOpen={isPopupRegisterSuccessOpen}
+              onClose={closeAllPopups}
+              onPopupWithFormClick={handlePopupWithFormClick}
+            />
           </div>
         </div>
       </CurrentUserContext.Provider>
