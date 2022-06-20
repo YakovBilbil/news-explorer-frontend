@@ -10,7 +10,7 @@
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    background-image: url(../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png);
+    background-image: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -19,6 +19,6 @@
 @media screen and (max-width: 550px) {
     .header-search-form-block {
         height: 536px;
-        background-image: url(../images/georgia-de-lotz--UsJoNxLaNo-unsplash-small.png);
+        background-image: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash-small.png);
     }
 }
