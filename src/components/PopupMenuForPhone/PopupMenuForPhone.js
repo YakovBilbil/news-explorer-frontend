@@ -52,7 +52,7 @@ function PopupMenuForPhone({ isOpen, onClose, onPopupWithFormClick }) {
         <button
           className="PopupMenuForPhone__home"
           onClick={() => {
-            navigate("/");
+            navigate("/news-explorer-frontend");
             onClose();
           }}
         >

@@ -28,7 +28,7 @@ function Main({ onPopupWithFormClick, onPopupMenuForPhoneClick }) {
         <h2 className="search-results__title">Search results</h2>
         <button
           className="search-results__button"
-          onClick={() => navigate("/saved-news")}
+          onClick={() => navigate("/news-explorer-frontend/saved-news")}
         >
           Show more
         </button>

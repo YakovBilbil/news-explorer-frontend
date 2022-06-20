@@ -13,7 +13,7 @@ function Header() {
       <div className="header__component header__component_home header__component_home-saved-articles">
         <button
           className="header__home-button header__home-button_saved-articles"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/news-explorer-frontend")}
         >
           Home
         </button>

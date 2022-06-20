@@ -13,7 +13,10 @@ function Footer() {
         News API
       </p>
       <nav className="footer__list">
-        <button className="footer__link" onClick={() => navigate("/")}>
+        <button
+          className="footer__link"
+          onClick={() => navigate("/news-explorer-frontend")}
+        >
           Home
         </button>
 

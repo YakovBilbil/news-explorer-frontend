@@ -43,7 +43,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route
-                path="/"
+                path="/news-explorer-frontend"
                 element={
                   <>
                     <Main
@@ -56,7 +56,7 @@ function App() {
               />
 
               <Route
-                path="/saved-news"
+                path="/news-explorer-frontend/saved-news"
                 element={
                   <>
                     <HeaderSavedArticles />
