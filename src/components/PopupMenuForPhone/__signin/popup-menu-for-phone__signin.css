@@ -1,4 +1,4 @@
-.PopupMenuForPhone__signin {
+.popup-menu-for-phone__signin {
     background-color: #1A1B22;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -29,7 +29,7 @@
     transition: background-color 0.2s linear 0.2s, opacity 0.2s linear 0.2s;
 }
 
-.PopupMenuForPhone__signin:hover {
+.popup-menu-for-phone__signin:hover {
     cursor: pointer;
     opacity: 0.7;
 }

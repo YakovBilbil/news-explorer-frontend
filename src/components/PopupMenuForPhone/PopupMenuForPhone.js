@@ -26,12 +26,12 @@ function PopupMenuForPhone({ isOpen, onClose, onPopupWithFormClick }) {
 
   return (
     <div
-      className={`popup popup_PopupMenuForPhone ${
+      className={`popup popup_popup-menu-for-phone ${
         isOpen ? "popup_opened" : ""
       }`}
       onClick={handleOverlay}
     >
-      <div className="popup__container popup__container_PopupMenuForPhone">
+      <div className="popup__container popup__container_popup-menu-for-phone">
         <header className="header">
           <div className="header__component header__component_news-explorer  ">
             <p>NewsExplorer</p>
@@ -39,7 +39,7 @@ function PopupMenuForPhone({ isOpen, onClose, onPopupWithFormClick }) {
 
           <button
             type="button"
-            className="popup__close-button popup__close-button_PopupMenuForPhone"
+            className="popup__close-button popup__close-button_popup-menu-for-phone"
             onClick={onClose}
           >
             <img
@@ -50,7 +50,7 @@ function PopupMenuForPhone({ isOpen, onClose, onPopupWithFormClick }) {
           </button>
         </header>
         <button
-          className="PopupMenuForPhone__home"
+          className="popup-menu-for-phone__home"
           onClick={() => {
             navigate("/news-explorer-frontend");
             onClose();
@@ -59,7 +59,7 @@ function PopupMenuForPhone({ isOpen, onClose, onPopupWithFormClick }) {
           Home
         </button>
         <button
-          className="PopupMenuForPhone__signin"
+          className="popup-menu-for-phone__signin"
           onClick={onPopupWithFormClick}
         >
           Sign in

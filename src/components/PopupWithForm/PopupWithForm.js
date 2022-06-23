@@ -3,10 +3,10 @@ import Popup from "../Popup/Popup.js";
 function PopupWithForm({ isOpen, onClose, onRegister }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
-      <form className="PopupWithForm">
-        <h2 className="PopupWithForm__title">Sign in</h2>
+      <form className="popup-with-form">
+        <h2 className="popup-with-form__title">Sign in</h2>
 
-        <label for="email-input" className="PopupWithForm__label">
+        <label for="email-input" className="popup-with-form__label">
           Email
         </label>
         <input
@@ -14,14 +14,14 @@ function PopupWithForm({ isOpen, onClose, onRegister }) {
           name="email"
           id="email-input"
           placeholder="Enter email"
-          className="PopupWithForm__input"
+          className="popup-with-form__input"
           required
         />
-        <div className="PopupWithForm__error-message">
+        <div className="popup-with-form__error-message">
           Invalid email address
         </div>
 
-        <label for="password-input" className="PopupWithForm__label">
+        <label for="password-input" className="popup-with-form__label">
           Password
         </label>
         <input
@@ -29,12 +29,12 @@ function PopupWithForm({ isOpen, onClose, onRegister }) {
           name="password"
           id="password-input"
           placeholder="Enter password"
-          className="PopupWithForm__input"
+          className="popup-with-form__input"
           required
         />
-        <div className="PopupWithForm__error-message">Invalid password</div>
+        <div className="popup-with-form__error-message">Invalid password</div>
 
-        <label for="username-input" className="PopupWithForm__label">
+        <label for="username-input" className="popup-with-form__label">
           Username
         </label>
         <input
@@ -42,17 +42,17 @@ function PopupWithForm({ isOpen, onClose, onRegister }) {
           name="username"
           id="username-input"
           placeholder="Enter your username"
-          className="PopupWithForm__input"
+          className="popup-with-form__input"
           required
         />
-        <div className="PopupWithForm__error-message">Invalid username</div>
+        <div className="popup-with-form__error-message">Invalid username</div>
 
-        <div className="PopupWithForm__error-message PopupWithForm__error-message_bad-email">
+        <div className="popup-with-form__error-message popup-with-form__error-message_bad-email">
           This email is not available
         </div>
         <button
           type="submit"
-          className="PopupWithForm__send-button"
+          className="popup-with-form__send-button"
           onClick={(event) => {
             event.preventDefault();
             onRegister();
@@ -61,9 +61,9 @@ function PopupWithForm({ isOpen, onClose, onRegister }) {
           Sign in
         </button>
 
-        <div className="PopupWithForm__or-block">
-          <p className="PopupWithForm__or">or</p>
-          <button className="PopupWithForm__or-button">Sign up</button>
+        <div className="popup-with-form__or-block">
+          <p className="popup-with-form__or">or</p>
+          <button className="popup-with-form__or-button">Sign up</button>
         </div>
       </form>
     </Popup>

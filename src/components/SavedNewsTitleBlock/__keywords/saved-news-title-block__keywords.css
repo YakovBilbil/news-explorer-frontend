@@ -1,4 +1,4 @@
-.SavedNewsTitleBlock__keywords {
+.saved-news-title-block__keywords {
     margin: 0px 16px 56px 104px;
     font-family: 'roboto';
     font-style: normal;
@@ -13,14 +13,14 @@
 }
 
 @media screen and (max-width: 1050px) {
-    .SavedNewsTitleBlock__keywords {
+    .saved-news-title-block__keywords {
         margin-left: 40px;
         margin-bottom: 32px;
     }
 }
 
 @media screen and (max-width: 570px) {
-    .SavedNewsTitleBlock__keywords {
+    .saved-news-title-block__keywords {
         margin-left: 16px;
     }
 }

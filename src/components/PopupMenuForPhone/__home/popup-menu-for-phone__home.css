@@ -1,4 +1,4 @@
-.PopupMenuForPhone__home {
+.popup-menu-for-phone__home {
     font-family: 'roboto';
     font-style: normal;
     font-weight: 500;
@@ -17,7 +17,7 @@
     transition: opacity 0.2s linear 0.2s;
 }
 
-.PopupMenuForPhone__home:hover {
+.popup-menu-for-phone__home:hover {
     cursor: pointer;
     opacity: 0.7;
 }

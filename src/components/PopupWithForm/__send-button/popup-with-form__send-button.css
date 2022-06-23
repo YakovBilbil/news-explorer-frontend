@@ -1,4 +1,4 @@
-.PopupWithForm__send-button {
+.popup-with-form__send-button {
     width: 100%;
     height: 64px;
     -webkit-box-sizing: border-box;
@@ -29,7 +29,7 @@
     transition: background-color 0.2s linear 0.2s, opacity 0.2s linear 0.2s;
 }
 
-.PopupWithForm__send-button:hover {
+.popup-with-form__send-button:hover {
     background-color: #347EFF;
     opacity: 0.9;
     cursor: pointer;
