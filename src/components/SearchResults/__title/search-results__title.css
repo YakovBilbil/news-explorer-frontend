@@ -18,7 +18,7 @@
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 570px) {
     .search-results__title {
         font-size: 30px;
         margin-top: 40px;

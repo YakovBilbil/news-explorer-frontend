@@ -24,7 +24,7 @@
     transition: opacity 0.3s, linear, 0.3s;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 570px) {
     .popup {
         background-image: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash-small.png);
     }

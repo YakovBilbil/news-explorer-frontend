@@ -2,12 +2,17 @@
     font-family: 'roboto';
     font-weight: 500;
     font-size: 18px;
-    grid-column-start: 5;
-    grid-column-end: 6;
+    grid-column-start: 10;
+    grid-column-end: 11;
     border-bottom: 3px solid;
+    justify-self: flex-end;
+    width: 68px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 630px) {
     .header__component_home {
         display: none;
     }

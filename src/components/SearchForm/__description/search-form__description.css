@@ -14,7 +14,7 @@
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 570px) {
     .search-form__description {
         margin-bottom: 122px;
     }

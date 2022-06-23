@@ -2,13 +2,25 @@
     font-family: 'roboto';
     font-weight: 500;
     font-size: 18px;
-    grid-column-start: 7;
-    grid-column-end: 9;
+    grid-column-start: 12;
+    grid-column-end: 13;
+    justify-self: flex-end;
+    margin-right: 104px;
+    margin-left: 32px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 1050px) {
+    .header__component_user {
+        margin-right: 40px;
+        margin-left: 16px;
+    }
+}
+
+@media screen and (max-width: 630px) {
     .header__component_user {
         display: none;
-        grid-column-end: 8;
     }
 }

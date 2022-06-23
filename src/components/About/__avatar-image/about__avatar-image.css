@@ -14,7 +14,7 @@
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 570px) {
     .about__avatar-image {
         width: 272px;
         height: 272px;
