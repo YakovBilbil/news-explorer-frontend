@@ -6,6 +6,7 @@
     -webkit-transition: opacity 0.2s linear 0.2s;
     -o-transition: opacity 0.2s linear 0.2s;
     transition: opacity 0.2s linear 0.2s;
+    padding: 0px;
 }
 
 .footer__link:hover {

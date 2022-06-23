@@ -6,7 +6,7 @@ function SavedNewsTitleBlock() {
         Elise, you have 5 saved articles
       </h2>
       <p className="SavedNewsTitleBlock__keywords">
-        By keywords: &nbsp; <b>Nature, Yellowstone, and 2 other</b>
+        By keywords: <b>Nature, Yellowstone, and 2 other</b>
       </p>
     </div>
   );

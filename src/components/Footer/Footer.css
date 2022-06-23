@@ -32,5 +32,6 @@
         height: -webkit-fit-content;
         height: -moz-fit-content;
         height: fit-content;
+        margin-top: 20px;
     }
 }

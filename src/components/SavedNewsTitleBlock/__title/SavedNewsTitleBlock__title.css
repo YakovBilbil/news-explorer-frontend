@@ -1,5 +1,4 @@
 .SavedNewsTitleBlock__title {
-    margin-top: 40px;
     margin-left: 104px;
     font-family: 'roboto';
     font-style: normal;
@@ -12,11 +11,13 @@
 @media screen and (max-width: 1050px) {
     .SavedNewsTitleBlock__title {
         margin-left: 40px;
+        font-size: 14px;
     }
 }
 
 @media screen and (max-width: 570px) {
     .SavedNewsTitleBlock__title {
         margin-left: 16px;
+        font-size: 12px;
     }
 }

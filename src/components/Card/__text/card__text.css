@@ -19,13 +19,8 @@
 
 @media screen and (max-width: 1050px) {
     .card__text {
-        margin-bottom: 12px;
-    }
-}
-
-@media screen and (max-width: 570px) {
-    .card__text {
         height: 88px;
+        margin-bottom: 12px;
         -webkit-line-clamp: 4;
     }
 }

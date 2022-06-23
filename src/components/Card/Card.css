@@ -13,3 +13,15 @@
     background-color: #ffffff;
     position: relative;
 }
+
+@media screen and (max-width: 1050px) {
+    .card {
+        height: 420px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .card {
+        height: 440px;
+    }
+}
