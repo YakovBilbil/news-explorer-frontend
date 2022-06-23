@@ -1,11 +1,7 @@
-import { useNavigate } from "react-router-dom";
-
 import githubIcon from "../../images/github-icon.png";
 import facebookIcon from "../../images/facebook-icon.png";
 
 function Footer() {
-  const navigate = useNavigate();
-
   return (
     <footer className="footer">
       <p className="footer__title">
@@ -13,12 +9,14 @@ function Footer() {
         News API
       </p>
       <nav className="footer__list">
-        <button
+        <a
           className="footer__link"
-          onClick={() => navigate("/news-explorer-frontend")}
+          href="http://localhost:3000/news-explorer-frontend"
+          target="_blank"
+          rel="noreferrer"
         >
           Home
-        </button>
+        </a>
 
         <a
           className="footer__link footer__link_practicum"
