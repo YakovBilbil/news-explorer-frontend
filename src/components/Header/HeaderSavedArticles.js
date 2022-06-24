@@ -10,7 +10,7 @@ function Header() {
       <div className="header__component header__component_news-explorer  ">
         <p>NewsExplorer</p>
       </div>
-      <div className="header__component header__component_home header__component_home-saved-articles">
+      <div className="header__component header__component_home header__component_home_saved-articles">
         <button
           className="header__home-button header__home-button_saved-articles"
           onClick={() => navigate("/news-explorer-frontend")}
@@ -18,7 +18,7 @@ function Header() {
           Home
         </button>
       </div>
-      <div className="header__component header__component_saved-articles header__component_saved-articles-saved-news ">
+      <div className="header__component header__component_saved-articles header__component_saved-articles_saved-news ">
         <button className="header__saved-articles-button header__saved-articles-button_saved-articles">
           Saved articles
         </button>

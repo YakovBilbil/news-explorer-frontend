@@ -9,7 +9,7 @@ function Header({ onPopupWithFormClick, onPopupMenuForPhoneClick }) {
       <div className="header__component header__component_home header__component_home_not-logged-in">
         <button className="header__home-button ">Home</button>
       </div>
-      <div className="header__component header__component_user header__component_user-not-logged-in">
+      <div className="header__component header__component_user header__component_user_not-logged-in">
         <button
           className="header__user-name-button header__user-name-button_not-logged-in"
           onClick={onPopupWithFormClick}
