@@ -19,17 +19,17 @@ function SearchResults({ children = [] }) {
             className="card__like-flag"
             onClick={(e) => e.target.classList.toggle("card__like-flag_active")}
           ></button>{" "}
-          <div className="card__button-description" style={{ display: "none" }}>
+          <p className="card__button-description" style={{ display: "none" }}>
             Sign in to save articles
-          </div>
+          </p>
         </Card>
 
         <Card>
           <button className="card__delete-trash"></button>
           <div className="card__category">Parks</div>
-          <div className="card__button-description" style={{ display: "none" }}>
+          <p className="card__button-description" style={{ display: "none" }}>
             Remove from saved
-          </div>
+          </p>
         </Card>
 
         <Card />
