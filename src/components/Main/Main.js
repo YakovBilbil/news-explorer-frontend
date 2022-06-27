@@ -1,3 +1,7 @@
+import "../HeaderSearchFormBlock/header-search-form-block.css";
+import "../SearchResults/__button/search-results__button.css";
+import "../SearchResults/__title/search-results__title.css";
+
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 

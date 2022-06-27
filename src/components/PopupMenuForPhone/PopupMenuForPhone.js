@@ -1,3 +1,14 @@
+import "../Popup/popup.css";
+import "../Popup/_popup-menu-for-phone/popup_popup-menu-for-phone.css";
+import "../Popup/__container/popup__container.css";
+import "../Popup/__container/_popup-menu-for-phone/popup__container_popup-menu-for-phone.css";
+import "../Popup/__close-button/popup__close-button.css";
+import "../Popup/__close-button/_popup-menu-for-phone/popup__close-button_popup-menu-for-phone.css";
+import "../Popup/__close-icon/popup__close-icon.css";
+import "./__home/popup-menu-for-phone__home.css";
+import "./__signin/popup-menu-for-phone__signin.css";
+import "../Popup/_opened/popup_opened.css";
+
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

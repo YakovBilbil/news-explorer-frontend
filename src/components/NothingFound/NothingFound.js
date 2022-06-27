@@ -1,3 +1,8 @@
+import "./nothing-found.css";
+import "./__picture/nothing-found__picture.css";
+import "./__title/nothing-found__title.css";
+import "./__description/nothing-found__description.css";
+
 import NothingFoundIcon from "../../images/nothing-found-icon.png";
 
 function NothingFound() {

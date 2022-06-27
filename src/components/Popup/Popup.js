@@ -1,3 +1,9 @@
+import "./popup.css";
+import "./__container/popup__container.css";
+import "./__close-button/popup__close-button.css";
+import "./__close-icon/popup__close-icon.css";
+import "./_opened/popup_opened.css";
+
 import { useEffect } from "react";
 
 import closeIcon from "../../images/close-icon.png";

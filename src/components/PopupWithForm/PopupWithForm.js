@@ -1,3 +1,14 @@
+import "./popup-with-form.css";
+import "./__title/popup-with-form__title.css";
+import "./__label/popup-with-form__label.css";
+import "./__input/popup-with-form__input.css";
+import "./__error-message/popup-with-form__error-message.css";
+import "./__error-message/_bad-email/popup-with-form__error-message_bad-email.css";
+import "./__send-button/popup-with-form__send-button.css";
+import "./__or-block/popup-with-form__or-block.css";
+import "./__or/popup-with-form__or.css";
+import "./__or-button/popup-with-form__or-button.css";
+
 import Popup from "../Popup/Popup.js";
 
 function PopupWithForm({ isOpen, onClose, onRegister }) {

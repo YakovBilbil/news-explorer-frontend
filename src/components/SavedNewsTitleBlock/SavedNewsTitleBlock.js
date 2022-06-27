@@ -1,3 +1,8 @@
+import "./saved-news-title-block.css";
+import "./__title/saved-news-title-block__title.css";
+import "./__description/saved-news-title-block__description.css";
+import "./__keywords/saved-news-title-block__keywords.css";
+
 function SavedNewsTitleBlock() {
   return (
     <div className="saved-news-title-block">

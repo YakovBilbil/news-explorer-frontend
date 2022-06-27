@@ -1,3 +1,10 @@
+import "./footer.css";
+import "./__title/footer__title.css";
+import "./__link/footer__link.css";
+import "./__link/_practicum/footer__link_practicum.css";
+import "./__list/footer__list.css";
+import "./__social-icon/footer__social-icons.css";
+
 import githubIcon from "../../images/github-icon.png";
 import facebookIcon from "../../images/facebook-icon.png";
 

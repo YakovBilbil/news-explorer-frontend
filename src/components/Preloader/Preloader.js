@@ -1,3 +1,7 @@
+import "./preloader.css";
+import "./__content/preloader__content.css";
+import "./__text/preloader__text.css";
+
 function Preloader() {
   return (
     <>

@@ -1,3 +1,11 @@
+import "./card.css";
+import "./__picture/card__picture.css";
+import "./__written-content-block/card__written-content-block.css";
+import "./__date/card__date.css";
+import "./__text/card__text.css";
+import "./__title/card__title.css";
+import "./__origin/card__origin.css";
+
 import image from "../../images/image_08.png";
 
 function Card({ children }) {

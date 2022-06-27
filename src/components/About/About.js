@@ -1,3 +1,9 @@
+import "./about.css";
+import "./__avatar-image/about__avatar-image.css";
+import "./__description/about__description.css";
+import "./__title/about__title.css";
+import "./__text/about__text.css";
+
 import avatar from "../../images/avatar.png";
 
 function About() {
