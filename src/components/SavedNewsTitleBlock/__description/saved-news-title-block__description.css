@@ -1,7 +1,7 @@
 .saved-news-title-block__description {
     margin: 28px 0px 30px 104px;
     width: 530px;
-    font-family: 'roboto-slab';
+    font-family: 'roboto-slab', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 40px;

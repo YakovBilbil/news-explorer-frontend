@@ -3,7 +3,7 @@
     background: none;
     border: none;
     color: #B6BCBF;
-    font-family: 'roboto';
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
     font-weight: 500;
     font-size: 18px;
     -webkit-transition: opacity 0.2s linear 0.2s;
@@ -14,4 +14,10 @@
 .header__saved-articles-button:hover {
     cursor: pointer;
     opacity: 0.7;
+}
+
+@media screen and (max-width: 1050px) {
+    .header__saved-articles-button {
+        font-size: 16px;
+    }
 }

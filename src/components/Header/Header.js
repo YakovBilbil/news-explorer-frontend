@@ -65,7 +65,7 @@ function Header({
             navigate("/news-explorer-frontend");
           }}
         >
-          Home
+          <p>Home</p>
         </button>
       </div>
       <div
@@ -85,7 +85,7 @@ function Header({
               : ""
           }`}
         >
-          Saved articles
+          <p>Saved articles</p>
         </button>
       </div>
 

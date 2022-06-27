@@ -4,7 +4,7 @@
     background-color: #ffffff;
     border: 1px solid #D1D2D6;
     border-radius: 100px;
-    font-family: 'roboto';
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -32,7 +32,7 @@ input:focus {
 }
 
 ::-webkit-input-placeholder {
-    font-family: 'roboto';
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -41,7 +41,7 @@ input:focus {
 }
 
 ::-moz-placeholder {
-    font-family: 'roboto';
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -50,7 +50,7 @@ input:focus {
 }
 
 :-ms-input-placeholder {
-    font-family: 'roboto';
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -59,7 +59,7 @@ input:focus {
 }
 
 ::-ms-input-placeholder {
-    font-family: 'roboto';
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -68,7 +68,7 @@ input:focus {
 }
 
 ::placeholder {
-    font-family: 'roboto';
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

@@ -12,7 +12,7 @@
 }
 
 .popup-with-form__input::-webkit-input-placeholder {
-    font-family: 'Inter';
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -22,7 +22,7 @@
 }
 
 .popup-with-form__input::-moz-placeholder {
-    font-family: 'Inter';
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -32,7 +32,7 @@
 }
 
 .popup-with-form__input:-ms-input-placeholder {
-    font-family: 'Inter';
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -42,7 +42,7 @@
 }
 
 .popup-with-form__input::-ms-input-placeholder {
-    font-family: 'Inter';
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -52,7 +52,7 @@
 }
 
 .popup-with-form__input::placeholder {
-    font-family: 'Inter';
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
