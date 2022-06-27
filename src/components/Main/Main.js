@@ -3,24 +3,29 @@ import { useNavigate } from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
-import HeaderNotLoggedIn from "../Header/HeaderNotLoggedIn";
 import Header from "../Header/Header.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import SearchResults from "../SearchResults/SearchResults.js";
 import About from "../About/About.js";
 
-function Main({ onPopupWithFormClick, onPopupMenuForPhoneClick }) {
+function Main({
+  headerState,
+  changeHeaderState,
+  onPopupWithFormClick,
+  onPopupMenuForPhoneClick,
+}) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
   return (
     <>
       <div className="header-search-form-block">
-        <HeaderNotLoggedIn
+        <Header
+          headerState={headerState}
           onPopupWithFormClick={onPopupWithFormClick}
           onPopupMenuForPhoneClick={onPopupMenuForPhoneClick}
         />
-        {/*<Header />*/}
+
         <SearchForm />
       </div>
 
@@ -28,7 +33,10 @@ function Main({ onPopupWithFormClick, onPopupMenuForPhoneClick }) {
         <h2 className="search-results__title">Search results</h2>
         <button
           className="search-results__button"
-          onClick={() => navigate("/news-explorer-frontend/saved-news")}
+          onClick={() => {
+            changeHeaderState("SavedArticles");
+            navigate("/news-explorer-frontend/saved-news");
+          }}
         >
           Show more
         </button>

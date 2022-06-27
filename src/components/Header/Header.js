@@ -1,34 +1,142 @@
-import signOutIconDefault from "../../images/sign-out-default.png";
-import menuIconWhite from "../../images/menu-icon-white.png";
+import "./header.css";
+import "./_saved-articles/header_saved-articles.css";
+import "./__component/header__component.css";
+import "./__component/_news-explorer/header__component_news-explorer.css";
+import "./__component/_home/header__component_home.css";
+import "./__component/_home_not-logged-in/header__component_home_not-logged-in.css";
+import "./__component/_home_saved-articles/header__component_home_saved-articles.css";
+import "./__component/_saved-articles_saved-news/header__component_saved-articles_saved-news.css";
+import "./__component/_saved-articles/header__component_saved-articles.css";
+import "./__component/_user/header__component_user.css";
+import "./__component/_user_not-logged-in/header__component_user_not-logged-in.css";
+import "./__sign-out-icon/header__sign-out-icon.css";
+import "./__user-name-button/header__user-name-button.css";
+import "./__user-name-button/_not-logged-in/header__user-name-button_not-logged-in.css";
+import "./__user-name-button/_saved-articles/header__user-name-button_saved-articles.css";
+import "./__home-button/header__home-button.css";
+import "./__home-button/_saved-articles/header__home-button_saved-articles.css";
+import "./__saved-articles-button/header__saved-articles-button.css";
+import "./__saved-articles-button/_saved-articles/header__saved-articles-button_saved-articles.css";
+import "./__menu/header__menu.css";
 
-function Header() {
+import signOutIconDefault from "../../images/sign-out-default.png";
+import signOutSavedArticlesIcon from "../../images/sign-out-saved-articles.png";
+import menuIconWhite from "../../images/menu-icon-white.png";
+import menuIconBlack from "../../images/menu-icon-black.png";
+
+import { useNavigate } from "react-router-dom";
+
+function Header({
+  headerState,
+  changeHeaderState,
+  onPopupWithFormClick,
+  onPopupMenuForPhoneClick,
+}) {
+  const navigate = useNavigate();
   return (
-    <header className="header">
-      <div className="header__component header__component_news-explorer  ">
+    <header
+      className={`header  ${
+        headerState === "SavedArticles" ? "header_saved-articles" : ""
+      }  `}
+    >
+      <div className="header__component header__component_news-explorer">
         <p>NewsExplorer</p>
       </div>
-      <div className="header__component header__component_home">
-        <button className="header__home-button">Home</button>
+      <div
+        className={`header__component header__component_home ${
+          headerState === "NotLoggedIn"
+            ? "header__component_home_not-logged-in"
+            : ""
+        }   ${
+          headerState === "SavedArticles"
+            ? "header__component_home_saved-articles"
+            : ""
+        }  `}
+      >
+        <button
+          className={`header__home-button ${
+            headerState === "SavedArticles"
+              ? "header__home-button_saved-articles"
+              : ""
+          }`}
+          onClick={() => {
+            changeHeaderState("LoggedIn");
+            navigate("/news-explorer-frontend");
+          }}
+        >
+          Home
+        </button>
       </div>
-      <div className="header__component header__component_saved-articles ">
-        <button className="header__saved-articles-button">
+      <div
+        className={`header__component header__component_saved-articles ${
+          headerState === "SavedArticles"
+            ? "header__component_saved-articles_saved-news"
+            : ""
+        }   `}
+        style={{
+          display: `${headerState === "NotLoggedIn" ? "none" : ""}`,
+        }}
+      >
+        <button
+          className={`header__saved-articles-button ${
+            headerState === "SavedArticles"
+              ? "header__saved-articles-button_saved-articles"
+              : ""
+          }`}
+        >
           Saved articles
         </button>
       </div>
-      <div className="header__component header__component_user ">
-        <button className="header__user-name-button">
+
+      <div
+        className="header__component header__component_user header__component_user_not-logged-in"
+        style={{
+          display: `${headerState === "NotLoggedIn" ? "" : "none"}`,
+        }}
+      >
+        <button
+          className="header__user-name-button header__user-name-button_not-logged-in"
+          onClick={onPopupWithFormClick}
+        >
+          Sign in
+        </button>
+      </div>
+
+      <div
+        className="header__component header__component_user "
+        style={{
+          display: `${headerState === "NotLoggedIn" ? "none" : ""}`,
+        }}
+      >
+        <button
+          className={`header__user-name-button ${
+            headerState === "SavedArticles"
+              ? " header__user-name-button_saved-articles"
+              : ""
+          }`}
+        >
           Elise
           <img
             className="header__sign-out-icon"
-            src={signOutIconDefault}
+            src={`${
+              headerState === "SavedArticles"
+                ? signOutSavedArticlesIcon
+                : signOutIconDefault
+            }`}
             alt="Sign out Icon"
           />
         </button>
       </div>
-      <button className="header__menu">
+      <button className="header__menu" onClick={onPopupMenuForPhoneClick}>
         <img
-          className="header__menu-icon-white"
-          src={menuIconWhite}
+          className={`${
+            headerState === "SavedArticles"
+              ? "header__menu-icon-black"
+              : "header__menu-icon-white"
+          }`}
+          src={`${
+            headerState === "SavedArticles" ? menuIconBlack : menuIconWhite
+          }`}
           alt="Menu Icon"
         />
       </button>

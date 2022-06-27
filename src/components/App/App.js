@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import Main from "../Main/Main.js";
-import HeaderSavedArticles from "../Header/HeaderSavedArticles";
+import Header from "../Header/Header.js";
 import SearchResults from "../SearchResults/SearchResults.js";
 import Footer from "../Footer/Footer.js";
 import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
@@ -13,6 +13,11 @@ import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
+
+  const [headerState, setHeaderState] = useState("NotLoggedIn");
+  function changeHeaderState(state) {
+    setHeaderState(state);
+  }
 
   const [isPopupWithFormOpen, setIsPopupWithFormOpen] = useState(false);
   function handlePopupWithFormClick() {
@@ -47,6 +52,8 @@ function App() {
                 element={
                   <>
                     <Main
+                      headerState={headerState}
+                      changeHeaderState={changeHeaderState}
                       onPopupWithFormClick={handlePopupWithFormClick}
                       onPopupMenuForPhoneClick={handlePopupMenuForPhoneClick}
                     />
@@ -59,7 +66,12 @@ function App() {
                 path="/news-explorer-frontend/saved-news"
                 element={
                   <>
-                    <HeaderSavedArticles />
+                    <Header
+                      headerState={headerState}
+                      changeHeaderState={changeHeaderState}
+                      onPopupWithFormClick={handlePopupWithFormClick}
+                      onPopupMenuForPhoneClick={handlePopupMenuForPhoneClick}
+                    />
                     <SavedNewsTitleBlock />
                     <SearchResults />
                     <Footer />
