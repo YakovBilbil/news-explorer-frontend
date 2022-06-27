@@ -6,10 +6,11 @@
     background-size: 14px 19px;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     position: absolute;
     top: 24px;
     right: 24px;
-    background-image: url(../../../images/flag-normal.png);
+    background-image: url(../../../images/flag-normal.svg);
     -webkit-transition: background-image 0.2s linear 0.2s;
     -o-transition: background-image 0.2s linear 0.2s;
     transition: background-image 0.2s linear 0.2s;
@@ -17,7 +18,7 @@
 }
 
 .card__like-flag:hover {
-    background-image: url(../../../images/flag-hover.png);
+    background-image: url(../../../images/flag-hover.svg);
     cursor: pointer;
 }
 

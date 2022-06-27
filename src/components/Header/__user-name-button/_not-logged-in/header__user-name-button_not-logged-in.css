@@ -1,5 +1,11 @@
 .header__user-name-button_not-logged-in {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     width: 176px;
     text-align: center;
     color: #ffffff;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }

@@ -15,14 +15,13 @@
     position: absolute;
     top: 0;
     right: 0;
-    background: #2F71E5;
-    -webkit-transition: background-color 0.2s linear 0.2s;
-    -o-transition: background-color 0.2s linear 0.2s;
-    transition: background-color 0.2s linear 0.2s;
+    background-color: #2F71E5;
+    -webkit-transition: background-color 0.1s linear 0.01s;
+    -o-transition: background-color 0.1s linear 0.01s;
+    transition: background-color 0.1s linear 0.01s;
 }
 
 .search-form__button:hover {
-    background-color: #347EFF;
     cursor: pointer;
 }
 

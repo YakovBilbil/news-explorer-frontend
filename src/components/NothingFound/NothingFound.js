@@ -3,7 +3,7 @@ import "./__picture/nothing-found__picture.css";
 import "./__title/nothing-found__title.css";
 import "./__description/nothing-found__description.css";
 
-import NothingFoundIcon from "../../images/nothing-found-icon.png";
+import NothingFoundIcon from "../../images/nothing-found-icon.svg";
 
 function NothingFound() {
   return (

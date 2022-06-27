@@ -11,6 +11,9 @@
     -webkit-transition: opacity 0.2s linear 0.2s;
     -o-transition: opacity 0.2s linear 0.2s;
     transition: opacity 0.2s linear 0.2s;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }
 
 .header__user-name-button:hover {

@@ -1,8 +1,8 @@
 .card__like-flag_active {
-    background-image: url(../../../../images/flag-marked.png);
+    background-image: url(../../../../images/flag-marked.svg);
 }
 
 .card__like-flag_active:hover {
-    background-image: url(../../../../images/flag-marked.png);
+    background-image: url(../../../../images/flag-marked.svg);
     cursor: pointer;
 }

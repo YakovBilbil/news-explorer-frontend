@@ -13,16 +13,17 @@ import "./__sign-out-icon/header__sign-out-icon.css";
 import "./__user-name-button/header__user-name-button.css";
 import "./__user-name-button/_not-logged-in/header__user-name-button_not-logged-in.css";
 import "./__user-name-button/_saved-articles/header__user-name-button_saved-articles.css";
+import "./__user-name-button-text/header__user-name-button-text.css";
 import "./__home-button/header__home-button.css";
 import "./__home-button/_saved-articles/header__home-button_saved-articles.css";
 import "./__saved-articles-button/header__saved-articles-button.css";
 import "./__saved-articles-button/_saved-articles/header__saved-articles-button_saved-articles.css";
 import "./__menu/header__menu.css";
 
-import signOutIconDefault from "../../images/sign-out-default.png";
-import signOutSavedArticlesIcon from "../../images/sign-out-saved-articles.png";
-import menuIconWhite from "../../images/menu-icon-white.png";
-import menuIconBlack from "../../images/menu-icon-black.png";
+import signOutIconDefault from "../../images/sign-out-default.svg";
+import signOutSavedArticlesIcon from "../../images/sign-out-saved-articles.svg";
+import menuIconWhite from "../../images/menu-icon-white.svg";
+import menuIconBlack from "../../images/menu-icon-black.svg";
 
 import { useNavigate } from "react-router-dom";
 
@@ -98,7 +99,7 @@ function Header({
           className="header__user-name-button header__user-name-button_not-logged-in"
           onClick={onPopupWithFormClick}
         >
-          Sign in
+          <p className="header__user-name-button-text">Sign in</p>
         </button>
       </div>
 
@@ -115,7 +116,7 @@ function Header({
               : ""
           }`}
         >
-          Elise
+          <p className="header__user-name-button-text">Elise</p>
           <img
             className="header__sign-out-icon"
             src={`${

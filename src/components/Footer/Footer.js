@@ -5,8 +5,8 @@ import "./__link/_practicum/footer__link_practicum.css";
 import "./__list/footer__list.css";
 import "./__social-icon/footer__social-icons.css";
 
-import githubIcon from "../../images/github-icon.png";
-import facebookIcon from "../../images/facebook-icon.png";
+import githubIcon from "../../images/github-icon.svg";
+import facebookIcon from "../../images/facebook-icon.svg";
 
 function Footer() {
   return (

@@ -23,7 +23,23 @@ function SearchForm() {
           required
           className="search-form__input"
         />
-        <button className="search-form__button">Search</button>
+        <button
+          className="search-form__button"
+          onMouseEnter={(event) => {
+            event.target.style.backgroundColor = "#347EFF";
+          }}
+          onMouseLeave={(event) => {
+            event.target.style.backgroundColor = "#2F71E5";
+          }}
+          onMouseDown={(event) => {
+            event.target.style.backgroundColor = "#2A65CC";
+          }}
+          onMouseUp={(event) => {
+            event.target.style.backgroundColor = "#347EFF";
+          }}
+        >
+          Search
+        </button>
       </form>
     </div>
   );

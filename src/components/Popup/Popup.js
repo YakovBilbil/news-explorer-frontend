@@ -6,7 +6,7 @@ import "./_opened/popup_opened.css";
 
 import { useEffect } from "react";
 
-import closeIcon from "../../images/close-icon.png";
+import closeIcon from "../../images/close-icon.svg";
 
 const Popup = ({ children, isOpen, onClose }) => {
   useEffect(() => {

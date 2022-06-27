@@ -12,7 +12,7 @@ import "../Popup/_opened/popup_opened.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import closeIcon from "../../images/close-icon.png";
+import closeIcon from "../../images/close-icon.svg";
 
 function PopupMenuForPhone({ isOpen, onClose, onPopupWithFormClick }) {
   const navigate = useNavigate();
