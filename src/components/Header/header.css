@@ -1,0 +1,17 @@
+.header {
+    width: 100%;
+    height: 80px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 80px;
+    -webkit-box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+@media screen and (max-width: 570px) {
+    .header {
+        height: 56px;
+        grid-template-rows: 56px;
+    }
+}
