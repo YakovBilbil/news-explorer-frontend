@@ -1,0 +1,27 @@
+.header__component_saved-articles {
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    grid-column-start: 11;
+    grid-column-end: 12;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin-left: 40px;
+    width: 178px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1050px) {
+    .header__component_saved-articles {
+        margin-left: 16px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .header__component_saved-articles {
+        display: none;
+    }
+}

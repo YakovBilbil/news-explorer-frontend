@@ -1,0 +1,10 @@
+.preloader__text {
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    text-align: center;
+    color: #B6BCBF;
+    margin: 0px 0px 80px;
+}

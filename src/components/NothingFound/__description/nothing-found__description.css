@@ -1,0 +1,11 @@
+.nothing-found__description {
+    width: 250px;
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    text-align: center;
+    color: #B6BCBF;
+    margin-bottom: 80px;
+}

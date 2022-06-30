@@ -1,0 +1,29 @@
+.saved-news-title-block__description {
+    margin: 28px 0px 30px 104px;
+    width: 530px;
+    font-family: 'roboto-slab', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.15;
+    color: #1A1B22;
+}
+
+@media screen and (max-width: 1050px) {
+    .saved-news-title-block__description {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-left: 40px;
+        width: 336px;
+        font-size: 30px;
+        line-height: 1.13;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .saved-news-title-block__description {
+        margin-left: 16px;
+        margin-bottom: 50px;
+        width: 288px;
+    }
+}

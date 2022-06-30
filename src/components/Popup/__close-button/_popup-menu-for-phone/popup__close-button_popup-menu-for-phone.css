@@ -1,0 +1,6 @@
+.popup__close-button_popup-menu-for-phone {
+    position: unset;
+    grid-column-start: 12;
+    grid-column-end: 13;
+    margin-right: 16px;
+}

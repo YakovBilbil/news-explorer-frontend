@@ -1,0 +1,21 @@
+.search-form__search-field {
+    height: 64px;
+    width: 100%;
+    margin-bottom: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+
+@media screen and (max-width: 1050px) {
+    .search-form__search-field {
+        margin-bottom: 48px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .search-form__search-field {
+        margin-bottom: 0px;
+    }
+}

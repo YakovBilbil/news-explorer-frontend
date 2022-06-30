@@ -1,0 +1,9 @@
+.popup-with-form__label {
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #2F71E5;
+    margin-bottom: 8px;
+}

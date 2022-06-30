@@ -1,0 +1,23 @@
+.popup-menu-for-phone__home {
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.21;
+    color: #FFFFFF;
+    margin: 34px 0px 18px 16px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    -webkit-transition: opacity 0.2s linear 0.2s;
+    -o-transition: opacity 0.2s linear 0.2s;
+    transition: opacity 0.2s linear 0.2s;
+}
+
+.popup-menu-for-phone__home:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}

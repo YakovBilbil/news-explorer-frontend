@@ -1,0 +1,37 @@
+.card__delete-trash {
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    background-size: 18px 19px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background-image: url(../../../images/grey-trash.svg);
+    -webkit-transition: background-image 0.2s linear 0.2s;
+    -o-transition: background-image 0.2s linear 0.2s;
+    transition: background-image 0.2s linear 0.2s;
+    border: none;
+}
+
+.card__delete-trash:hover {
+    background-image: url(../../../images/black-trash.svg);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1050px) {
+    .card__delete-trash {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .card__delete-trash {
+        top: 16px;
+        right: 16px;
+    }
+}

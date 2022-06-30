@@ -1,0 +1,25 @@
+.footer__title {
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.38;
+    color: #B6BCBF;
+    margin-left: 104px;
+    margin-top: 32px;
+    margin-bottom: 26px;
+}
+
+@media screen and (max-width: 1050px) {
+    .footer__title {
+        margin-top: 24px;
+        margin-bottom: 18px;
+        margin-left: 40px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .footer__title {
+        margin: 70px 16px 22px;
+    }
+}

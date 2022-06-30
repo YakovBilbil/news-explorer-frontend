@@ -1,0 +1,19 @@
+.header__component_home {
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    grid-column-start: 10;
+    grid-column-end: 11;
+    border-bottom: 3px solid;
+    justify-self: flex-end;
+    width: 68px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 630px) {
+    .header__component_home {
+        display: none;
+    }
+}

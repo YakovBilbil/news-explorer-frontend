@@ -1,0 +1,5 @@
+    .header__user-name-button-text {
+        margin: 0px;
+        -ms-flex-item-align: center;
+        align-self: center;
+    }

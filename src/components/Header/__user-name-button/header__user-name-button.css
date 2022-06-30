@@ -1,0 +1,28 @@
+.header__user-name-button {
+    border: 1px solid #D1D2D6;
+    border-radius: 100px;
+    padding: 12px 19px;
+    cursor: pointer;
+    background: none;
+    color: #ffffff;
+    font-family: 'roboto', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    -webkit-transition: opacity 0.2s linear 0.2s;
+    -o-transition: opacity 0.2s linear 0.2s;
+    transition: opacity 0.2s linear 0.2s;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.header__user-name-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 1050px) {
+    .header__user-name-button {
+        font-size: 16px;
+    }
+}
