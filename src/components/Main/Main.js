@@ -17,8 +17,10 @@ function Main({
   changeHeaderState,
   onPopupWithFormClick,
   onPopupMenuForPhoneClick,
-  cards,
+  cardsToDisplay,
   onUpdateSearchWord,
+  onShowMoreClick,
+  quantityOfCardsToDisplay,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -35,13 +37,19 @@ function Main({
         <SearchForm onUpdateSearchWord={onUpdateSearchWord} />
       </div>
 
-      <SearchResults cards={cards}>
+      <SearchResults
+        cardsToDisplay={cardsToDisplay}
+        quantityOfCardsToDisplay={quantityOfCardsToDisplay}
+      >
         <h2 className="search-results__title">Search results</h2>
         <button
           className="search-results__button"
           onClick={() => {
+            /*
             changeHeaderState("SavedArticles");
             navigate("/news-explorer-frontend/saved-news");
+             */
+            onShowMoreClick();
           }}
         >
           Show more
@@ -54,3 +62,7 @@ function Main({
 }
 
 export default Main;
+
+/*
+if (cards.length <= quantitiOfCardsToDisplay) {make the button gray and not pressable}
+*/

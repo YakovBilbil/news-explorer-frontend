@@ -30,10 +30,35 @@ function App() {
   }, []);
   */
 
+  /*
+const handleShowMoreClick = (lengthOfCardsArray) => {
+    console.log(lengthOfCardsArray);
+    if (lengthOfCardsArray > quantityOfCardsToDisplay) {
+      if (quantityOfCardsToDisplay !== 99) {
+        setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 3);
+        console.log("quantityOfCardsToDisplay: ", quantityOfCardsToDisplay);
+        if (lengthOfCardsArray > quantityOfCardsToDisplay) {
+          console.log("There are more cards to display");
+        } else {
+          console.log("No more cards to display");
+        }
+      } else {
+        setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 1);
+        console.log("quantityOfCardsToDisplay: ", quantityOfCardsToDisplay);
+        console.log("No more cards to display");
+      }
+    } else {
+      console.log("quantityOfCardsToDisplay: ", quantityOfCardsToDisplay);
+      console.log("No more cards to display");
+    }
+  };
+  */
+
   const handleUpdateSearchWord = (searchWord) => {
     (async function () {
       try {
         setArticles([]);
+        setQuantityOfCardsToDisplay(3);
         const articlesCollectionBySearch = await api.getArticlesBySearchWord(
           searchWord
         );
@@ -44,7 +69,22 @@ function App() {
     })();
   };
 
-  console.log(articles);
+  const [quantityOfCardsToDisplay, setQuantityOfCardsToDisplay] = useState(3);
+  const handleShowMoreClick = () => {
+    if (articles.length > quantityOfCardsToDisplay) {
+      if (quantityOfCardsToDisplay !== 99) {
+        setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 3);
+      } else {
+        setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 1);
+      }
+    } else {
+    }
+  };
+
+  const cardsToDisplay = articles.map((object) => object);
+  if (articles.length > quantityOfCardsToDisplay) {
+    cardsToDisplay.length = quantityOfCardsToDisplay;
+  }
 
   const [headerState, setHeaderState] = useState("NotLoggedIn");
   function changeHeaderState(state) {
@@ -88,8 +128,10 @@ function App() {
                       changeHeaderState={changeHeaderState}
                       onPopupWithFormClick={handlePopupWithFormClick}
                       onPopupMenuForPhoneClick={handlePopupMenuForPhoneClick}
-                      cards={articles}
+                      cardsToDisplay={cardsToDisplay}
                       onUpdateSearchWord={handleUpdateSearchWord}
+                      onShowMoreClick={handleShowMoreClick}
+                      quantityOfCardsToDisplay={quantityOfCardsToDisplay}
                     />
                     <Footer />
                   </>

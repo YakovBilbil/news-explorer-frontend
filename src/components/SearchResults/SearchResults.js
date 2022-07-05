@@ -10,7 +10,7 @@ import Card from "../Card/Card.js";
 import Preloader from "../Preloader/Preloader.js";
 import NothingFound from "../NothingFound/NothingFound.js";
 
-function SearchResults({ children = [], cards }) {
+function SearchResults({ children = [], cardsToDisplay }) {
   return (
     <div className="search-results">
       <Preloader />
@@ -41,7 +41,7 @@ function SearchResults({ children = [], cards }) {
         </Card>
         */}
 
-        {cards.map((card) => (
+        {cardsToDisplay.map((card) => (
           <Card
             key={card.source.id}
             card={card}
