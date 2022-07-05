@@ -17,6 +17,8 @@ function Main({
   changeHeaderState,
   onPopupWithFormClick,
   onPopupMenuForPhoneClick,
+  cards,
+  onUpdateSearchWord,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -30,10 +32,10 @@ function Main({
           onPopupMenuForPhoneClick={onPopupMenuForPhoneClick}
         />
 
-        <SearchForm />
+        <SearchForm onUpdateSearchWord={onUpdateSearchWord} />
       </div>
 
-      <SearchResults>
+      <SearchResults cards={cards}>
         <h2 className="search-results__title">Search results</h2>
         <button
           className="search-results__button"

@@ -10,18 +10,18 @@ import Card from "../Card/Card.js";
 import Preloader from "../Preloader/Preloader.js";
 import NothingFound from "../NothingFound/NothingFound.js";
 
-function SearchResults({ children = [] }) {
+function SearchResults({ children = [], cards }) {
   return (
     <div className="search-results">
       <Preloader />
       <NothingFound />
-
       {children[0]}
 
       <ul
         className="search-results__articles-list"
         style={{ display: "visible" }}
       >
+        {/*
         <Card>
           <button
             className="card__like-flag"
@@ -39,13 +39,20 @@ function SearchResults({ children = [] }) {
             Remove from saved
           </p>
         </Card>
+        */}
 
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {cards.map((card) => (
+          <Card
+            key={card.source.id}
+            card={card}
+
+            /*
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            onTrashClick={onTrashClick}
+            */
+          />
+        ))}
       </ul>
       {children[1]}
     </div>

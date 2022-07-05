@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
+import api from "../../utils/NewsApi.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import Main from "../Main/Main.js";
 import Header from "../Header/Header.js";
@@ -13,6 +14,37 @@ import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
+
+  const [articles, setArticles] = useState([]);
+
+  /*
+  useEffect(() => {
+    (async function () {
+      try {
+        const newsData = await api.getInitialArticles();
+        setArticles(newsData.articles);
+      } catch (error) {
+        console.log("CAUGHT ERROR", error);
+      }
+    })();
+  }, []);
+  */
+
+  const handleUpdateSearchWord = (searchWord) => {
+    (async function () {
+      try {
+        setArticles([]);
+        const articlesCollectionBySearch = await api.getArticlesBySearchWord(
+          searchWord
+        );
+        setArticles(articlesCollectionBySearch.articles);
+      } catch (error) {
+        console.log("CAUGHT ERROR", error);
+      }
+    })();
+  };
+
+  console.log(articles);
 
   const [headerState, setHeaderState] = useState("NotLoggedIn");
   function changeHeaderState(state) {
@@ -56,6 +88,8 @@ function App() {
                       changeHeaderState={changeHeaderState}
                       onPopupWithFormClick={handlePopupWithFormClick}
                       onPopupMenuForPhoneClick={handlePopupMenuForPhoneClick}
+                      cards={articles}
+                      onUpdateSearchWord={handleUpdateSearchWord}
                     />
                     <Footer />
                   </>
