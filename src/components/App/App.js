@@ -19,9 +19,6 @@ function App() {
 
   const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(false);
 
-  const [isShowMoreButtonDisabled, setIsShowMoreButtonDisabled] =
-    useState(false);
-
   const [quantityOfCardsToDisplay, setQuantityOfCardsToDisplay] = useState(3);
 
   /*
@@ -64,7 +61,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
   const handleUpdateSearchWord = (searchWord) => {
     (async function () {
       try {
-        setIsShowMoreButtonDisabled(false);
         setIsSearchResultsOpen(true);
         setArticles([]);
         setQuantityOfCardsToDisplay(3);
@@ -78,26 +74,21 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     })();
   };
 
-  const handleShowMoreClick = () => {
-    if (articles.length > quantityOfCardsToDisplay) {
-      if (quantityOfCardsToDisplay !== 99) {
-        setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 3);
-      } else {
-        setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 1);
-        setIsShowMoreButtonDisabled(true);
-      }
-    } else {
-      setIsShowMoreButtonDisabled(true);
-    }
-  };
-
-  let isShowMoreButtonDisabledSecondIndicator = false;
+  let isShowMoreButtonDisabled = false;
   const cardsToDisplay = articles.map((object) => object);
   if (articles.length > quantityOfCardsToDisplay) {
     cardsToDisplay.length = quantityOfCardsToDisplay;
   } else {
-    isShowMoreButtonDisabledSecondIndicator = true;
+    isShowMoreButtonDisabled = true;
   }
+
+  const handleShowMoreClick = () => {
+    if (quantityOfCardsToDisplay !== 99) {
+      setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 3);
+    } else {
+      setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 1);
+    }
+  };
 
   const [headerState, setHeaderState] = useState("NotLoggedIn");
   function changeHeaderState(state) {
@@ -147,9 +138,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       quantityOfCardsToDisplay={quantityOfCardsToDisplay}
                       isSearchResultsOpen={isSearchResultsOpen}
                       isShowMoreButtonDisabled={isShowMoreButtonDisabled}
-                      isShowMoreButtonDisabledSecondIndicator={
-                        isShowMoreButtonDisabledSecondIndicator
-                      }
                     />
                     <Footer />
                   </>

@@ -24,7 +24,6 @@ function Main({
   quantityOfCardsToDisplay,
   isSearchResultsOpen,
   isShowMoreButtonDisabled,
-  isShowMoreButtonDisabledSecondIndicator,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -49,9 +48,7 @@ function Main({
         <h2 className="search-results__title">Search results</h2>
         <button
           className={`search-results__button ${
-            isShowMoreButtonDisabled || isShowMoreButtonDisabledSecondIndicator
-              ? "search-results__button_disabled"
-              : ""
+            isShowMoreButtonDisabled ? "search-results__button_disabled" : ""
           }`}
           onClick={() => {
             /*
@@ -61,9 +58,7 @@ function Main({
 
             onShowMoreClick();
           }}
-          disabled={
-            isShowMoreButtonDisabled || isShowMoreButtonDisabledSecondIndicator
-          }
+          disabled={isShowMoreButtonDisabled}
         >
           Show more
         </button>
