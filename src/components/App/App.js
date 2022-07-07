@@ -21,6 +21,8 @@ function App() {
 
   const [quantityOfCardsToDisplay, setQuantityOfCardsToDisplay] = useState(3);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   /*
   useEffect(() => {
     (async function () {
@@ -61,6 +63,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
   const handleUpdateSearchWord = (searchWord) => {
     (async function () {
       try {
+        setIsLoading(true);
         setIsSearchResultsOpen(true);
         setArticles([]);
         setQuantityOfCardsToDisplay(3);
@@ -68,6 +71,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
           searchWord
         );
         setArticles(articlesCollectionBySearch.articles);
+        setIsLoading(false);
       } catch (error) {
         console.log("CAUGHT ERROR", error);
       }
@@ -138,6 +142,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       quantityOfCardsToDisplay={quantityOfCardsToDisplay}
                       isSearchResultsOpen={isSearchResultsOpen}
                       isShowMoreButtonDisabled={isShowMoreButtonDisabled}
+                      isLoading={isLoading}
                     />
                     <Footer />
                   </>

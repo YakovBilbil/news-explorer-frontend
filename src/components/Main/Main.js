@@ -12,6 +12,7 @@ import Header from "../Header/Header.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import SearchResults from "../SearchResults/SearchResults.js";
 import About from "../About/About.js";
+import Preloader from "../Preloader/Preloader";
 
 function Main({
   headerState,
@@ -24,6 +25,7 @@ function Main({
   quantityOfCardsToDisplay,
   isSearchResultsOpen,
   isShowMoreButtonDisabled,
+  isLoading,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -40,29 +42,33 @@ function Main({
         <SearchForm onUpdateSearchWord={onUpdateSearchWord} />
       </div>
 
-      <SearchResults
-        cardsToDisplay={cardsToDisplay}
-        quantityOfCardsToDisplay={quantityOfCardsToDisplay}
-        isSearchResultsOpen={isSearchResultsOpen}
-      >
-        <h2 className="search-results__title">Search results</h2>
-        <button
-          className={`search-results__button ${
-            isShowMoreButtonDisabled ? "search-results__button_disabled" : ""
-          }`}
-          onClick={() => {
-            /*
-            changeHeaderState("SavedArticles");
-            navigate("/news-explorer-frontend/saved-news");
-             */
-
-            onShowMoreClick();
-          }}
-          disabled={isShowMoreButtonDisabled}
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <SearchResults
+          cardsToDisplay={cardsToDisplay}
+          quantityOfCardsToDisplay={quantityOfCardsToDisplay}
+          isSearchResultsOpen={isSearchResultsOpen}
         >
-          Show more
-        </button>
-      </SearchResults>
+          <h2 className="search-results__title">Search results</h2>
+          <button
+            className={`search-results__button ${
+              isShowMoreButtonDisabled ? "search-results__button_disabled" : ""
+            }`}
+            onClick={() => {
+              /*
+              changeHeaderState("SavedArticles");
+              navigate("/news-explorer-frontend/saved-news");
+               */
+
+              onShowMoreClick();
+            }}
+            disabled={isShowMoreButtonDisabled}
+          >
+            Show more
+          </button>
+        </SearchResults>
+      )}
 
       <About />
     </>

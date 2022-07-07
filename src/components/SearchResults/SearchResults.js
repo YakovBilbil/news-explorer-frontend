@@ -8,17 +8,20 @@ import "../Card/__category/card__category.css";
 import "../Card/__button-description/card__button-description.css";
 
 import Card from "../Card/Card.js";
-import Preloader from "../Preloader/Preloader.js";
+
 import NothingFound from "../NothingFound/NothingFound.js";
 
 function SearchResults({ children = [], cardsToDisplay, isSearchResultsOpen }) {
   return (
     <div
+      /*className={`search-results ${
+        isSearchResultsOpen ? "" : "search-results_not-displayed "
+        }`}*/
+
       className={`search-results ${
         isSearchResultsOpen ? "" : "search-results_not-displayed "
       }`}
     >
-      <Preloader />
       <NothingFound />
       {children[0]}
 
