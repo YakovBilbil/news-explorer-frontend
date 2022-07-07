@@ -1,4 +1,5 @@
 import "./search-results.css";
+import "./_not-displayed/search-results_not-displayed.css";
 import "./__articles-list/search-results__articles-list.css";
 import "../Card/__like-flag/card__like-flag.css";
 import "../Card/__like-flag/_active/card__like-flag_active.css";
@@ -10,17 +11,18 @@ import Card from "../Card/Card.js";
 import Preloader from "../Preloader/Preloader.js";
 import NothingFound from "../NothingFound/NothingFound.js";
 
-function SearchResults({ children = [], cardsToDisplay }) {
+function SearchResults({ children = [], cardsToDisplay, isSearchResultsOpen }) {
   return (
-    <div className="search-results">
+    <div
+      className={`search-results ${
+        isSearchResultsOpen ? "" : "search-results_not-displayed "
+      }`}
+    >
       <Preloader />
       <NothingFound />
       {children[0]}
 
-      <ul
-        className="search-results__articles-list"
-        style={{ display: "visible" }}
-      >
+      <ul className="search-results__articles-list">
         {/*
         <Card>
           <button

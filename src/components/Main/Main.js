@@ -1,5 +1,6 @@
 import "../HeaderSearchFormBlock/header-search-form-block.css";
 import "../SearchResults/__button/search-results__button.css";
+import "../SearchResults/__button/_disabled/search-results__button_disabled.css";
 import "../SearchResults/__title/search-results__title.css";
 
 import React, { useContext } from "react";
@@ -21,6 +22,9 @@ function Main({
   onUpdateSearchWord,
   onShowMoreClick,
   quantityOfCardsToDisplay,
+  isSearchResultsOpen,
+  isShowMoreButtonDisabled,
+  isShowMoreButtonDisabledSecondIndicator,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -40,17 +44,26 @@ function Main({
       <SearchResults
         cardsToDisplay={cardsToDisplay}
         quantityOfCardsToDisplay={quantityOfCardsToDisplay}
+        isSearchResultsOpen={isSearchResultsOpen}
       >
         <h2 className="search-results__title">Search results</h2>
         <button
-          className="search-results__button"
+          className={`search-results__button ${
+            isShowMoreButtonDisabled || isShowMoreButtonDisabledSecondIndicator
+              ? "search-results__button_disabled"
+              : ""
+          }`}
           onClick={() => {
             /*
             changeHeaderState("SavedArticles");
             navigate("/news-explorer-frontend/saved-news");
              */
+
             onShowMoreClick();
           }}
+          disabled={
+            isShowMoreButtonDisabled || isShowMoreButtonDisabledSecondIndicator
+          }
         >
           Show more
         </button>

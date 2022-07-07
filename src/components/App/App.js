@@ -17,6 +17,13 @@ function App() {
 
   const [articles, setArticles] = useState([]);
 
+  const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(false);
+
+  const [isShowMoreButtonDisabled, setIsShowMoreButtonDisabled] =
+    useState(false);
+
+  const [quantityOfCardsToDisplay, setQuantityOfCardsToDisplay] = useState(3);
+
   /*
   useEffect(() => {
     (async function () {
@@ -57,6 +64,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
   const handleUpdateSearchWord = (searchWord) => {
     (async function () {
       try {
+        setIsShowMoreButtonDisabled(false);
+        setIsSearchResultsOpen(true);
         setArticles([]);
         setQuantityOfCardsToDisplay(3);
         const articlesCollectionBySearch = await api.getArticlesBySearchWord(
@@ -69,21 +78,25 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     })();
   };
 
-  const [quantityOfCardsToDisplay, setQuantityOfCardsToDisplay] = useState(3);
   const handleShowMoreClick = () => {
     if (articles.length > quantityOfCardsToDisplay) {
       if (quantityOfCardsToDisplay !== 99) {
         setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 3);
       } else {
         setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 1);
+        setIsShowMoreButtonDisabled(true);
       }
     } else {
+      setIsShowMoreButtonDisabled(true);
     }
   };
 
+  let isShowMoreButtonDisabledSecondIndicator = false;
   const cardsToDisplay = articles.map((object) => object);
   if (articles.length > quantityOfCardsToDisplay) {
     cardsToDisplay.length = quantityOfCardsToDisplay;
+  } else {
+    isShowMoreButtonDisabledSecondIndicator = true;
   }
 
   const [headerState, setHeaderState] = useState("NotLoggedIn");
@@ -132,6 +145,11 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       onUpdateSearchWord={handleUpdateSearchWord}
                       onShowMoreClick={handleShowMoreClick}
                       quantityOfCardsToDisplay={quantityOfCardsToDisplay}
+                      isSearchResultsOpen={isSearchResultsOpen}
+                      isShowMoreButtonDisabled={isShowMoreButtonDisabled}
+                      isShowMoreButtonDisabledSecondIndicator={
+                        isShowMoreButtonDisabledSecondIndicator
+                      }
                     />
                     <Footer />
                   </>
