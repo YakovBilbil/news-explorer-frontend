@@ -11,8 +11,7 @@ import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
 import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
-
-import { useFormWithValidation } from "../FormValidation/FormValidation opt3.js";
+import { useFormWithValidation } from "../FormValidation/FormValidation.js";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -27,6 +26,9 @@ function App() {
 
   const [searchResultsError, setSearchResultsError] = useState("");
 
+  const { values, errors, isValid, handleChange, resetForm } =
+    useFormWithValidation();
+
   /*
   useEffect(() => {
     (async function () {
@@ -40,6 +42,7 @@ function App() {
   }, []);
   */
 
+  /*
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
@@ -70,6 +73,7 @@ function App() {
     },
     [setValues, setErrors, setIsValid]
   );
+  */
 
   /*
 const handleShowMoreClick = (lengthOfCardsArray) => {

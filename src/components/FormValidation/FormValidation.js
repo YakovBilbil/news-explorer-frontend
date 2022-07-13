@@ -1,10 +1,6 @@
 import { useState, useCallback } from "react";
 
-/*
-const isEmail = validator.isEmail("yakov.bilbil@gmail.com");
-console.log(isEmail);
-*/
-export function useFormWithValidation() {
+export const useFormWithValidation = () => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
@@ -14,7 +10,16 @@ export function useFormWithValidation() {
     const name = target.name;
     const value = target.value;
     setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: target.validationMessage });
+    setErrors({
+      ...errors,
+      [name]: `${
+        target.validity.valid
+          ? ""
+          : `${`Invalid ${name}${
+              target.validity.tooShort ? ". Too short" : ""
+            }`}`
+      }`,
+    });
     setIsValid(target.closest("form").checkValidity());
   };
 
@@ -27,5 +32,5 @@ export function useFormWithValidation() {
     [setValues, setErrors, setIsValid]
   );
 
-  return { values, handleChange, errors, isValid, resetForm };
-}
+  return { values, errors, isValid, handleChange, resetForm };
+};

@@ -18,7 +18,6 @@ import "./__or/popup-with-form__or.css";
 import "./__or-button/popup-with-form__or-button.css";
 
 import Popup from "../Popup/Popup.js";
-import { useFormWithValidation } from "../FormValidation/FormValidation opt3";
 
 function PopupWithForm({
   isOpen,
