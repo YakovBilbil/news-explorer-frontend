@@ -1,0 +1,10 @@
+.popup-with-form__send-button_disabled {
+    background-color: #E6E8EB;
+    color: #B6BCBF;
+}
+
+.popup-with-form__send-button_disabled:hover {
+    background-color: #E6E8EB;
+    opacity: 1;
+    cursor: default;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import api from "../../utils/NewsApi.js";
@@ -12,6 +12,8 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
 import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 
+import { useFormWithValidation } from "../FormValidation/FormValidation opt3.js";
+
 function App() {
   const [currentUser, setCurrentUser] = useState({});
 
@@ -22,6 +24,8 @@ function App() {
   const [quantityOfCardsToDisplay, setQuantityOfCardsToDisplay] = useState(3);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const [searchResultsError, setSearchResultsError] = useState("");
 
   /*
   useEffect(() => {
@@ -35,6 +39,37 @@ function App() {
     })();
   }, []);
   */
+
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
+
+  const handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    setValues({ ...values, [name]: value });
+    setErrors({
+      ...errors,
+      [name]: `${
+        target.validity.valid
+          ? ""
+          : `${`Invalid ${name}${
+              target.validity.tooShort ? ". Too short" : ""
+            }`}`
+      }`,
+    });
+    setIsValid(target.closest("form").checkValidity());
+  };
+
+  const resetForm = useCallback(
+    (newValues = {}, newErrors = {}, newIsValid = false) => {
+      setValues(newValues);
+      setErrors(newErrors);
+      setIsValid(newIsValid);
+    },
+    [setValues, setErrors, setIsValid]
+  );
 
   /*
 const handleShowMoreClick = (lengthOfCardsArray) => {
@@ -64,6 +99,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     (async function () {
       try {
         setIsLoading(true);
+        setSearchResultsError("");
         setIsSearchResultsOpen(true);
         setArticles([]);
         setQuantityOfCardsToDisplay(3);
@@ -74,6 +110,10 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
         setIsLoading(false);
       } catch (error) {
         console.log("CAUGHT ERROR", error);
+        setSearchResultsError(
+          "Sorry, something went wrong during the request. There may be a connection issue or the server may be down. Please try again later."
+        );
+        setIsLoading(false);
       }
     })();
   };
@@ -101,6 +141,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
 
   const [isPopupWithFormOpen, setIsPopupWithFormOpen] = useState(false);
   function handlePopupWithFormClick() {
+    resetForm();
     setIsPopupWithFormOpen(true);
   }
 
@@ -143,6 +184,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       isSearchResultsOpen={isSearchResultsOpen}
                       isShowMoreButtonDisabled={isShowMoreButtonDisabled}
                       isLoading={isLoading}
+                      articles={articles}
+                      searchResultsError={searchResultsError}
                     />
                     <Footer />
                   </>
@@ -171,6 +214,10 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
               isOpen={isPopupWithFormOpen}
               onClose={closeAllPopups}
               onRegister={handleRegisterSuccess}
+              handleChange={handleChange}
+              values={values}
+              errors={errors}
+              isValid={isValid}
             />
 
             <PopupMenuForPhone

@@ -22,30 +22,9 @@ function SearchResults({ children = [], cardsToDisplay, isSearchResultsOpen }) {
         isSearchResultsOpen ? "" : "search-results_not-displayed "
       }`}
     >
-      <NothingFound />
       {children[0]}
 
       <ul className="search-results__articles-list">
-        {/*
-        <Card>
-          <button
-            className="card__like-flag"
-            onClick={(e) => e.target.classList.toggle("card__like-flag_active")}
-          ></button>{" "}
-          <p className="card__button-description" style={{ display: "none" }}>
-            Sign in to save articles
-          </p>
-        </Card>
-
-        <Card>
-          <button className="card__delete-trash"></button>
-          <div className="card__category">Parks</div>
-          <p className="card__button-description" style={{ display: "none" }}>
-            Remove from saved
-          </p>
-        </Card>
-        */}
-
         {cardsToDisplay.map((card) => (
           <Card
             key={card.source.id}

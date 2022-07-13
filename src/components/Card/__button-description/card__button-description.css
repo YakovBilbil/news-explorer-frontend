@@ -17,6 +17,21 @@
     -ms-flex-align: center;
     align-items: center;
     padding: 11px 26px;
+    margin: 0px;
     -webkit-box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
     box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
+}
+
+@media screen and (max-width: 1050px) {
+    .card__button-description {
+        top: 8px;
+        right: 53px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .card__button-description {
+        top: 16px;
+        right: 62px;
+    }
 }

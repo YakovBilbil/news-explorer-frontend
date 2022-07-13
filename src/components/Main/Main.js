@@ -12,12 +12,14 @@ import Header from "../Header/Header.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import SearchResults from "../SearchResults/SearchResults.js";
 import About from "../About/About.js";
-import Preloader from "../Preloader/Preloader";
+import Preloader from "../Preloader/Preloader.js";
+import NothingFound from "../NothingFound/NothingFound.js";
 
 function Main({
   headerState,
   changeHeaderState,
   onPopupWithFormClick,
+
   onPopupMenuForPhoneClick,
   cardsToDisplay,
   onUpdateSearchWord,
@@ -26,6 +28,8 @@ function Main({
   isSearchResultsOpen,
   isShowMoreButtonDisabled,
   isLoading,
+  articles,
+  searchResultsError,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -44,6 +48,8 @@ function Main({
 
       {isLoading ? (
         <Preloader />
+      ) : articles.length === 0 && isSearchResultsOpen ? (
+        <NothingFound searchResultsError={searchResultsError} />
       ) : (
         <SearchResults
           cardsToDisplay={cardsToDisplay}
