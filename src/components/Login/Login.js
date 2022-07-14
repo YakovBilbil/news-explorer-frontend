@@ -1,14 +1,14 @@
-import "./popup-with-form.css";
-import "./__title/popup-with-form__title.css";
-import "./__label/popup-with-form__label.css";
-import "./__input/popup-with-form__input.css";
-import "./__error-message/popup-with-form__error-message.css";
-import "./__error-message/_bad-email/popup-with-form__error-message_bad-email.css";
-import "./__send-button/popup-with-form__send-button.css";
-import "./__send-button/_disabled/popup-with-form__send-button_disabled.css";
-import "./__or-block/popup-with-form__or-block.css";
-import "./__or/popup-with-form__or.css";
-import "./__or-button/popup-with-form__or-button.css";
+import "../PopupWithForm/popup-with-form.css";
+import "../PopupWithForm/__title/popup-with-form__title.css";
+import "../PopupWithForm/__label/popup-with-form__label.css";
+import "../PopupWithForm/__input/popup-with-form__input.css";
+import "../PopupWithForm/__error-message/popup-with-form__error-message.css";
+import "../PopupWithForm/__error-message/_bad-email/popup-with-form__error-message_bad-email.css";
+import "../PopupWithForm/__send-button/popup-with-form__send-button.css";
+import "../PopupWithForm/__send-button/_disabled/popup-with-form__send-button_disabled.css";
+import "../PopupWithForm/__or-block/popup-with-form__or-block.css";
+import "../PopupWithForm/__or/popup-with-form__or.css";
+import "../PopupWithForm/__or-button/popup-with-form__or-button.css";
 
 import Popup from "../Popup/Popup.js";
 
@@ -62,26 +62,6 @@ function PopupWithForm({
         />
         <div className="popup-with-form__error-message">
           {`${errors.password ? errors.password : ""}`}
-        </div>
-
-        <label for="username-input" className="popup-with-form__label">
-          Username
-        </label>
-        <input
-          type="text"
-          name="username"
-          id="username-input"
-          placeholder="Enter your username"
-          className="popup-with-form__input"
-          minLength="2"
-          maxLength="30"
-          noValidate
-          required
-          onChange={handleChange}
-          value={values.username || ""}
-        />
-        <div className="popup-with-form__error-message">
-          {`${errors.username ? errors.username : ""}`}
         </div>
 
         <div className="popup-with-form__error-message popup-with-form__error-message_bad-email">

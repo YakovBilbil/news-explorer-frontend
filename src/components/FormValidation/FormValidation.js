@@ -16,8 +16,16 @@ export const useFormWithValidation = () => {
         target.validity.valid
           ? ""
           : `${`Invalid ${name}${
-              target.validity.tooShort ? ". Too short" : ""
-            }`}`
+              target.validity.tooShort && name === "password"
+                ? ". Please include 8-30 characters."
+                : ""
+            }
+           ${
+             target.validity.tooShort && name === "username"
+               ? ". Please include 2-30 characters."
+               : ""
+           }
+        `}`
       }`,
     });
     setIsValid(target.closest("form").checkValidity());

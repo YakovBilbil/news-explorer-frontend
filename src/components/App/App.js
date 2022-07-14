@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import api from "../../utils/NewsApi.js";
@@ -8,7 +8,8 @@ import Header from "../Header/Header.js";
 import SearchResults from "../SearchResults/SearchResults.js";
 import Footer from "../Footer/Footer.js";
 import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
-import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
+import Register from "../Register/Register.js";
+import Login from "../Login/Login.js";
 import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
 import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 import { useFormWithValidation } from "../FormValidation/FormValidation.js";
@@ -214,7 +215,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
               />
             </Routes>
 
-            <PopupWithForm
+            <Register
               isOpen={isPopupWithFormOpen}
               onClose={closeAllPopups}
               onRegister={handleRegisterSuccess}
@@ -223,7 +224,17 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
               errors={errors}
               isValid={isValid}
             />
-
+            {/*
+            <Login
+              isOpen={isPopupWithFormOpen}
+              onClose={closeAllPopups}
+              onRegister={handleRegisterSuccess}
+              handleChange={handleChange}
+              values={values}
+              errors={errors}
+              isValid={isValid}
+            />
+*/}
             <PopupMenuForPhone
               isOpen={isPopupMenuForPhoneOpen}
               onClose={closeAllPopups}
