@@ -19,6 +19,7 @@ function PopupWithForm({
   values,
   errors,
   isValid,
+  moveToSignUpForm,
 }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
@@ -79,7 +80,12 @@ function PopupWithForm({
 
         <div className="popup-with-form__or-block">
           <p className="popup-with-form__or">or</p>
-          <button className="popup-with-form__or-button">Sign up</button>
+          <button
+            className="popup-with-form__or-button"
+            onClick={moveToSignUpForm}
+          >
+            Sign up
+          </button>
         </div>
       </form>
     </Popup>

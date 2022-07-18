@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-import api from "../../utils/NewsApi.js";
+import NewsApi from "../../utils/NewsApi.js";
+import MainApi from "../../utils/MainApi.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import Main from "../Main/Main.js";
 import Header from "../Header/Header.js";
@@ -14,6 +15,7 @@ import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.j
 import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 import { useFormWithValidation } from "../FormValidation/FormValidation.js";
 import * as auth from "../../utils/Auth.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -28,10 +30,40 @@ function App() {
 
   const [searchResultsError, setSearchResultsError] = useState("");
 
+  const [isSavedArticlesOpen, setIsSavedArticlesOpen] = useState(false);
+
   const { values, errors, isValid, handleChange, resetForm } =
     useFormWithValidation();
 
   const navigate = useNavigate();
+
+  const [jwt, setJwt] = useState(localStorage.getItem("token"));
+
+  useEffect(() => {
+    if (!jwt) return;
+    (async function () {
+      setJwt(localStorage.getItem("jwt"));
+      if (jwt) {
+        try {
+          const res = await auth.checkTokenAndGetUserEmail(jwt);
+          if (res) {
+            setIsLoggedIn(true);
+            /*
+            setValues({
+              email: `${res.data.email}`,
+            });
+            */
+            /*
+            const userInfo = await MainApi.getUserInfo();
+            setCurrentUser(userInfo);
+            */
+          }
+        } catch (error) {
+          console.log("CAUGHT ERROR", error);
+        }
+      }
+    })();
+  }, [jwt]);
 
   /*
   useEffect(() => {
@@ -124,9 +156,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
         setIsSearchResultsOpen(true);
         setArticles([]);
         setQuantityOfCardsToDisplay(3);
-        const articlesCollectionBySearch = await api.getArticlesBySearchWord(
-          searchWord
-        );
+        const articlesCollectionBySearch =
+          await NewsApi.getArticlesBySearchWord(searchWord);
         setArticles(articlesCollectionBySearch.articles);
         setIsLoading(false);
       } catch (error) {
@@ -160,7 +191,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     setHeaderState(state);
   }
 
-  const [isPopupWithFormOpen, setIsPopupWithFormOpen] = useState(false);
   const [isPopupRegisterFormOpen, setIsPopupRegisterFormOpen] = useState(false);
   function handlePopupWithFormClick() {
     resetForm();
@@ -177,7 +207,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
   const [isPopupRegisterSuccessOpen, setIsPopupRegisterSuccessOpen] =
     useState(false);
   const [isPopupLoginFormOpen, setIsPopupLoginFormOpen] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(false);
   const handleRegisterSubmit = async () => {
     try {
       const res = await auth.register(
@@ -186,7 +215,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
         values.username
       );
       if (res) {
-        setIsRegistered(true);
         setIsPopupRegisterFormOpen(false);
         setIsPopupRegisterSuccessOpen(true);
       }
@@ -196,8 +224,24 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     }
   };
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleAuthorizeSubmit = async () => {
+    try {
+      const res = await auth.authorize(values.email, values.password);
+      if (res) {
+        const userInfo = await MainApi.getUserInfo();
+        setCurrentUser(userInfo);
+        setIsLoggedIn(true);
+        setIsPopupLoginFormOpen(false);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  //console.log(currentUser);
+
   function closeAllPopups() {
-    setIsPopupWithFormOpen(false);
     setIsPopupMenuForPhoneOpen(false);
     setIsPopupRegisterSuccessOpen(false);
     setIsPopupRegisterFormOpen(false);
@@ -237,17 +281,25 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
               <Route
                 path="/saved-news"
                 element={
-                  <>
-                    <Header
-                      headerState={headerState}
-                      changeHeaderState={changeHeaderState}
-                      onPopupWithFormClick={handlePopupWithFormClick}
-                      onPopupMenuForPhoneClick={handlePopupMenuForPhoneClick}
-                    />
-                    <SavedNewsTitleBlock />
-                    <SearchResults />
-                    <Footer />
-                  </>
+                  <ProtectedRoute
+                    element={
+                      <>
+                        <Header
+                          headerState={headerState}
+                          changeHeaderState={changeHeaderState}
+                          onPopupWithFormClick={handlePopupWithFormClick}
+                          onPopupMenuForPhoneClick={
+                            handlePopupMenuForPhoneClick
+                          }
+                        />
+                        <SavedNewsTitleBlock />
+                        <SearchResults />
+                        <Footer />
+                      </>
+                    }
+                    isLoggedIn={isLoggedIn}
+                    isSavedArticlesOpen={isSavedArticlesOpen}
+                  />
                 }
               />
 
@@ -292,16 +344,24 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
               errors={errors}
               isValid={isValid}
               isEmailAvailable={isEmailAvailable}
+              moveToSignInForm={() => {
+                setIsPopupRegisterFormOpen(false);
+                setIsPopupLoginFormOpen(true);
+              }}
             />
 
             <Login
               isOpen={isPopupLoginFormOpen}
               onClose={closeAllPopups}
-              onLogin={"handleLoginSubmit"}
+              onLogin={handleAuthorizeSubmit}
               handleChange={handleChange}
               values={values}
               errors={errors}
               isValid={isValid}
+              moveToSignUpForm={() => {
+                setIsPopupLoginFormOpen(false);
+                setIsPopupRegisterFormOpen(true);
+              }}
             />
 
             <PopupMenuForPhone
@@ -313,7 +373,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
             <PopupRegisterSuccess
               isOpen={isPopupRegisterSuccessOpen}
               onClose={closeAllPopups}
-              isRegistered={isRegistered}
               onPopupWithFormClick={() => setIsPopupLoginFormOpen(true)}
             />
           </div>
