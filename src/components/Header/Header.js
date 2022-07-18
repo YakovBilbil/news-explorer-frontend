@@ -62,7 +62,7 @@ function Header({
           }`}
           onClick={() => {
             changeHeaderState("LoggedIn");
-            navigate("/news-explorer-frontend");
+            navigate("/");
           }}
         >
           <p>Home</p>

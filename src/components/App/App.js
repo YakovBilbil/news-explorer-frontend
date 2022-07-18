@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import api from "../../utils/NewsApi.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
@@ -13,6 +13,7 @@ import Login from "../Login/Login.js";
 import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
 import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 import { useFormWithValidation } from "../FormValidation/FormValidation.js";
+import * as auth from "../../utils/Auth.js";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -29,6 +30,21 @@ function App() {
 
   const { values, errors, isValid, handleChange, resetForm } =
     useFormWithValidation();
+
+  const navigate = useNavigate();
+
+  /*
+  useEffect(() => {
+    (async function () {
+      try {
+        const userInfo = await api.getUserInfo();
+        setCurrentUser(userInfo);
+      } catch (error) {
+        console.log("CAUGHT ERROR", error);
+      }
+    })();
+  }, []);
+  */
 
   /*
   useEffect(() => {
@@ -145,9 +161,11 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
   }
 
   const [isPopupWithFormOpen, setIsPopupWithFormOpen] = useState(false);
+  const [isPopupRegisterFormOpen, setIsPopupRegisterFormOpen] = useState(false);
   function handlePopupWithFormClick() {
     resetForm();
-    setIsPopupWithFormOpen(true);
+    setIsEmailAvailable(true);
+    setIsPopupRegisterFormOpen(true);
   }
 
   const [isPopupMenuForPhoneOpen, setIsPopupMenuForPhoneOpen] = useState(false);
@@ -155,16 +173,35 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     setIsPopupMenuForPhoneOpen(true);
   }
 
+  const [isEmailAvailable, setIsEmailAvailable] = useState(true);
   const [isPopupRegisterSuccessOpen, setIsPopupRegisterSuccessOpen] =
     useState(false);
-  function handleRegisterSuccess() {
-    setIsPopupRegisterSuccessOpen(true);
-  }
+  const [isPopupLoginFormOpen, setIsPopupLoginFormOpen] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const handleRegisterSubmit = async () => {
+    try {
+      const res = await auth.register(
+        values.email,
+        values.password,
+        values.username
+      );
+      if (res) {
+        setIsRegistered(true);
+        setIsPopupRegisterFormOpen(false);
+        setIsPopupRegisterSuccessOpen(true);
+      }
+    } catch (err) {
+      setIsEmailAvailable(false);
+      console.log(err);
+    }
+  };
 
   function closeAllPopups() {
     setIsPopupWithFormOpen(false);
     setIsPopupMenuForPhoneOpen(false);
     setIsPopupRegisterSuccessOpen(false);
+    setIsPopupRegisterFormOpen(false);
+    setIsPopupLoginFormOpen(false);
   }
 
   return (
@@ -174,7 +211,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
           <div className="container">
             <Routes>
               <Route
-                path="/news-explorer-frontend"
+                path="/"
                 element={
                   <>
                     <Main
@@ -198,7 +235,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
               />
 
               <Route
-                path="/news-explorer-frontend/saved-news"
+                path="/saved-news"
                 element={
                   <>
                     <Header
@@ -213,28 +250,60 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                   </>
                 }
               />
+
+              {/*
+              <Route
+                path="/signin"
+                element={
+                  <>
+                    <Header
+                      headerState={headerState}
+                      changeHeaderState={changeHeaderState}
+                      onPopupWithFormClick={handlePopupWithFormClick}
+                      onPopupMenuForPhoneClick={handlePopupMenuForPhoneClick}
+                    />
+                    <Login
+                      isOpen={isPopupWithFormOpen}
+                      onClose={closeAllPopups}
+                      onLogin={"handleLoginSubmit"}
+                      handleChange={handleChange}
+                      values={values}
+                      errors={errors}
+                      isValid={isValid}
+                    />
+                    <SavedNewsTitleBlock />
+                    <SearchResults />
+                    <Footer />
+
+
+                  </>
+                }
+              />
+
+*/}
             </Routes>
 
             <Register
-              isOpen={isPopupWithFormOpen}
+              isOpen={isPopupRegisterFormOpen}
               onClose={closeAllPopups}
-              onRegister={handleRegisterSuccess}
+              onRegister={handleRegisterSubmit}
               handleChange={handleChange}
               values={values}
               errors={errors}
               isValid={isValid}
+              isEmailAvailable={isEmailAvailable}
             />
-            {/*
+
             <Login
-              isOpen={isPopupWithFormOpen}
+              isOpen={isPopupLoginFormOpen}
               onClose={closeAllPopups}
-              onRegister={handleRegisterSuccess}
+              onLogin={"handleLoginSubmit"}
               handleChange={handleChange}
               values={values}
               errors={errors}
               isValid={isValid}
             />
-*/}
+
             <PopupMenuForPhone
               isOpen={isPopupMenuForPhoneOpen}
               onClose={closeAllPopups}
@@ -244,7 +313,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
             <PopupRegisterSuccess
               isOpen={isPopupRegisterSuccessOpen}
               onClose={closeAllPopups}
-              onPopupWithFormClick={handlePopupWithFormClick}
+              isRegistered={isRegistered}
+              onPopupWithFormClick={() => setIsPopupLoginFormOpen(true)}
             />
           </div>
         </div>

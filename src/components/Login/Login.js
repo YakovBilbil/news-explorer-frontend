@@ -3,7 +3,6 @@ import "../PopupWithForm/__title/popup-with-form__title.css";
 import "../PopupWithForm/__label/popup-with-form__label.css";
 import "../PopupWithForm/__input/popup-with-form__input.css";
 import "../PopupWithForm/__error-message/popup-with-form__error-message.css";
-import "../PopupWithForm/__error-message/_bad-email/popup-with-form__error-message_bad-email.css";
 import "../PopupWithForm/__send-button/popup-with-form__send-button.css";
 import "../PopupWithForm/__send-button/_disabled/popup-with-form__send-button_disabled.css";
 import "../PopupWithForm/__or-block/popup-with-form__or-block.css";
@@ -15,7 +14,7 @@ import Popup from "../Popup/Popup.js";
 function PopupWithForm({
   isOpen,
   onClose,
-  onRegister,
+  onLogin,
   handleChange,
   values,
   errors,
@@ -64,9 +63,6 @@ function PopupWithForm({
           {`${errors.password ? errors.password : ""}`}
         </div>
 
-        <div className="popup-with-form__error-message popup-with-form__error-message_bad-email">
-          This email is not available
-        </div>
         <button
           type="submit"
           className={`popup-with-form__send-button ${
@@ -74,7 +70,7 @@ function PopupWithForm({
           }`}
           onClick={(event) => {
             event.preventDefault();
-            onRegister();
+            onLogin();
           }}
           disabled={!isValid}
         >

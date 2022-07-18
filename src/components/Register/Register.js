@@ -20,6 +20,7 @@ function PopupWithForm({
   values,
   errors,
   isValid,
+  isEmailAvailable,
 }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
@@ -84,7 +85,12 @@ function PopupWithForm({
           {`${errors.username ? errors.username : ""}`}
         </div>
 
-        <div className="popup-with-form__error-message popup-with-form__error-message_bad-email">
+        <div
+          className="popup-with-form__error-message popup-with-form__error-message_bad-email"
+          style={{
+            display: `${!isEmailAvailable ? "" : "none"}`,
+          }}
+        >
           This email is not available
         </div>
         <button

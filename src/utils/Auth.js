@@ -1,12 +1,12 @@
-const BASE_URL = "https://register.nomoreparties.co";
+const BASE_URL = "https://api.newsexploreryakov.students.nomoreparties.sbs";
 
-export const register = async (email, password) => {
+export const register = async (email, password, name) => {
   const response = await fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password, name }),
   });
   if (response.ok) {
     const data = await response.json();

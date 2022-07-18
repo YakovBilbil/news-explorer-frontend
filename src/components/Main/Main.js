@@ -64,7 +64,7 @@ function Main({
             onClick={() => {
               /*
               changeHeaderState("SavedArticles");
-              navigate("/news-explorer-frontend/saved-news");
+              navigate("/saved-news");
                */
 
               onShowMoreClick();
