@@ -16,9 +16,67 @@ import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 import { useFormWithValidation } from "../FormValidation/FormValidation.js";
 import * as auth from "../../utils/Auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
+import { useCallback } from "react";
 
 function App() {
+  /*
+  const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
+
+  const checkJWT = useCallback(async () => {
+    setJwt(localStorage.getItem("jwt"));
+    if (jwt) {
+      try {
+        const res = await auth.checkTokenAndGetUserEmail(jwt);
+        if (res) {
+          setIsLoggedIn(true);
+        }
+      } catch (error) {
+        console.log("CAUGHT ERROR", error);
+      }
+    }
+  }, [jwt]);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    if (!jwt) return;
+    checkJWT();
+  }, [jwt, checkJWT]);
+*/
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
+  const checkJWT = useEffect(() => {
+    if (!jwt) return;
+    (async function () {
+      setJwt(localStorage.getItem("jwt"));
+      if (jwt) {
+        try {
+          const res = await auth.checkTokenAndGetUserEmail(jwt);
+          if (res) {
+            setIsLoggedIn(true);
+          }
+        } catch (error) {
+          console.log("CAUGHT ERROR", error);
+        }
+      }
+    })();
+  }, [jwt]);
+
   const [currentUser, setCurrentUser] = useState({});
+  useEffect(() => {
+    (async function () {
+      try {
+        const userInfo = await MainApi.getUserInfo();
+        setCurrentUser(userInfo);
+      } catch (error) {
+        console.log("CAUGHT ERROR", error);
+      }
+    })();
+  }, []);
+
+  console.log(currentUser);
+  console.log(`Is there JWT? ${jwt ? "Yes" : "No"}`);
+  console.log("isLoggedIn: ", isLoggedIn);
 
   const [articles, setArticles] = useState([]);
 
@@ -30,40 +88,14 @@ function App() {
 
   const [searchResultsError, setSearchResultsError] = useState("");
 
-  const [isSavedArticlesOpen, setIsSavedArticlesOpen] = useState(false);
+  /*const [isSavedArticlesOpen, setIsSavedArticlesOpen] = useState(false);*/
+  const [isSavedArticlesOpen, setIsSavedArticlesOpen] = useState(true);
+  console.log("isSavedArticlesOpen: ", isSavedArticlesOpen);
 
   const { values, errors, isValid, handleChange, resetForm } =
     useFormWithValidation();
 
   const navigate = useNavigate();
-
-  const [jwt, setJwt] = useState(localStorage.getItem("token"));
-
-  useEffect(() => {
-    if (!jwt) return;
-    (async function () {
-      setJwt(localStorage.getItem("jwt"));
-      if (jwt) {
-        try {
-          const res = await auth.checkTokenAndGetUserEmail(jwt);
-          if (res) {
-            setIsLoggedIn(true);
-            /*
-            setValues({
-              email: `${res.data.email}`,
-            });
-            */
-            /*
-            const userInfo = await MainApi.getUserInfo();
-            setCurrentUser(userInfo);
-            */
-          }
-        } catch (error) {
-          console.log("CAUGHT ERROR", error);
-        }
-      }
-    })();
-  }, [jwt]);
 
   /*
   useEffect(() => {
@@ -224,7 +256,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     }
   };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleAuthorizeSubmit = async () => {
     try {
       const res = await auth.authorize(values.email, values.password);
@@ -238,8 +269,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
       console.log(err);
     }
   };
-
-  //console.log(currentUser);
 
   function closeAllPopups() {
     setIsPopupMenuForPhoneOpen(false);
@@ -293,11 +322,33 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                           }
                         />
                         <SavedNewsTitleBlock />
-                        <SearchResults />
+                        {/*<SearchResults />*/}
                         <Footer />
                       </>
                     }
-                    isLoggedIn={isLoggedIn}
+                    //isLoggedIn={isLoggedIn}
+
+                    /*
+                    isLoggedIn={() => {
+                      (async function () {
+                        setJwt(localStorage.getItem("jwt"));
+                        if (jwt) {
+                          try {
+                            const res = await auth.checkTokenAndGetUserEmail(
+                              jwt
+                            );
+                            if (res) {
+                              return res;
+                            }
+                          } catch (error) {
+                            console.log("CAUGHT ERROR", error);
+                          }
+                        }
+                      })();
+                    }}
+                    */
+
+                    isLoggedIn={() => checkJWT()}
                     isSavedArticlesOpen={isSavedArticlesOpen}
                   />
                 }
