@@ -25,6 +25,7 @@ const ProtectedRoute = ({ element, isLoggedIn, isSavedArticlesOpen }) => {
 
   console.log("isLoggedIn: ", isLoggedIn);
 */
+
   return isLoggedIn && isSavedArticlesOpen ? element : <Navigate to="/" />;
 };
 

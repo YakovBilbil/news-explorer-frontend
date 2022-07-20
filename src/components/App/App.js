@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import NewsApi from "../../utils/NewsApi.js";
 import MainApi from "../../utils/MainApi.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import Main from "../Main/Main.js";
 import Header from "../Header/Header.js";
-import SearchResults from "../SearchResults/SearchResults.js";
 import Footer from "../Footer/Footer.js";
 import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
 import Register from "../Register/Register.js";
@@ -16,36 +15,11 @@ import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 import { useFormWithValidation } from "../FormValidation/FormValidation.js";
 import * as auth from "../../utils/Auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
-import { useCallback } from "react";
 
 function App() {
-  /*
   const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
-
-  const checkJWT = useCallback(async () => {
-    setJwt(localStorage.getItem("jwt"));
-    if (jwt) {
-      try {
-        const res = await auth.checkTokenAndGetUserEmail(jwt);
-        if (res) {
-          setIsLoggedIn(true);
-        }
-      } catch (error) {
-        console.log("CAUGHT ERROR", error);
-      }
-    }
-  }, [jwt]);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
-    if (!jwt) return;
-    checkJWT();
-  }, [jwt, checkJWT]);
-*/
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
-  const checkJWT = useEffect(() => {
     if (!jwt) return;
     (async function () {
       setJwt(localStorage.getItem("jwt"));
@@ -88,14 +62,8 @@ function App() {
 
   const [searchResultsError, setSearchResultsError] = useState("");
 
-  /*const [isSavedArticlesOpen, setIsSavedArticlesOpen] = useState(false);*/
-  const [isSavedArticlesOpen, setIsSavedArticlesOpen] = useState(true);
-  console.log("isSavedArticlesOpen: ", isSavedArticlesOpen);
-
   const { values, errors, isValid, handleChange, resetForm } =
     useFormWithValidation();
-
-  const navigate = useNavigate();
 
   /*
   useEffect(() => {
@@ -218,7 +186,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     }
   };
 
-  const [headerState, setHeaderState] = useState("NotLoggedIn");
+  //const [headerState, setHeaderState] = useState("NotLoggedIn");
+  const [headerState, setHeaderState] = useState("SavedArticles");
   function changeHeaderState(state) {
     setHeaderState(state);
   }
@@ -348,8 +317,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                     }}
                     */
 
-                    isLoggedIn={() => checkJWT()}
-                    isSavedArticlesOpen={isSavedArticlesOpen}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />

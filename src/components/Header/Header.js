@@ -84,6 +84,9 @@ function Header({
               ? "header__saved-articles-button_saved-articles"
               : ""
           }`}
+          onClick={() => {
+            navigate("/saved-news");
+          }}
         >
           <p>Saved articles</p>
         </button>
