@@ -22,6 +22,36 @@ class Api {
 
     return this._checkResponse(response);
   }
+
+  async saveArticle({ keyword, title, text, date, source, link, image }) {
+    const response = await fetch(`${this._baseUrl}/articles/`, {
+      method: "POST",
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        keyword: keyword,
+        title: title,
+        text: text,
+        date: date,
+        source: source,
+        link: link,
+        image: image,
+      }),
+    });
+
+    return this._checkResponse(response);
+  }
+
+  async getSavedArticles() {
+    const response = await fetch(`${this._baseUrl}/articles`, {
+      method: "GET",
+      headers: { authorization: this._token },
+    });
+
+    return this._checkResponse(response);
+  }
 }
 
 export default new Api({

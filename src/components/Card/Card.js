@@ -15,9 +15,11 @@ import "./__delete-trash/card__delete-trash.css";
 import "./__category/card__category.css";
 import "./__button-description/card__button-description.css";
 import "./__button-description/_non-active/card__button-description_non-active.css";
+import MainApi from "../../utils/MainApi";
 
-function Card({ card }) {
+function Card({ card, isLoggedIn, keyword }) {
   const [isShown, setIsShown] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   return (
     <li className="card">
@@ -41,13 +43,27 @@ function Card({ card }) {
         */}
         <button
           className="card__like-flag"
-          onClick={(e) => e.target.classList.toggle("card__like-flag_active")}
+          onClick={(e) => {
+            if (isLoggedIn && !isLiked) {
+              MainApi.saveArticle({
+                keyword: keyword,
+                title: card.title,
+                text: card.description,
+                date: card.publishedAt,
+                source: card.source.name,
+                link: card.url,
+                image: card.urlToImage,
+              });
+              setIsLiked(true);
+              e.target.classList.toggle("card__like-flag_active");
+            }
+          }}
           onMouseEnter={() => setIsShown(true)}
           onMouseLeave={() => setIsShown(false)}
         ></button>{" "}
         <p
           className={`card__button-description ${
-            isShown ? "" : "card__button-description_non-active"
+            isShown && !isLoggedIn ? "" : "card__button-description_non-active"
           }`}
         >
           Sign in to save articles

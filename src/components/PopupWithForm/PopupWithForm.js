@@ -26,9 +26,7 @@ function PopupWithForm({
       <form className="popup-with-form">
         <h2 className="popup-with-form__title">Sign in</h2>
 
-        <label for="email-input" className="popup-with-form__label">
-          Email
-        </label>
+        <label className="popup-with-form__label">Email</label>
         <input
           type="email"
           name="email"
@@ -44,9 +42,7 @@ function PopupWithForm({
           {`${errors.email ? errors.email : ""}`}
         </div>
 
-        <label for="password-input" className="popup-with-form__label">
-          Password
-        </label>
+        <label className="popup-with-form__label">Password</label>
         <input
           type="password"
           name="password"
@@ -64,9 +60,7 @@ function PopupWithForm({
           {`${errors.password ? errors.password : ""}`}
         </div>
 
-        <label for="username-input" className="popup-with-form__label">
-          Username
-        </label>
+        <label className="popup-with-form__label">Username</label>
         <input
           type="text"
           name="username"

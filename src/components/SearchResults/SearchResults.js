@@ -11,7 +11,13 @@ import Card from "../Card/Card.js";
 
 import NothingFound from "../NothingFound/NothingFound.js";
 
-function SearchResults({ children = [], cardsToDisplay, isSearchResultsOpen }) {
+function SearchResults({
+  children = [],
+  cardsToDisplay,
+  keyword,
+  isSearchResultsOpen,
+  isLoggedIn,
+}) {
   return (
     <div
       /*className={`search-results ${
@@ -29,6 +35,8 @@ function SearchResults({ children = [], cardsToDisplay, isSearchResultsOpen }) {
           <Card
             key={card.source.id}
             card={card}
+            isLoggedIn={isLoggedIn}
+            keyword={keyword}
 
             /*
             onCardClick={onCardClick}

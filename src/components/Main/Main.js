@@ -17,9 +17,9 @@ import NothingFound from "../NothingFound/NothingFound.js";
 
 function Main({
   headerState,
+  isLoggedIn,
   changeHeaderState,
   onPopupWithFormClick,
-
   onPopupMenuForPhoneClick,
   cardsToDisplay,
   onUpdateSearchWord,
@@ -29,6 +29,7 @@ function Main({
   isShowMoreButtonDisabled,
   isLoading,
   articles,
+  keyword,
   searchResultsError,
 }) {
   const currentUser = useContext(CurrentUserContext);
@@ -39,6 +40,8 @@ function Main({
       <div className="header-search-form-block">
         <Header
           headerState={headerState}
+          changeHeaderState={changeHeaderState}
+          isLoggedIn={isLoggedIn}
           onPopupWithFormClick={onPopupWithFormClick}
           onPopupMenuForPhoneClick={onPopupMenuForPhoneClick}
         />
@@ -53,8 +56,10 @@ function Main({
       ) : (
         <SearchResults
           cardsToDisplay={cardsToDisplay}
+          keyword={keyword}
           quantityOfCardsToDisplay={quantityOfCardsToDisplay}
           isSearchResultsOpen={isSearchResultsOpen}
+          isLoggedIn={isLoggedIn}
         >
           <h2 className="search-results__title">Search results</h2>
           <button
@@ -62,11 +67,6 @@ function Main({
               isShowMoreButtonDisabled ? "search-results__button_disabled" : ""
             }`}
             onClick={() => {
-              /*
-              changeHeaderState("SavedArticles");
-              navigate("/saved-news");
-               */
-
               onShowMoreClick();
             }}
             disabled={isShowMoreButtonDisabled}
@@ -82,7 +82,3 @@ function Main({
 }
 
 export default Main;
-
-/*
-if (cards.length <= quantitiOfCardsToDisplay) {make the button gray and not pressable}
-*/

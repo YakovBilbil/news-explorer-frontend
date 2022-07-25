@@ -43,6 +43,7 @@ export const checkTokenAndGetUserEmail = async () => {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Access-Control-Allow-Origin": "http://localhost:3000/",
     },
   });
   if (response.ok) {

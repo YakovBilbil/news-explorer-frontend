@@ -29,11 +29,13 @@ import { useNavigate } from "react-router-dom";
 
 function Header({
   headerState,
+  isLoggedIn,
   changeHeaderState,
   onPopupWithFormClick,
   onPopupMenuForPhoneClick,
 }) {
   const navigate = useNavigate();
+
   return (
     <header
       className={`header  ${
@@ -85,6 +87,7 @@ function Header({
               : ""
           }`}
           onClick={() => {
+            changeHeaderState("SavedArticles");
             navigate("/saved-news");
           }}
         >

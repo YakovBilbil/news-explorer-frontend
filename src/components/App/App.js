@@ -7,7 +7,9 @@ import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import Main from "../Main/Main.js";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
-import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock";
+import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock.js";
+import SavedArticle from "../SavedArticle/SavedArticle.js";
+import SearchResults from "../SearchResults/SearchResults.js";
 import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
 import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
@@ -17,8 +19,24 @@ import * as auth from "../../utils/Auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [headerState, setHeaderState] = useState(
+    `${isLoggedIn ? "LoggedIn" : "NotLoggedIn"}`
+  );
+  /*
+  function changeHeaderState(state) {
+    setHeaderState(state);
+  }
+  */
+
+  const [savedArticles, setSavedArticles] = useState([]);
+  console.log(savedArticles);
+
   useEffect(() => {
     if (!jwt) return;
     (async function () {
@@ -28,6 +46,8 @@ function App() {
           const res = await auth.checkTokenAndGetUserEmail(jwt);
           if (res) {
             setIsLoggedIn(true);
+            setHeaderState("LoggedIn");
+            setSavedArticles(await MainApi.getSavedArticles());
           }
         } catch (error) {
           console.log("CAUGHT ERROR", error);
@@ -35,6 +55,8 @@ function App() {
       }
     })();
   }, [jwt]);
+
+  console.log(savedArticles);
 
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
@@ -57,8 +79,6 @@ function App() {
   const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(false);
 
   const [quantityOfCardsToDisplay, setQuantityOfCardsToDisplay] = useState(3);
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const [searchResultsError, setSearchResultsError] = useState("");
 
@@ -148,6 +168,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
   };
   */
 
+  const [keyword, setKeyword] = useState("");
+
   const handleUpdateSearchWord = (searchWord) => {
     (async function () {
       try {
@@ -159,6 +181,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
         const articlesCollectionBySearch =
           await NewsApi.getArticlesBySearchWord(searchWord);
         setArticles(articlesCollectionBySearch.articles);
+        setKeyword(searchWord);
         setIsLoading(false);
       } catch (error) {
         console.log("CAUGHT ERROR", error);
@@ -169,6 +192,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
       }
     })();
   };
+
+  console.log(keyword);
 
   let isShowMoreButtonDisabled = false;
   const cardsToDisplay = articles.map((object) => object);
@@ -187,10 +212,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
   };
 
   //const [headerState, setHeaderState] = useState("NotLoggedIn");
-  const [headerState, setHeaderState] = useState("SavedArticles");
-  function changeHeaderState(state) {
-    setHeaderState(state);
-  }
 
   const [isPopupRegisterFormOpen, setIsPopupRegisterFormOpen] = useState(false);
   function handlePopupWithFormClick() {
@@ -258,7 +279,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                   <>
                     <Main
                       headerState={headerState}
-                      changeHeaderState={changeHeaderState}
+                      isLoggedIn={isLoggedIn}
+                      changeHeaderState={setHeaderState}
                       onPopupWithFormClick={handlePopupWithFormClick}
                       onPopupMenuForPhoneClick={handlePopupMenuForPhoneClick}
                       cardsToDisplay={cardsToDisplay}
@@ -269,6 +291,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       isShowMoreButtonDisabled={isShowMoreButtonDisabled}
                       isLoading={isLoading}
                       articles={articles}
+                      keyword={keyword}
                       searchResultsError={searchResultsError}
                     />
                     <Footer />
@@ -284,39 +307,21 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       <>
                         <Header
                           headerState={headerState}
-                          changeHeaderState={changeHeaderState}
+                          changeHeaderState={setHeaderState}
                           onPopupWithFormClick={handlePopupWithFormClick}
                           onPopupMenuForPhoneClick={
                             handlePopupMenuForPhoneClick
                           }
                         />
                         <SavedNewsTitleBlock />
-                        {/*<SearchResults />*/}
+                        <ul className="search-results__articles-list">
+                          {savedArticles.map((card) => (
+                            <SavedArticle card={card} />
+                          ))}
+                        </ul>
                         <Footer />
                       </>
                     }
-                    //isLoggedIn={isLoggedIn}
-
-                    /*
-                    isLoggedIn={() => {
-                      (async function () {
-                        setJwt(localStorage.getItem("jwt"));
-                        if (jwt) {
-                          try {
-                            const res = await auth.checkTokenAndGetUserEmail(
-                              jwt
-                            );
-                            if (res) {
-                              return res;
-                            }
-                          } catch (error) {
-                            console.log("CAUGHT ERROR", error);
-                          }
-                        }
-                      })();
-                    }}
-                    */
-
                     isLoggedIn={isLoggedIn}
                   />
                 }
