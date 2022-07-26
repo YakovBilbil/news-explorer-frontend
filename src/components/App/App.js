@@ -261,7 +261,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     }
   };
 
-  function updateSavedArticlesStock(newSavedArticle) {
+  function updateSavedArticles(newSavedArticle) {
     setSavedArticles([newSavedArticle, ...savedArticles]);
   }
 
@@ -331,7 +331,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       articles={articles}
                       keyword={keyword}
                       searchResultsError={searchResultsError}
-                      updateSavedArticlesStock={updateSavedArticlesStock}
+                      updateSavedArticles={updateSavedArticles}
+                      savedArticles={savedArticles}
                     />
                     <Footer />
                   </>

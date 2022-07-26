@@ -17,9 +17,16 @@ import "./__button-description/card__button-description.css";
 import "./__button-description/_non-active/card__button-description_non-active.css";
 import MainApi from "../../utils/MainApi";
 
-function Card({ card, isLoggedIn, keyword, updateSavedArticlesStock }) {
+function Card({
+  card,
+  isLoggedIn,
+  keyword,
+  updateSavedArticles,
+  savedArticles,
+}) {
   const [isShown, setIsShown] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const isAlreadySaved = savedArticles.some((c) => c.title === card.title);
 
   return (
     <li className="card">
@@ -29,22 +36,12 @@ function Card({ card, isLoggedIn, keyword, updateSavedArticlesStock }) {
         <h3 className="card__title"> {card.title} </h3>
         <p className="card__text"> {card.description} </p>
         <p className="card__origin"> {card.source.name} </p>
-        {/*
         <button
-          className="card__delete-trash"
-          style={{ display: "none" }}
-        ></button>
-        <div className="card__category" style={{ display: "none" }}>
-          Parks
-        </div>
-        <p className="card__button-description" style={{ display: "none" }}>
-          Remove from saved
-        </p>
-        */}
-        <button
-          className="card__like-flag"
+          className={`card__like-flag ${
+            isLiked || isAlreadySaved ? "card__like-flag_active" : ""
+          }`}
           onClick={async (e) => {
-            if (isLoggedIn && !isLiked) {
+            if (isLoggedIn && !isLiked && !isAlreadySaved) {
               try {
                 const newSavedArticle = await MainApi.saveArticle({
                   keyword: keyword,
@@ -55,9 +52,8 @@ function Card({ card, isLoggedIn, keyword, updateSavedArticlesStock }) {
                   link: card.url,
                   image: card.urlToImage,
                 });
-                updateSavedArticlesStock(newSavedArticle);
+                updateSavedArticles(newSavedArticle);
                 setIsLiked(true);
-                e.target.classList.toggle("card__like-flag_active");
               } catch (error) {
                 console.log("CAUGHT ERROR", error);
               }

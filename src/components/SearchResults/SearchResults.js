@@ -17,7 +17,8 @@ function SearchResults({
   keyword,
   isSearchResultsOpen,
   isLoggedIn,
-  updateSavedArticlesStock,
+  updateSavedArticles,
+  savedArticles,
 }) {
   return (
     <div
@@ -34,11 +35,12 @@ function SearchResults({
       <ul className="search-results__articles-list">
         {cardsToDisplay.map((card) => (
           <Card
-            key={card.source.id}
+            key={card.title}
             card={card}
             isLoggedIn={isLoggedIn}
             keyword={keyword}
-            updateSavedArticlesStock={updateSavedArticlesStock}
+            updateSavedArticles={updateSavedArticles}
+            savedArticles={savedArticles}
 
             /*
             onCardClick={onCardClick}
