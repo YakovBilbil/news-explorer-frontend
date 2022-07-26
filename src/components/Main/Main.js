@@ -31,6 +31,7 @@ function Main({
   articles,
   keyword,
   searchResultsError,
+  updateSavedArticlesStock,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -60,6 +61,7 @@ function Main({
           quantityOfCardsToDisplay={quantityOfCardsToDisplay}
           isSearchResultsOpen={isSearchResultsOpen}
           isLoggedIn={isLoggedIn}
+          updateSavedArticlesStock={updateSavedArticlesStock}
         >
           <h2 className="search-results__title">Search results</h2>
           <button

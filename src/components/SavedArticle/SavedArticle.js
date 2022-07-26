@@ -8,18 +8,15 @@ import "../Card/__date/card__date.css";
 import "../Card/__text/card__text.css";
 import "../Card/__title/card__title.css";
 import "../Card/__origin/card__origin.css";
-
 import "../Card/__like-flag/card__like-flag.css";
 import "../Card/__like-flag/_active/card__like-flag_active.css";
 import "../Card/__delete-trash/card__delete-trash.css";
 import "../Card/__category/card__category.css";
 import "../Card/__button-description/card__button-description.css";
 import "../Card/__button-description/_non-active/card__button-description_non-active.css";
-import MainApi from "../../utils/MainApi";
 
-function Card({ card }) {
+function Card({ card, onTrashClick }) {
   const [isShown, setIsShown] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
 
   return (
     <li className="card">
@@ -29,9 +26,9 @@ function Card({ card }) {
         <h3 className="card__title"> {card.title} </h3>
         <p className="card__text"> {card.text} </p>
         <p className="card__origin"> {card.source} </p>
-
         <button
           className="card__delete-trash"
+          onClick={() => onTrashClick(card)}
           onMouseEnter={() => setIsShown(true)}
           onMouseLeave={() => setIsShown(false)}
         ></button>

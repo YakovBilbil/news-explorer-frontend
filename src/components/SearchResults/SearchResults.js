@@ -17,6 +17,7 @@ function SearchResults({
   keyword,
   isSearchResultsOpen,
   isLoggedIn,
+  updateSavedArticlesStock,
 }) {
   return (
     <div
@@ -37,6 +38,7 @@ function SearchResults({
             card={card}
             isLoggedIn={isLoggedIn}
             keyword={keyword}
+            updateSavedArticlesStock={updateSavedArticlesStock}
 
             /*
             onCardClick={onCardClick}

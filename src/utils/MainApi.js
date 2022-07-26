@@ -52,6 +52,18 @@ class Api {
 
     return this._checkResponse(response);
   }
+
+  async deleteSavedArticle(cardId) {
+    const response = await fetch(`${this._baseUrl}/articles/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+    });
+
+    return this._checkResponse(response);
+  }
 }
 
 export default new Api({

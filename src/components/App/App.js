@@ -17,6 +17,7 @@ import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
 import { useFormWithValidation } from "../FormValidation/FormValidation.js";
 import * as auth from "../../utils/Auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
+import VerifyDeletePopup from "../VerifyDeletePopup/VerifyDeletePopup.js";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -260,11 +261,48 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     }
   };
 
+  function updateSavedArticlesStock(newSavedArticle) {
+    setSavedArticles([newSavedArticle, ...savedArticles]);
+  }
+
+  const [cardForDelete, setCardForDelete] = useState({});
+  const [isVerifyDeletePopupOpen, setIsVerifyDeletePopupOpen] = useState(false);
+
+  function handleTrashClick(cardForDelete) {
+    setIsVerifyDeletePopupOpen(true);
+    setCardForDelete(cardForDelete);
+  }
+
+  async function handleCardDelete(cardForDelete) {
+    try {
+      await MainApi.deleteSavedArticle(cardForDelete._id);
+      setSavedArticles((savedArticles) =>
+        savedArticles.filter((c) => c._id !== cardForDelete._id)
+      );
+      closeAllPopups();
+    } catch (error) {
+      console.log("CAUGHT ERROR", error);
+    }
+  }
+
+  /*
+  async function handleCardDelete(cardForDelete) {
+    try {
+      await api.deleteCard(cardForDelete._id);
+      setCards((cards) => cards.filter((c) => c._id !== cardForDelete._id));
+      closeAllPopups();
+    } catch (error) {
+      console.log("CAUGHT ERROR", error);
+    }
+  }
+  */
+
   function closeAllPopups() {
     setIsPopupMenuForPhoneOpen(false);
     setIsPopupRegisterSuccessOpen(false);
     setIsPopupRegisterFormOpen(false);
     setIsPopupLoginFormOpen(false);
+    setIsVerifyDeletePopupOpen(false);
   }
 
   return (
@@ -293,6 +331,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       articles={articles}
                       keyword={keyword}
                       searchResultsError={searchResultsError}
+                      updateSavedArticlesStock={updateSavedArticlesStock}
                     />
                     <Footer />
                   </>
@@ -316,8 +355,13 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                         <SavedNewsTitleBlock />
                         <ul className="search-results__articles-list">
                           {savedArticles.map((card) => (
-                            <SavedArticle card={card} />
+                            <SavedArticle
+                              key={card._id}
+                              card={card}
+                              onTrashClick={handleTrashClick}
+                            />
                           ))}
+                          {}
                         </ul>
                         <Footer />
                       </>
@@ -398,6 +442,13 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
               isOpen={isPopupRegisterSuccessOpen}
               onClose={closeAllPopups}
               onPopupWithFormClick={() => setIsPopupLoginFormOpen(true)}
+            />
+
+            <VerifyDeletePopup
+              cardForDelete={cardForDelete}
+              isOpen={isVerifyDeletePopupOpen}
+              onClose={closeAllPopups}
+              onConfirmDeleteClick={handleCardDelete}
             />
           </div>
         </div>

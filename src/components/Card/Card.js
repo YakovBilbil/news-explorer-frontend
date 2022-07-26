@@ -17,7 +17,7 @@ import "./__button-description/card__button-description.css";
 import "./__button-description/_non-active/card__button-description_non-active.css";
 import MainApi from "../../utils/MainApi";
 
-function Card({ card, isLoggedIn, keyword }) {
+function Card({ card, isLoggedIn, keyword, updateSavedArticlesStock }) {
   const [isShown, setIsShown] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -43,19 +43,24 @@ function Card({ card, isLoggedIn, keyword }) {
         */}
         <button
           className="card__like-flag"
-          onClick={(e) => {
+          onClick={async (e) => {
             if (isLoggedIn && !isLiked) {
-              MainApi.saveArticle({
-                keyword: keyword,
-                title: card.title,
-                text: card.description,
-                date: card.publishedAt,
-                source: card.source.name,
-                link: card.url,
-                image: card.urlToImage,
-              });
-              setIsLiked(true);
-              e.target.classList.toggle("card__like-flag_active");
+              try {
+                const newSavedArticle = await MainApi.saveArticle({
+                  keyword: keyword,
+                  title: card.title,
+                  text: card.description,
+                  date: card.publishedAt,
+                  source: card.source.name,
+                  link: card.url,
+                  image: card.urlToImage,
+                });
+                updateSavedArticlesStock(newSavedArticle);
+                setIsLiked(true);
+                e.target.classList.toggle("card__like-flag_active");
+              } catch (error) {
+                console.log("CAUGHT ERROR", error);
+              }
             }
           }}
           onMouseEnter={() => setIsShown(true)}
