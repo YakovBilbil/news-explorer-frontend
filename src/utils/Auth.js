@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.newsexploreryakov.students.nomoreparties.sbs";
+const BASE_URL = "https://api.newsexploreryakov.students.nomoredomainssbs.ru";
 
 export const register = async (email, password, name) => {
   const response = await fetch(`${BASE_URL}/signup`, {

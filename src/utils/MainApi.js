@@ -67,6 +67,6 @@ class Api {
 }
 
 export default new Api({
-  baseUrl: "https://api.newsexploreryakov.students.nomoreparties.sbs",
+  baseUrl: "https://api.newsexploreryakov.students.nomoredomainssbs.ru",
   token: `Bearer ${localStorage.getItem("jwt")}`,
 });
