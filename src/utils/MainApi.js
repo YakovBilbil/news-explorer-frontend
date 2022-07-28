@@ -1,7 +1,6 @@
 class Api {
-  constructor({ baseUrl, token }) {
+  constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
-    this._token = token;
   }
 
   _checkResponse(response) {
@@ -17,7 +16,10 @@ class Api {
   async getUserInfo() {
     const response = await fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: { authorization: this._token },
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+      },
     });
 
     return this._checkResponse(response);
@@ -27,8 +29,9 @@ class Api {
     const response = await fetch(`${this._baseUrl}/articles/`, {
       method: "POST",
       headers: {
-        authorization: this._token,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
       body: JSON.stringify({
         keyword: keyword,
@@ -47,7 +50,10 @@ class Api {
   async getSavedArticles() {
     const response = await fetch(`${this._baseUrl}/articles`, {
       method: "GET",
-      headers: { authorization: this._token },
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+      },
     });
 
     return this._checkResponse(response);
@@ -57,8 +63,9 @@ class Api {
     const response = await fetch(`${this._baseUrl}/articles/${cardId}`, {
       method: "DELETE",
       headers: {
-        authorization: this._token,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
     });
 
@@ -68,5 +75,4 @@ class Api {
 
 export default new Api({
   baseUrl: "https://api.newsexploreryakov.students.nomoredomainssbs.ru",
-  token: `Bearer ${localStorage.getItem("jwt")}`,
 });

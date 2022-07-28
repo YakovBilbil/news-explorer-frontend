@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import NewsApi from "../../utils/NewsApi.js";
 import MainApi from "../../utils/MainApi.js";
@@ -20,6 +21,8 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import VerifyDeletePopup from "../VerifyDeletePopup/VerifyDeletePopup.js";
 
 function App() {
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
@@ -61,6 +64,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
+    if (!jwt) return;
     (async function () {
       try {
         const userInfo = await MainApi.getUserInfo();
@@ -69,11 +73,12 @@ function App() {
         console.log("CAUGHT ERROR", error);
       }
     })();
-  }, []);
+  }, [jwt]);
 
   console.log(currentUser);
   console.log(`Is there JWT? ${jwt ? "Yes" : "No"}`);
   console.log("isLoggedIn: ", isLoggedIn);
+  console.log(headerState);
 
   const [articles, setArticles] = useState([]);
 
@@ -85,19 +90,6 @@ function App() {
 
   const { values, errors, isValid, handleChange, resetForm } =
     useFormWithValidation();
-
-  /*
-  useEffect(() => {
-    (async function () {
-      try {
-        const userInfo = await api.getUserInfo();
-        setCurrentUser(userInfo);
-      } catch (error) {
-        console.log("CAUGHT ERROR", error);
-      }
-    })();
-  }, []);
-  */
 
   /*
   useEffect(() => {
@@ -247,20 +239,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     }
   };
 
-  const handleAuthorizeSubmit = async () => {
-    try {
-      const res = await auth.authorize(values.email, values.password);
-      if (res) {
-        const userInfo = await MainApi.getUserInfo();
-        setCurrentUser(userInfo);
-        setIsLoggedIn(true);
-        setIsPopupLoginFormOpen(false);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   function updateSavedArticles(newSavedArticle) {
     setSavedArticles([newSavedArticle, ...savedArticles]);
   }
@@ -305,6 +283,33 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     setIsVerifyDeletePopupOpen(false);
   }
 
+  const handleAuthorizeSubmit = async () => {
+    try {
+      const res = await auth.authorize(values.email, values.password);
+      if (res) {
+        const userInfo = await MainApi.getUserInfo(res.token);
+        setIsLoggedIn(true);
+        setJwt(localStorage.getItem("jwt"));
+        setCurrentUser(userInfo);
+        setSavedArticles(await MainApi.getSavedArticles());
+        setHeaderState("LoggedIn");
+        setIsPopupLoginFormOpen(false);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  function signOut() {
+    setIsLoggedIn(false);
+    setHeaderState("NotLoggedIn");
+    navigate("/");
+    localStorage.removeItem("jwt");
+    setJwt(false);
+
+    setCurrentUser({});
+  }
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
@@ -316,6 +321,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                 element={
                   <>
                     <Main
+                      currentUserName={currentUser.name}
                       headerState={headerState}
                       isLoggedIn={isLoggedIn}
                       changeHeaderState={setHeaderState}
@@ -333,6 +339,7 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                       searchResultsError={searchResultsError}
                       updateSavedArticles={updateSavedArticles}
                       savedArticles={savedArticles}
+                      signOut={signOut}
                     />
                     <Footer />
                   </>
@@ -346,12 +353,14 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                     element={
                       <>
                         <Header
+                          currentUserName={currentUser.name}
                           headerState={headerState}
                           changeHeaderState={setHeaderState}
                           onPopupWithFormClick={handlePopupWithFormClick}
                           onPopupMenuForPhoneClick={
                             handlePopupMenuForPhoneClick
                           }
+                          signOut={signOut}
                         />
                         <SavedNewsTitleBlock />
                         <ul className="search-results__articles-list">

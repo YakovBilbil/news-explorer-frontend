@@ -1,0 +1,14 @@
+.header__sign-out-button {
+    -webkit-transition: opacity 0.2s linear 0.2s;
+    -o-transition: opacity 0.2s linear 0.2s;
+    transition: opacity 0.2s linear 0.2s;
+    background: none;
+    border: none;
+    margin: 0px 0px 0px 19px;
+    padding: 0px;
+}
+
+.header__sign-out-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}

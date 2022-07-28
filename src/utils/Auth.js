@@ -5,6 +5,7 @@ export const register = async (email, password, name) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
     },
     body: JSON.stringify({ email, password, name }),
   });
@@ -23,6 +24,7 @@ export const authorize = async (email, password) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
     },
     body: JSON.stringify({ email, password }),
   });
@@ -43,7 +45,7 @@ export const checkTokenAndGetUserEmail = async () => {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-      "Access-Control-Allow-Origin": "http://localhost:3000/",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
     },
   });
   if (response.ok) {

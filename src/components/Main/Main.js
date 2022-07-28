@@ -16,6 +16,7 @@ import Preloader from "../Preloader/Preloader.js";
 import NothingFound from "../NothingFound/NothingFound.js";
 
 function Main({
+  currentUserName,
   headerState,
   isLoggedIn,
   changeHeaderState,
@@ -33,6 +34,7 @@ function Main({
   searchResultsError,
   updateSavedArticles,
   savedArticles,
+  signOut,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -41,11 +43,13 @@ function Main({
     <>
       <div className="header-search-form-block">
         <Header
+          currentUserName={currentUserName}
           headerState={headerState}
           changeHeaderState={changeHeaderState}
           isLoggedIn={isLoggedIn}
           onPopupWithFormClick={onPopupWithFormClick}
           onPopupMenuForPhoneClick={onPopupMenuForPhoneClick}
+          signOut={signOut}
         />
 
         <SearchForm onUpdateSearchWord={onUpdateSearchWord} />

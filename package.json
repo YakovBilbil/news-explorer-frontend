@@ -26,7 +26,8 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
         "gitdeploy": "npm run build && gh-pages -d build",
-        "serverdeploy": "npm run build && scp -r -i ~/.ssh/id_rsavm3 ./build/* yakov_bilbil@34.70.44.188:/home/yakov_bilbil/news-explorer-frontend"
+        "serverdeploy": "npm run build && scp -r -i ~/.ssh/id_rsavm3 ./build/* yakov_bilbil@34.70.44.188:/home/yakov_bilbil/news-explorer-frontend",
+        "alldeploy": "npm run gitdeploy && npm run serverdeploy"
     },
     "eslintConfig": {
         "extends": [
