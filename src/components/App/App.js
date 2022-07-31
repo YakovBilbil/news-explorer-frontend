@@ -362,7 +362,10 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                           }
                           signOut={signOut}
                         />
-                        <SavedNewsTitleBlock />
+                        <SavedNewsTitleBlock
+                          currentUserName={currentUser.name}
+                          savedArticles={savedArticles}
+                        />
                         <ul className="search-results__articles-list">
                           {savedArticles.map((card) => (
                             <SavedArticle
@@ -446,6 +449,8 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
               isOpen={isPopupMenuForPhoneOpen}
               onClose={closeAllPopups}
               onPopupWithFormClick={handlePopupWithFormClick}
+              headerState={headerState}
+              changeHeaderState={setHeaderState}
             />
 
             <PopupRegisterSuccess

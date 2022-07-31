@@ -14,7 +14,13 @@ import { useNavigate } from "react-router-dom";
 
 import closeIcon from "../../images/close-icon.svg";
 
-function PopupMenuForPhone({ isOpen, onClose, onPopupWithFormClick }) {
+function PopupMenuForPhone({
+  isOpen,
+  onClose,
+  onPopupWithFormClick,
+  headerState,
+  changeHeaderState,
+}) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -63,6 +69,9 @@ function PopupMenuForPhone({ isOpen, onClose, onPopupWithFormClick }) {
         <button
           className="popup-menu-for-phone__home"
           onClick={() => {
+            if (headerState === "SavedArticles") {
+              changeHeaderState("LoggedIn");
+            }
             navigate("/");
             onClose();
           }}
