@@ -193,7 +193,7 @@ function App() {
         setCurrentUser(userInfo);
         setSavedArticles(await MainApi.getSavedArticles());
         setHeaderState("LoggedIn");
-        setIsPopupLoginFormOpen(false);
+        closeAllPopups();
       }
     } catch (err) {
       console.log(err);
@@ -315,11 +315,13 @@ function App() {
             />
 
             <PopupMenuForPhone
+              currentUserName={currentUser.name}
               isOpen={isPopupMenuForPhoneOpen}
               onClose={closeAllPopups}
               onPopupWithFormClick={handlePopupWithFormClick}
               headerState={headerState}
               changeHeaderState={setHeaderState}
+              signOut={signOut}
             />
 
             <PopupRegisterSuccess
