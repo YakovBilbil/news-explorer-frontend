@@ -9,8 +9,6 @@ import "../Card/__button-description/card__button-description.css";
 
 import Card from "../Card/Card.js";
 
-import NothingFound from "../NothingFound/NothingFound.js";
-
 function SearchResults({
   children = [],
   cardsToDisplay,
@@ -22,10 +20,6 @@ function SearchResults({
 }) {
   return (
     <div
-      /*className={`search-results ${
-        isSearchResultsOpen ? "" : "search-results_not-displayed "
-        }`}*/
-
       className={`search-results ${
         isSearchResultsOpen ? "" : "search-results_not-displayed "
       }`}
@@ -41,12 +35,6 @@ function SearchResults({
             keyword={keyword}
             updateSavedArticles={updateSavedArticles}
             savedArticles={savedArticles}
-
-            /*
-            onCardClick={onCardClick}
-            onCardLike={onCardLike}
-            onTrashClick={onTrashClick}
-            */
           />
         ))}
       </ul>

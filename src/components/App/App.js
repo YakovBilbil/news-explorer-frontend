@@ -10,7 +10,6 @@ import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import SavedNewsTitleBlock from "../SavedNewsTitleBlock/SavedNewsTitleBlock.js";
 import SavedArticle from "../SavedArticle/SavedArticle.js";
-import SearchResults from "../SearchResults/SearchResults.js";
 import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
 import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
@@ -32,14 +31,8 @@ function App() {
   const [headerState, setHeaderState] = useState(
     `${isLoggedIn ? "LoggedIn" : "NotLoggedIn"}`
   );
-  /*
-  function changeHeaderState(state) {
-    setHeaderState(state);
-  }
-  */
 
   const [savedArticles, setSavedArticles] = useState([]);
-  console.log(savedArticles);
 
   useEffect(() => {
     if (!jwt) return;
@@ -60,8 +53,6 @@ function App() {
     })();
   }, [jwt]);
 
-  console.log(savedArticles);
-
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
     if (!jwt) return;
@@ -75,11 +66,6 @@ function App() {
     })();
   }, [jwt]);
 
-  console.log(currentUser);
-  console.log(`Is there JWT? ${jwt ? "Yes" : "No"}`);
-  console.log("isLoggedIn: ", isLoggedIn);
-  console.log(headerState);
-
   const [articles, setArticles] = useState([]);
 
   const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(false);
@@ -90,76 +76,6 @@ function App() {
 
   const { values, errors, isValid, handleChange, resetForm } =
     useFormWithValidation();
-
-  /*
-  useEffect(() => {
-    (async function () {
-      try {
-        const newsData = await api.getInitialArticles();
-        setArticles(newsData.articles);
-      } catch (error) {
-        console.log("CAUGHT ERROR", error);
-      }
-    })();
-  }, []);
-  */
-
-  /*
-  const [values, setValues] = useState({});
-  const [errors, setErrors] = useState({});
-  const [isValid, setIsValid] = useState(false);
-
-  const handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-    setValues({ ...values, [name]: value });
-    setErrors({
-      ...errors,
-      [name]: `${
-        target.validity.valid
-          ? ""
-          : `${`Invalid ${name}${
-              target.validity.tooShort ? ". Too short" : ""
-            }`}`
-      }`,
-    });
-    setIsValid(target.closest("form").checkValidity());
-  };
-
-  const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsValid = false) => {
-      setValues(newValues);
-      setErrors(newErrors);
-      setIsValid(newIsValid);
-    },
-    [setValues, setErrors, setIsValid]
-  );
-  */
-
-  /*
-const handleShowMoreClick = (lengthOfCardsArray) => {
-    console.log(lengthOfCardsArray);
-    if (lengthOfCardsArray > quantityOfCardsToDisplay) {
-      if (quantityOfCardsToDisplay !== 99) {
-        setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 3);
-        console.log("quantityOfCardsToDisplay: ", quantityOfCardsToDisplay);
-        if (lengthOfCardsArray > quantityOfCardsToDisplay) {
-          console.log("There are more cards to display");
-        } else {
-          console.log("No more cards to display");
-        }
-      } else {
-        setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 1);
-        console.log("quantityOfCardsToDisplay: ", quantityOfCardsToDisplay);
-        console.log("No more cards to display");
-      }
-    } else {
-      console.log("quantityOfCardsToDisplay: ", quantityOfCardsToDisplay);
-      console.log("No more cards to display");
-    }
-  };
-  */
 
   const [keyword, setKeyword] = useState("");
 
@@ -186,8 +102,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
     })();
   };
 
-  console.log(keyword);
-
   let isShowMoreButtonDisabled = false;
   const cardsToDisplay = articles.map((object) => object);
   if (articles.length > quantityOfCardsToDisplay) {
@@ -203,8 +117,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
       setQuantityOfCardsToDisplay(quantityOfCardsToDisplay + 1);
     }
   };
-
-  //const [headerState, setHeaderState] = useState("NotLoggedIn");
 
   const [isPopupRegisterFormOpen, setIsPopupRegisterFormOpen] = useState(false);
   function handlePopupWithFormClick() {
@@ -262,18 +174,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
       console.log("CAUGHT ERROR", error);
     }
   }
-
-  /*
-  async function handleCardDelete(cardForDelete) {
-    try {
-      await api.deleteCard(cardForDelete._id);
-      setCards((cards) => cards.filter((c) => c._id !== cardForDelete._id));
-      closeAllPopups();
-    } catch (error) {
-      console.log("CAUGHT ERROR", error);
-    }
-  }
-  */
 
   function closeAllPopups() {
     setIsPopupMenuForPhoneOpen(false);
@@ -383,37 +283,6 @@ const handleShowMoreClick = (lengthOfCardsArray) => {
                   />
                 }
               />
-
-              {/*
-              <Route
-                path="/signin"
-                element={
-                  <>
-                    <Header
-                      headerState={headerState}
-                      changeHeaderState={changeHeaderState}
-                      onPopupWithFormClick={handlePopupWithFormClick}
-                      onPopupMenuForPhoneClick={handlePopupMenuForPhoneClick}
-                    />
-                    <Login
-                      isOpen={isPopupWithFormOpen}
-                      onClose={closeAllPopups}
-                      onLogin={"handleLoginSubmit"}
-                      handleChange={handleChange}
-                      values={values}
-                      errors={errors}
-                      isValid={isValid}
-                    />
-                    <SavedNewsTitleBlock />
-                    <SearchResults />
-                    <Footer />
-
-
-                  </>
-                }
-              />
-
-*/}
             </Routes>
 
             <Register

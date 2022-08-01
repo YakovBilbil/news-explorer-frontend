@@ -3,11 +3,6 @@ import "../SearchResults/__button/search-results__button.css";
 import "../SearchResults/__button/_disabled/search-results__button_disabled.css";
 import "../SearchResults/__title/search-results__title.css";
 
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-
-import CurrentUserContext from "../../contexts/CurrentUserContext.js";
-
 import Header from "../Header/Header.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import SearchResults from "../SearchResults/SearchResults.js";
@@ -36,9 +31,6 @@ function Main({
   savedArticles,
   signOut,
 }) {
-  const currentUser = useContext(CurrentUserContext);
-  const navigate = useNavigate();
-
   return (
     <>
       <div className="header-search-form-block">
@@ -46,7 +38,6 @@ function Main({
           currentUserName={currentUserName}
           headerState={headerState}
           changeHeaderState={changeHeaderState}
-          isLoggedIn={isLoggedIn}
           onPopupWithFormClick={onPopupWithFormClick}
           onPopupMenuForPhoneClick={onPopupMenuForPhoneClick}
           signOut={signOut}

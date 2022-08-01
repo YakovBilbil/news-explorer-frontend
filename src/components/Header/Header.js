@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 import "./header.css";
 import "./_saved-articles/header_saved-articles.css";
@@ -32,14 +31,13 @@ import menuIconBlack from "../../images/menu-icon-black.svg";
 function Header({
   currentUserName,
   headerState,
-  isLoggedIn,
   changeHeaderState,
   onPopupWithFormClick,
   onPopupMenuForPhoneClick,
   signOut,
 }) {
   const navigate = useNavigate();
-  // const [isHomePageLoggedInOpen, setIsHomePageLoggedInOpen] = useState(false);
+
   return (
     <header
       className={`header ${
@@ -121,7 +119,6 @@ function Header({
           display: `${headerState === "NotLoggedIn" ? "none" : ""}`,
         }}
       >
-        {/*                               */}
         <div
           className={`header__user-name-button ${
             headerState === "SavedArticles"
@@ -148,8 +145,6 @@ function Header({
             />
           </button>
         </div>
-
-        {/*                               */}
       </div>
       <button className="header__menu" onClick={onPopupMenuForPhoneClick}>
         <img
@@ -169,24 +164,3 @@ function Header({
 }
 
 export default Header;
-
-/*  <button
-          className={`header__user-name-button ${
-            headerState === "SavedArticles"
-              ? " header__user-name-button_saved-articles"
-              : ""
-          }`}
-        >
-          <p className="header__user-name-button-text">{`${currentUserName}`}</p>
-          <img
-            className="header__sign-out-icon"
-            src={`${
-              headerState === "SavedArticles"
-                ? signOutSavedArticlesIcon
-                : signOutIconDefault
-            }`}
-            alt="Sign out Icon"
-          />
-        </button>
-
-        */

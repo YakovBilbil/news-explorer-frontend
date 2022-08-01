@@ -16,18 +16,6 @@ class Api {
       );
     }
   }
-  /*
-  async getInitialArticles(q) {
-    const response = await fetch(
-      `${this._baseUrl}?q=${q}&apiKey=${this._apiKey}&from=${this._from}&to=${this._to}&pageSize=${this._pageSize}`,
-      {
-        method: "GET",
-      }
-    );
-
-    return this._checkResponse(response);
-  }
-  */
 
   async getArticlesBySearchWord(q) {
     const response = await fetch(
