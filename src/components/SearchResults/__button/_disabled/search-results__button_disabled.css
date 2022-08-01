@@ -1,0 +1,9 @@
+.search-results__button_disabled {
+    color: #B6BCBF;
+}
+
+.search-results__button_disabled:hover {
+    background-color: #ffffff;
+    opacity: 1.0;
+    cursor: default;
+}

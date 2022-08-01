@@ -1,14 +1,14 @@
-import "./popup-with-form.css";
-import "./__title/popup-with-form__title.css";
-import "./__label/popup-with-form__label.css";
-import "./__input/popup-with-form__input.css";
-import "./__error-message/popup-with-form__error-message.css";
-import "./__error-message/_bad-email/popup-with-form__error-message_bad-email.css";
-import "./__send-button/popup-with-form__send-button.css";
-import "./__send-button/_disabled/popup-with-form__send-button_disabled.css";
-import "./__or-block/popup-with-form__or-block.css";
-import "./__or/popup-with-form__or.css";
-import "./__or-button/popup-with-form__or-button.css";
+import "../PopupWithForm/popup-with-form.css";
+import "../PopupWithForm/__title/popup-with-form__title.css";
+import "../PopupWithForm/__label/popup-with-form__label.css";
+import "../PopupWithForm/__input/popup-with-form__input.css";
+import "../PopupWithForm/__error-message/popup-with-form__error-message.css";
+import "../PopupWithForm/__error-message/_bad-email/popup-with-form__error-message_bad-email.css";
+import "../PopupWithForm/__send-button/popup-with-form__send-button.css";
+import "../PopupWithForm/__send-button/_disabled/popup-with-form__send-button_disabled.css";
+import "../PopupWithForm/__or-block/popup-with-form__or-block.css";
+import "../PopupWithForm/__or/popup-with-form__or.css";
+import "../PopupWithForm/__or-button/popup-with-form__or-button.css";
 
 import Popup from "../Popup/Popup.js";
 
@@ -20,11 +20,13 @@ function PopupWithForm({
   values,
   errors,
   isValid,
+  isEmailAvailable,
+  moveToSignInForm,
 }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
       <form className="popup-with-form">
-        <h2 className="popup-with-form__title">Sign in</h2>
+        <h2 className="popup-with-form__title">Sign up</h2>
 
         <label className="popup-with-form__label">Email</label>
         <input
@@ -78,7 +80,12 @@ function PopupWithForm({
           {`${errors.username ? errors.username : ""}`}
         </div>
 
-        <div className="popup-with-form__error-message popup-with-form__error-message_bad-email">
+        <div
+          className="popup-with-form__error-message popup-with-form__error-message_bad-email"
+          style={{
+            display: `${!isEmailAvailable ? "" : "none"}`,
+          }}
+        >
           This email is not available
         </div>
         <button
@@ -92,12 +99,17 @@ function PopupWithForm({
           }}
           disabled={!isValid}
         >
-          Sign in
+          Sign up
         </button>
 
         <div className="popup-with-form__or-block">
           <p className="popup-with-form__or">or</p>
-          <button className="popup-with-form__or-button">Sign up</button>
+          <button
+            className="popup-with-form__or-button"
+            onClick={moveToSignInForm}
+          >
+            Sign in
+          </button>
         </div>
       </form>
     </Popup>

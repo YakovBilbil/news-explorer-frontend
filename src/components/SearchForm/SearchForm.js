@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import "./search-form.css";
 import "./__title/search-form__title.css";
 import "./__description/search-form__description.css";
@@ -5,7 +7,18 @@ import "./__search-field/search-form__search-field.css";
 import "./__button/search-form__button.css";
 import "./__input/search-form__input.css";
 
-function SearchForm() {
+function SearchForm({ onUpdateSearchWord }) {
+  const [searchWord, setSearchWord] = useState("");
+
+  function handleSearchWordChange(e) {
+    setSearchWord(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onUpdateSearchWord(searchWord);
+  }
+
   return (
     <div className="search-form">
       <h2 className="search-form__title">What's going on in the world?</h2>
@@ -14,7 +27,7 @@ function SearchForm() {
         account.
       </p>
 
-      <form className="search-form__search-field">
+      <form className="search-form__search-field" onSubmit={handleSubmit}>
         <input
           type="search"
           name="search-article"
@@ -22,6 +35,8 @@ function SearchForm() {
           placeholder="Search Articles"
           required
           className="search-form__input"
+          value={searchWord || ""}
+          onChange={handleSearchWordChange}
         />
         <button
           className="search-form__button"
