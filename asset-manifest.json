@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.01fdfa32.css",
-    "main.js": "/static/js/main.b23f9d52.js",
+    "main.js": "/static/js/main.7496749d.js",
     "static/js/787.1c78f32b.chunk.js": "/static/js/787.1c78f32b.chunk.js",
     "static/media/georgia-de-lotz--UsJoNxLaNo-unsplash.png": "/static/media/georgia-de-lotz--UsJoNxLaNo-unsplash.eac7a5b1bf47224f26ba.png",
     "static/media/avatar.png": "/static/media/avatar.d544c64d196dd6faa5b4.png",
@@ -38,11 +38,11 @@
     "static/media/menu-icon-black.svg": "/static/media/menu-icon-black.ede60f895bb9e90cdee9e5a24e7ecf90.svg",
     "static/media/menu-icon-white.svg": "/static/media/menu-icon-white.0a6ddfdbe436047db1e6efac25300f09.svg",
     "main.01fdfa32.css.map": "/static/css/main.01fdfa32.css.map",
-    "main.b23f9d52.js.map": "/static/js/main.b23f9d52.js.map",
+    "main.7496749d.js.map": "/static/js/main.7496749d.js.map",
     "787.1c78f32b.chunk.js.map": "/static/js/787.1c78f32b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.01fdfa32.css",
-    "static/js/main.b23f9d52.js"
+    "static/js/main.7496749d.js"
   ]
 }
