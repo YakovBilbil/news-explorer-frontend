@@ -20,7 +20,11 @@ function Card({ card, onTrashClick }) {
 
   return (
     <li className="card">
-      <img className="card__picture" src={`${card.image}`} alt={""} />
+      <img
+        className="card__picture"
+        src={`${card.image}`}
+        alt={`Broken link: ${card.image}`}
+      />
       <div className="card__written-content-block">
         <p className="card__date"> {moment(card.date).format("ll")} </p>
         <h3 className="card__title"> {card.title} </h3>

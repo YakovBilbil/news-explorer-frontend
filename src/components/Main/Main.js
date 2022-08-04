@@ -25,11 +25,10 @@ function Main({
   isShowMoreButtonDisabled,
   isLoading,
   articles,
-  keyword,
   searchResultsError,
-  updateSavedArticles,
   savedArticles,
   signOut,
+  handleFlagClick,
 }) {
   return (
     <>
@@ -53,12 +52,11 @@ function Main({
       ) : (
         <SearchResults
           cardsToDisplay={cardsToDisplay}
-          keyword={keyword}
           quantityOfCardsToDisplay={quantityOfCardsToDisplay}
           isSearchResultsOpen={isSearchResultsOpen}
           isLoggedIn={isLoggedIn}
-          updateSavedArticles={updateSavedArticles}
           savedArticles={savedArticles}
+          handleFlagClick={handleFlagClick}
         >
           <h2 className="search-results__title">Search results</h2>
           <button

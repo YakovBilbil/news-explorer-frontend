@@ -20,10 +20,18 @@ function PopupWithForm({
   errors,
   isValid,
   moveToSignUpForm,
+  isAuthLoading,
+  isLogInSucceeded,
 }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
-      <form className="popup-with-form">
+      <form
+        className="popup-with-form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          onLogin();
+        }}
+      >
         <h2 className="popup-with-form__title">Sign in</h2>
 
         <label className="popup-with-form__label">Email</label>
@@ -60,27 +68,37 @@ function PopupWithForm({
           {`${errors.password ? errors.password : ""}`}
         </div>
 
+        <div
+          className="popup-with-form__error-message popup-with-form__error-message_bad-email"
+          style={{
+            display: `${!isLogInSucceeded ? "" : "none"}`,
+          }}
+        >
+          Email, password or both are wrong
+        </div>
+
         <button
           type="submit"
           className={`popup-with-form__send-button ${
-            !isValid ? "popup-with-form__send-button_disabled" : ""
+            !isValid || isAuthLoading
+              ? "popup-with-form__send-button_disabled"
+              : ""
           }`}
-          onClick={(event) => {
-            event.preventDefault();
-            onLogin();
-          }}
-          disabled={!isValid}
+          disabled={!isValid || isAuthLoading}
         >
-          Sign in
+          {`${isAuthLoading ? "Loading" : "Sign in"}`}
         </button>
 
         <div className="popup-with-form__or-block">
-          <p className="popup-with-form__or">or</p>
+          <p className="popup-with-form__or">{`${
+            isAuthLoading ? "" : "or"
+          }`}</p>
           <button
             className="popup-with-form__or-button"
             onClick={moveToSignUpForm}
+            disabled={isAuthLoading}
           >
-            Sign up
+            {`${isAuthLoading ? "" : "Sign up"}`}
           </button>
         </div>
       </form>

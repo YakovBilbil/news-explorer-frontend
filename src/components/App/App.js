@@ -14,13 +14,17 @@ import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
 import PopupRegisterSuccess from "../PopupRegisterSuccess/PopupRegisterSuccess.js";
 import PopupMenuForPhone from "../PopupMenuForPhone/PopupMenuForPhone.js";
-import { useFormWithValidation } from "../FormValidation/FormValidation.js";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation/useFormWithValidation.js";
 import * as auth from "../../utils/Auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import VerifyDeletePopup from "../VerifyDeletePopup/VerifyDeletePopup.js";
 
 function App() {
   const navigate = useNavigate();
+
+  const [isLogInSucceeded, setIsLogInSucceeded] = useState(true);
+
+  const [isAuthLoading, setIsAuthLoading] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -135,6 +139,7 @@ function App() {
     useState(false);
   const [isPopupLoginFormOpen, setIsPopupLoginFormOpen] = useState(false);
   const handleRegisterSubmit = async () => {
+    setIsAuthLoading(true);
     try {
       const res = await auth.register(
         values.email,
@@ -145,9 +150,11 @@ function App() {
         setIsPopupRegisterFormOpen(false);
         setIsPopupRegisterSuccessOpen(true);
       }
+      setIsAuthLoading(false);
     } catch (err) {
       setIsEmailAvailable(false);
       console.log(err);
+      setIsAuthLoading(false);
     }
   };
 
@@ -185,6 +192,7 @@ function App() {
 
   const handleAuthorizeSubmit = async () => {
     try {
+      setIsAuthLoading(true);
       const res = await auth.authorize(values.email, values.password);
       if (res) {
         const userInfo = await MainApi.getUserInfo(res.token);
@@ -194,9 +202,12 @@ function App() {
         setSavedArticles(await MainApi.getSavedArticles());
         setHeaderState("LoggedIn");
         closeAllPopups();
+        setIsAuthLoading(false);
       }
     } catch (err) {
       console.log(err);
+      setIsAuthLoading(false);
+      setIsLogInSucceeded(false);
     }
   };
 
@@ -209,6 +220,30 @@ function App() {
 
     setCurrentUser({});
   }
+
+  const handleFlagClick = async (card, isAlreadySaved) => {
+    if (isLoggedIn && !isAlreadySaved) {
+      try {
+        const newSavedArticle = await MainApi.saveArticle({
+          keyword: keyword,
+          title: card.title,
+          text: card.description,
+          date: card.publishedAt,
+          source: card.source.name,
+          link: card.url,
+          image: card.urlToImage,
+        });
+        updateSavedArticles(newSavedArticle);
+      } catch (error) {
+        console.log("CAUGHT ERROR", error);
+      }
+    } else {
+      const targetCardForDelete = savedArticles.find(
+        ({ title }) => title === card.title
+      );
+      handleTrashClick(targetCardForDelete);
+    }
+  };
 
   return (
     <>
@@ -235,11 +270,10 @@ function App() {
                       isShowMoreButtonDisabled={isShowMoreButtonDisabled}
                       isLoading={isLoading}
                       articles={articles}
-                      keyword={keyword}
                       searchResultsError={searchResultsError}
-                      updateSavedArticles={updateSavedArticles}
                       savedArticles={savedArticles}
                       signOut={signOut}
+                      handleFlagClick={handleFlagClick}
                     />
                     <Footer />
                   </>
@@ -295,9 +329,11 @@ function App() {
               isValid={isValid}
               isEmailAvailable={isEmailAvailable}
               moveToSignInForm={() => {
+                setIsLogInSucceeded(true);
                 setIsPopupRegisterFormOpen(false);
                 setIsPopupLoginFormOpen(true);
               }}
+              isAuthLoading={isAuthLoading}
             />
 
             <Login
@@ -312,6 +348,8 @@ function App() {
                 setIsPopupLoginFormOpen(false);
                 setIsPopupRegisterFormOpen(true);
               }}
+              isAuthLoading={isAuthLoading}
+              isLogInSucceeded={isLogInSucceeded}
             />
 
             <PopupMenuForPhone

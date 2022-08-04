@@ -22,10 +22,17 @@ function PopupWithForm({
   isValid,
   isEmailAvailable,
   moveToSignInForm,
+  isAuthLoading,
 }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
-      <form className="popup-with-form">
+      <form
+        className="popup-with-form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          onRegister();
+        }}
+      >
         <h2 className="popup-with-form__title">Sign up</h2>
 
         <label className="popup-with-form__label">Email</label>
@@ -91,24 +98,25 @@ function PopupWithForm({
         <button
           type="submit"
           className={`popup-with-form__send-button ${
-            !isValid ? "popup-with-form__send-button_disabled" : ""
+            !isValid || isAuthLoading
+              ? "popup-with-form__send-button_disabled"
+              : ""
           }`}
-          onClick={(event) => {
-            event.preventDefault();
-            onRegister();
-          }}
-          disabled={!isValid}
+          disabled={!isValid || isAuthLoading}
         >
-          Sign up
+          {`${isAuthLoading ? "Loading" : "Sign up"}`}
         </button>
 
         <div className="popup-with-form__or-block">
-          <p className="popup-with-form__or">or</p>
+          <p className="popup-with-form__or">{`${
+            isAuthLoading ? "" : "or"
+          }`}</p>
           <button
             className="popup-with-form__or-button"
             onClick={moveToSignInForm}
+            disabled={isAuthLoading}
           >
-            Sign in
+            {`${isAuthLoading ? "" : "Sign in"}`}
           </button>
         </div>
       </form>

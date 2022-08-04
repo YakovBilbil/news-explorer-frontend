@@ -15,22 +15,18 @@ import "./__delete-trash/card__delete-trash.css";
 import "./__category/card__category.css";
 import "./__button-description/card__button-description.css";
 import "./__button-description/_non-active/card__button-description_non-active.css";
-import MainApi from "../../utils/MainApi";
 
-function Card({
-  card,
-  isLoggedIn,
-  keyword,
-  updateSavedArticles,
-  savedArticles,
-}) {
+function Card({ card, isLoggedIn, savedArticles, handleFlagClick }) {
   const [isShown, setIsShown] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
   const isAlreadySaved = savedArticles.some((c) => c.title === card.title);
 
   return (
     <li className="card">
-      <img className="card__picture" src={`${card.urlToImage}`} alt={""} />
+      <img
+        className="card__picture"
+        src={`${card.urlToImage}`}
+        alt={`Broken link: ${card.urlToImage}`}
+      />
       <div className="card__written-content-block">
         <p className="card__date"> {moment(card.publishedAt).format("ll")} </p>
         <h3 className="card__title"> {card.title} </h3>
@@ -38,27 +34,9 @@ function Card({
         <p className="card__origin"> {card.source.name} </p>
         <button
           className={`card__like-flag ${
-            isLiked || isAlreadySaved ? "card__like-flag_active" : ""
+            isAlreadySaved ? "card__like-flag_active" : ""
           }`}
-          onClick={async (e) => {
-            if (isLoggedIn && !isLiked && !isAlreadySaved) {
-              try {
-                const newSavedArticle = await MainApi.saveArticle({
-                  keyword: keyword,
-                  title: card.title,
-                  text: card.description,
-                  date: card.publishedAt,
-                  source: card.source.name,
-                  link: card.url,
-                  image: card.urlToImage,
-                });
-                updateSavedArticles(newSavedArticle);
-                setIsLiked(true);
-              } catch (error) {
-                console.log("CAUGHT ERROR", error);
-              }
-            }
-          }}
+          onClick={() => handleFlagClick(card, isAlreadySaved)}
           onMouseEnter={() => setIsShown(true)}
           onMouseLeave={() => setIsShown(false)}
         ></button>{" "}

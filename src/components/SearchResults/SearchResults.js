@@ -12,11 +12,10 @@ import Card from "../Card/Card.js";
 function SearchResults({
   children = [],
   cardsToDisplay,
-  keyword,
   isSearchResultsOpen,
   isLoggedIn,
-  updateSavedArticles,
   savedArticles,
+  handleFlagClick,
 }) {
   return (
     <div
@@ -32,9 +31,8 @@ function SearchResults({
             key={card.title}
             card={card}
             isLoggedIn={isLoggedIn}
-            keyword={keyword}
-            updateSavedArticles={updateSavedArticles}
             savedArticles={savedArticles}
+            handleFlagClick={handleFlagClick}
           />
         ))}
       </ul>

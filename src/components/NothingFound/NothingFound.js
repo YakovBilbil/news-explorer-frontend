@@ -13,7 +13,7 @@ function NothingFound({ searchResultsError }) {
         <img
           className="nothing-found__picture"
           src={NothingFoundIcon}
-          alt={"Sad Emoji"}
+          alt="Sad Emoji"
         />
         <h2 className="nothing-found__title">{`${
           searchResultsError === "" ? "Nothing found" : searchResultsError
