@@ -18,14 +18,14 @@ import "./__button-description/_non-active/card__button-description_non-active.c
 
 function Card({ card, isLoggedIn, savedArticles, handleFlagClick }) {
   const [isShown, setIsShown] = useState(false);
-  const isAlreadySaved = savedArticles.some((c) => c.title === card.title);
+  const isAlreadySaved = savedArticles.some((c) => c.text === card.description);
 
   return (
     <li className="card">
       <img
         className="card__picture"
         src={`${card.urlToImage}`}
-        alt={`Broken link: ${card.urlToImage}`}
+        alt={`Broken link <${card.urlToImage}>`}
       />
       <div className="card__written-content-block">
         <p className="card__date"> {moment(card.publishedAt).format("ll")} </p>

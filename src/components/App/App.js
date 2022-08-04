@@ -222,26 +222,28 @@ function App() {
   }
 
   const handleFlagClick = async (card, isAlreadySaved) => {
-    if (isLoggedIn && !isAlreadySaved) {
-      try {
-        const newSavedArticle = await MainApi.saveArticle({
-          keyword: keyword,
-          title: card.title,
-          text: card.description,
-          date: card.publishedAt,
-          source: card.source.name,
-          link: card.url,
-          image: card.urlToImage,
-        });
-        updateSavedArticles(newSavedArticle);
-      } catch (error) {
-        console.log("CAUGHT ERROR", error);
+    if (isLoggedIn) {
+      if (!isAlreadySaved) {
+        try {
+          const newSavedArticle = await MainApi.saveArticle({
+            keyword: keyword,
+            title: card.title,
+            text: card.description,
+            date: card.publishedAt,
+            source: card.source.name,
+            link: card.url,
+            image: card.urlToImage,
+          });
+          updateSavedArticles(newSavedArticle);
+        } catch (error) {
+          console.log("CAUGHT ERROR", error);
+        }
+      } else {
+        const targetCardForDelete = savedArticles.find(
+          ({ text }) => text === card.description
+        );
+        handleTrashClick(targetCardForDelete);
       }
-    } else {
-      const targetCardForDelete = savedArticles.find(
-        ({ title }) => title === card.title
-      );
-      handleTrashClick(targetCardForDelete);
     }
   };
 

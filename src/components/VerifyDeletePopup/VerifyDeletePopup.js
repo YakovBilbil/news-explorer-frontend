@@ -19,7 +19,7 @@ function VerifyDeletePopup({
           Are you sure you want to delete this article?
         </h2>
         <button
-          type="submit"
+          type="button"
           className="popup-with-form__send-button popup-with-form__send-button_verify-delete"
           onClick={(event) => {
             event.preventDefault();

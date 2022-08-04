@@ -28,7 +28,7 @@ function SearchResults({
       <ul className="search-results__articles-list">
         {cardsToDisplay.map((card) => (
           <Card
-            key={card.title}
+            key={card.description}
             card={card}
             isLoggedIn={isLoggedIn}
             savedArticles={savedArticles}

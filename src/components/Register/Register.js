@@ -39,7 +39,7 @@ function PopupWithForm({
         <input
           type="email"
           name="email"
-          id="email-input"
+          id="register-email-input"
           placeholder="Enter email"
           className="popup-with-form__input"
           noValidate
@@ -55,7 +55,7 @@ function PopupWithForm({
         <input
           type="password"
           name="password"
-          id="password-input"
+          id="register-password-input"
           placeholder="Enter password"
           className="popup-with-form__input"
           noValidate
