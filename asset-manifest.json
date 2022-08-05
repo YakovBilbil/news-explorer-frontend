@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.01fdfa32.css",
-    "main.js": "/static/js/main.7496749d.js",
+    "main.css": "/static/css/main.1a611fdc.css",
+    "main.js": "/static/js/main.1b8d6a7e.js",
     "static/js/787.1c78f32b.chunk.js": "/static/js/787.1c78f32b.chunk.js",
     "static/media/georgia-de-lotz--UsJoNxLaNo-unsplash.png": "/static/media/georgia-de-lotz--UsJoNxLaNo-unsplash.eac7a5b1bf47224f26ba.png",
-    "static/media/avatar.png": "/static/media/avatar.d544c64d196dd6faa5b4.png",
+    "static/media/avatar.png": "/static/media/avatar.67416ea1e9160b42a247.png",
     "static/media/georgia-de-lotz--UsJoNxLaNo-unsplash-small.png": "/static/media/georgia-de-lotz--UsJoNxLaNo-unsplash-small.00521f86cdaf395df24a.png",
     "static/media/roboto-slab-400-regular.woff": "/static/media/roboto-slab-400-regular.b46b2661355d7b1e9e9e.woff",
     "static/media/inter-500.woff": "/static/media/inter-500.f6376d37d92d3a818283.woff",
@@ -37,12 +37,12 @@
     "static/media/flag-marked.svg": "/static/media/flag-marked.8f4cd7583277ece5eec8.svg",
     "static/media/menu-icon-black.svg": "/static/media/menu-icon-black.ede60f895bb9e90cdee9e5a24e7ecf90.svg",
     "static/media/menu-icon-white.svg": "/static/media/menu-icon-white.0a6ddfdbe436047db1e6efac25300f09.svg",
-    "main.01fdfa32.css.map": "/static/css/main.01fdfa32.css.map",
-    "main.7496749d.js.map": "/static/js/main.7496749d.js.map",
+    "main.1a611fdc.css.map": "/static/css/main.1a611fdc.css.map",
+    "main.1b8d6a7e.js.map": "/static/js/main.1b8d6a7e.js.map",
     "787.1c78f32b.chunk.js.map": "/static/js/787.1c78f32b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.01fdfa32.css",
-    "static/js/main.7496749d.js"
+    "static/css/main.1a611fdc.css",
+    "static/js/main.1b8d6a7e.js"
   ]
 }
