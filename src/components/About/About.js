@@ -13,12 +13,14 @@ function About() {
       <div className="about__description">
         <h2 className="about__title">About the author</h2>
         <p className="about__text">
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.
+          I am Yakov Bilbil and I am a full stack web developer. For developing
+          I use: HTML, CSS, JavaScript, React, Node, Express, MongoDB, Git and
+          Google Cloud Platform.
         </p>
         <p className="about__text">
-          You can also talk about your experience with Practicum, what you
-          learned there, and how you can help potential customers.
+          I graduated by "Practicum100", a full stack web developing bootcamp
+          course by Masterschool and Yandex. In the course we learned to build
+          websites from skretch, include frontend and backend.
         </p>
       </div>
     </div>

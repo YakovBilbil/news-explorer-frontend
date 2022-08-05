@@ -9,9 +9,9 @@ import "../PopupWithForm/__or-block/popup-with-form__or-block.css";
 import "../PopupWithForm/__or/popup-with-form__or.css";
 import "../PopupWithForm/__or-button/popup-with-form__or-button.css";
 
-import Popup from "../Popup/Popup.js";
+import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 
-function PopupWithForm({
+function Login({
   isOpen,
   onClose,
   onLogin,
@@ -24,86 +24,60 @@ function PopupWithForm({
   isLogInSucceeded,
 }) {
   return (
-    <Popup isOpen={isOpen} onClose={onClose}>
-      <form
-        className="popup-with-form"
-        onSubmit={(event) => {
-          event.preventDefault();
-          onLogin();
+    <PopupWithForm
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={onLogin}
+      isValid={isValid}
+      moveToForm={moveToSignUpForm}
+      isAuthLoading={isAuthLoading}
+      name="Sign in"
+      contraName="Sign up"
+    >
+      <label className="popup-with-form__label">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="login-email-input"
+        placeholder="Enter email"
+        className="popup-with-form__input"
+        noValidate
+        required
+        onChange={handleChange}
+        value={values.email || ""}
+      />
+      <div className="popup-with-form__error-message">
+        {`${errors.email ? errors.email : ""}`}
+      </div>
+
+      <label className="popup-with-form__label">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="login-password-input"
+        placeholder="Enter password"
+        className="popup-with-form__input"
+        noValidate
+        required
+        onChange={handleChange}
+        value={values.password || ""}
+        minLength="8"
+        maxLength="30"
+      />
+      <div className="popup-with-form__error-message">
+        {`${errors.password ? errors.password : ""}`}
+      </div>
+
+      <div
+        className="popup-with-form__error-message popup-with-form__error-message_bad-email"
+        style={{
+          display: `${!isLogInSucceeded ? "" : "none"}`,
         }}
       >
-        <h2 className="popup-with-form__title">Sign in</h2>
-
-        <label className="popup-with-form__label">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="login-email-input"
-          placeholder="Enter email"
-          className="popup-with-form__input"
-          noValidate
-          required
-          onChange={handleChange}
-          value={values.email || ""}
-        />
-        <div className="popup-with-form__error-message">
-          {`${errors.email ? errors.email : ""}`}
-        </div>
-
-        <label className="popup-with-form__label">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="login-password-input"
-          placeholder="Enter password"
-          className="popup-with-form__input"
-          noValidate
-          required
-          onChange={handleChange}
-          value={values.password || ""}
-          minLength="8"
-          maxLength="30"
-        />
-        <div className="popup-with-form__error-message">
-          {`${errors.password ? errors.password : ""}`}
-        </div>
-
-        <div
-          className="popup-with-form__error-message popup-with-form__error-message_bad-email"
-          style={{
-            display: `${!isLogInSucceeded ? "" : "none"}`,
-          }}
-        >
-          Email, password or both are wrong
-        </div>
-
-        <button
-          type="submit"
-          className={`popup-with-form__send-button ${
-            !isValid || isAuthLoading
-              ? "popup-with-form__send-button_disabled"
-              : ""
-          }`}
-          disabled={!isValid || isAuthLoading}
-        >
-          {`${isAuthLoading ? "Loading" : "Sign in"}`}
-        </button>
-
-        <div className="popup-with-form__or-block">
-          <p className="popup-with-form__or">{`${
-            isAuthLoading ? "" : "or"
-          }`}</p>
-          <button
-            className="popup-with-form__or-button"
-            onClick={moveToSignUpForm}
-            disabled={isAuthLoading}
-          >
-            {`${isAuthLoading ? "" : "Sign up"}`}
-          </button>
-        </div>
-      </form>
-    </Popup>
+        Email, Password, or both are wrong
+      </div>
+    </PopupWithForm>
   );
 }
 
-export default PopupWithForm;
+export default Login;

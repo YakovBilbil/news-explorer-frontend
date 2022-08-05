@@ -329,13 +329,13 @@ function App() {
               values={values}
               errors={errors}
               isValid={isValid}
-              isEmailAvailable={isEmailAvailable}
               moveToSignInForm={() => {
                 setIsLogInSucceeded(true);
                 setIsPopupRegisterFormOpen(false);
                 setIsPopupLoginFormOpen(true);
               }}
               isAuthLoading={isAuthLoading}
+              isEmailAvailable={isEmailAvailable}
             />
 
             <Login
