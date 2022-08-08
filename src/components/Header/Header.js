@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import "./header.css";
 import "./_saved-articles/header_saved-articles.css";
 import "./__component/header__component.css";
@@ -14,6 +16,7 @@ import "./__user-name-button/header__user-name-button.css";
 import "./__user-name-button/_not-logged-in/header__user-name-button_not-logged-in.css";
 import "./__user-name-button/_saved-articles/header__user-name-button_saved-articles.css";
 import "./__user-name-button-text/header__user-name-button-text.css";
+import "./__sign-out-button/header__sign-out-button.css";
 import "./__home-button/header__home-button.css";
 import "./__home-button/_saved-articles/header__home-button_saved-articles.css";
 import "./__saved-articles-button/header__saved-articles-button.css";
@@ -25,20 +28,21 @@ import signOutSavedArticlesIcon from "../../images/sign-out-saved-articles.svg";
 import menuIconWhite from "../../images/menu-icon-white.svg";
 import menuIconBlack from "../../images/menu-icon-black.svg";
 
-import { useNavigate } from "react-router-dom";
-
 function Header({
+  currentUserName,
   headerState,
   changeHeaderState,
   onPopupWithFormClick,
   onPopupMenuForPhoneClick,
+  signOut,
 }) {
   const navigate = useNavigate();
+
   return (
     <header
-      className={`header  ${
+      className={`header ${
         headerState === "SavedArticles" ? "header_saved-articles" : ""
-      }  `}
+      }`}
     >
       <div className="header__component header__component_news-explorer">
         <p>NewsExplorer</p>
@@ -61,8 +65,10 @@ function Header({
               : ""
           }`}
           onClick={() => {
-            changeHeaderState("LoggedIn");
-            navigate("/news-explorer-frontend");
+            if (headerState === "SavedArticles") {
+              changeHeaderState("LoggedIn");
+              navigate("/");
+            }
           }}
         >
           <p>Home</p>
@@ -84,6 +90,10 @@ function Header({
               ? "header__saved-articles-button_saved-articles"
               : ""
           }`}
+          onClick={() => {
+            changeHeaderState("SavedArticles");
+            navigate("/saved-news");
+          }}
         >
           <p>Saved articles</p>
         </button>
@@ -109,24 +119,32 @@ function Header({
           display: `${headerState === "NotLoggedIn" ? "none" : ""}`,
         }}
       >
-        <button
+        <div
           className={`header__user-name-button ${
             headerState === "SavedArticles"
               ? " header__user-name-button_saved-articles"
               : ""
           }`}
         >
-          <p className="header__user-name-button-text">Elise</p>
-          <img
-            className="header__sign-out-icon"
-            src={`${
-              headerState === "SavedArticles"
-                ? signOutSavedArticlesIcon
-                : signOutIconDefault
-            }`}
-            alt="Sign out Icon"
-          />
-        </button>
+          <p className="header__user-name-button-text">{`${currentUserName}`}</p>
+
+          <button
+            className="header__sign-out-button"
+            onClick={() => {
+              signOut();
+            }}
+          >
+            <img
+              className="header__sign-out-icon"
+              src={`${
+                headerState === "SavedArticles"
+                  ? signOutSavedArticlesIcon
+                  : signOutIconDefault
+              }`}
+              alt="Sign out Icon"
+            />
+          </button>
+        </div>
       </div>
       <button className="header__menu" onClick={onPopupMenuForPhoneClick}>
         <img
